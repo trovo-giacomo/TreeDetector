@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\src\erosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3381C80E-95EB-3D26-9608-F2EF7D27E266}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
