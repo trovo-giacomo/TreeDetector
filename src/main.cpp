@@ -4,11 +4,9 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core/utils/filesystem.hpp>
 //#include <opencv2/core/utils/filesystem.hpp>
-//#include <opencv2/xfeatures2d/nonfree.hpp>
-//#include <opencv2/xfeatures2d.hpp>
-//#include <opencv2/features2d.hpp>
-//#include <opencv2/core/types.hpp>
-//#include <opencv2/calib3d.hpp>
+#include <opencv2/xfeatures2d/nonfree.hpp>
+#include <opencv2/core/types.hpp>
+#include <opencv2/calib3d.hpp>
 #include <iostream>
 
 using namespace std;
@@ -23,6 +21,11 @@ void equalize(Mat inputImg, Mat &inputEqualized);
 void watershedSegmentation(Mat img, Mat &segmentedImg);
 void Erosion(int, void*);
 void templateSegmentation(Mat img, string pathTemplate);
+
+void searchTemplateWithfeatures(Mat inputImg, string pathTemplate);
+void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures);
+void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
+int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -58,10 +61,111 @@ int main(int argc, char* argv[]) {
 	///template matching with generalized hough trasform
 	//templateSegmentation(inputImg, "../data/template/");
 
-	///
+	///Matching features by template
+	searchTemplateWithfeatures(inputImg, "../data/template/");
+	//extractFeatures();
 	
 	return 0;
 }
+
+void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
+	vector<String> files;
+	//Mat grayImg;
+	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
+	utils::fs::glob(pathTemplate, "*.jpg", files);
+
+	//extract from input image
+	vector<KeyPoint> imgFeatures;
+	Mat imgDescr;
+	extractFeatures(inputImg, imgFeatures, imgDescr, 2000);
+
+	for (int j = 0; j < files.size(); j++) {
+		Mat temp;
+		inputImg.copyTo(temp);
+		Mat templImg = imread(files[j]);
+		vector<KeyPoint> templFeatures;
+		Mat templDescr;
+		extractFeatures(templImg, templFeatures, templDescr, 1000);
+		vector<DMatch> matches;
+		computeMatches(templDescr, imgDescr, matches, 3);
+
+		//refine with RANSAC algorithm
+		vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined;
+		Mat mask;
+		for (int i = 0; i < matches.size(); i++) {
+			templateImagePoints.push_back(templFeatures.at(matches[i].queryIdx).pt);
+			frameImagePoints.push_back(imgFeatures.at(matches[i].trainIdx).pt);
+		}
+		//cout << "Find homography" << endl;
+		Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
+		for (int i = 0; i < mask.rows; i++) {
+			if ((unsigned int)mask.at<uchar>(i)) {
+				circle(temp, frameImagePoints[i], 5, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+				circle(templImg, templateImagePoints[i], 5, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+			}
+		}
+		Rect r = boundingRect(frameImagePoints);
+		rectangle(temp, r, Scalar(0, 255, 0), 2);
+
+		Mat outImgMatches = Mat(max(temp.rows,templImg.rows),temp.cols+templImg.cols,temp.type());
+		temp.copyTo(outImgMatches(Range(0,temp.rows), Range(0, temp.cols)));
+		templImg.copyTo(outImgMatches(Range(0, templImg.rows), Range(temp.cols, temp.cols + templImg.cols)));
+		//drawMatches(templImg, templFeatures, inputImg, imgFeatures, matches, outImgMatches);
+		namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
+		imshow("Matches " + to_string(j), outImgMatches);
+		waitKey(0);
+		
+		/*vector<Point2f> rectangleCorners, rectTranlated;
+		//matchObject(img, firstFrame, firstObjPoints, hom);
+		rectangleCorners.push_back(Point2f(0, 0));
+		rectangleCorners.push_back(Point2f(0, templImg.rows - 1));
+		rectangleCorners.push_back(Point2f(templImg.cols - 1, 0));
+		rectangleCorners.push_back(Point2f(templImg.cols - 1, templImg.rows - 1));
+		perspectiveTransform(rectangleCorners, rectTranlated, homography);
+		printRectangle(temp, rectTranlated, Scalar(255, 0, 0));
+
+		namedWindow("Match " + to_string(j), WINDOW_NORMAL);
+		imshow("Match " + to_string(j), temp);
+		waitKey(0);*/
+
+	}
+}
+
+void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
+	Ptr<xfeatures2d::SIFT> detector = xfeatures2d::SIFT::create(numFeatures);
+	detector->detectAndCompute(img, Mat(), features, desciptors);
+}
+
+void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio) {
+	vector<DMatch> m;
+	Ptr<BFMatcher> matcher = BFMatcher::create(NORM_L2);
+	matcher->match(templateDescriptors, imageDescriptors, m);
+	//refine with min distance
+	float minDist = FLT_MAX;
+	for (DMatch d : m) {
+		if (d.distance < minDist) minDist = d.distance;
+	}
+	//cout << "Min dist = " << minDist << "ratio = " << ratio << "; over all = " << (ratio*minDist) << endl;
+	for (DMatch d : m) {
+		if (d.distance < ratio*minDist) matches.push_back(d);
+	}
+
+}
+
+
+int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color) {
+	if (corners.size() != 4) return -1;
+	circle(frame, corners[0], 3, Scalar(255, 255, 255), 1);
+	circle(frame, corners[1], 3, Scalar(255, 255, 255), 1);
+	circle(frame, corners[2], 3, Scalar(255, 255, 255), 1);
+	circle(frame, corners[3], 3, Scalar(255, 255, 255), 1);
+	line(frame, corners[0], corners[1], color, 2);
+	line(frame, corners[1], corners[3], color, 2);
+	line(frame, corners[0], corners[2], color, 2);
+	line(frame, corners[3], corners[2], color, 2);
+	return 0;
+}
+
 
 void equalize(Mat img, Mat &imgEq) {
 	Mat imgHsv, channels[3], eqV;
