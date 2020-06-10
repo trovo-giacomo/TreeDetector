@@ -77,17 +77,18 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	//extract from input image
 	vector<KeyPoint> imgFeatures;
 	Mat imgDescr;
-	extractFeatures(inputImg, imgFeatures, imgDescr, 2000);
+	extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
 
 	for (int j = 0; j < files.size(); j++) {
 		Mat temp;
 		inputImg.copyTo(temp);
 		Mat templImg = imread(files[j]);
+		resize(templImg, templImg, Size(300, 500));
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
-		extractFeatures(templImg, templFeatures, templDescr, 1000);
+		extractFeatures(templImg, templFeatures, templDescr, 2000);
 		vector<DMatch> matches;
-		computeMatches(templDescr, imgDescr, matches, 3);
+		computeMatches(templDescr, imgDescr, matches, 2);
 
 		//refine with RANSAC algorithm
 		vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined;
@@ -98,37 +99,46 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		}
 		//cout << "Find homography" << endl;
 		Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
+		if (homography.empty()) continue;
 		for (int i = 0; i < mask.rows; i++) {
 			if ((unsigned int)mask.at<uchar>(i)) {
-				circle(temp, frameImagePoints[i], 5, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
-				circle(templImg, templateImagePoints[i], 5, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+				circle(temp, frameImagePoints[i], 10, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+				circle(templImg, templateImagePoints[i], 10, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+				objPointsRefined.push_back(frameImagePoints[i]);
+			}
+			else {
 			}
 		}
-		Rect r = boundingRect(frameImagePoints);
+		cout << "boundary image " << files[j]<< " - "  << temp.size() << endl;
+		for (int k = 0; k < objPointsRefined.size(); k++) cout << objPointsRefined[k] << endl;
+		cout << endl;
+		Rect r = boundingRect(objPointsRefined);
 		rectangle(temp, r, Scalar(0, 255, 0), 2);
 
 		Mat outImgMatches = Mat(max(temp.rows,templImg.rows),temp.cols+templImg.cols,temp.type());
 		temp.copyTo(outImgMatches(Range(0,temp.rows), Range(0, temp.cols)));
 		templImg.copyTo(outImgMatches(Range(0, templImg.rows), Range(temp.cols, temp.cols + templImg.cols)));
 		//drawMatches(templImg, templFeatures, inputImg, imgFeatures, matches, outImgMatches);
-		namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
+		/*namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
 		imshow("Matches " + to_string(j), outImgMatches);
-		waitKey(0);
+		waitKey(0);*/
 		
-		/*vector<Point2f> rectangleCorners, rectTranlated;
+		vector<Point2f> rectangleCorners, rectTranlated;
 		//matchObject(img, firstFrame, firstObjPoints, hom);
 		rectangleCorners.push_back(Point2f(0, 0));
 		rectangleCorners.push_back(Point2f(0, templImg.rows - 1));
 		rectangleCorners.push_back(Point2f(templImg.cols - 1, 0));
 		rectangleCorners.push_back(Point2f(templImg.cols - 1, templImg.rows - 1));
+		cout << homography << endl;
 		perspectiveTransform(rectangleCorners, rectTranlated, homography);
-		printRectangle(temp, rectTranlated, Scalar(255, 0, 0));
+		printRectangle(outImgMatches, rectTranlated, Scalar(255, 0, 0));
 
-		namedWindow("Match " + to_string(j), WINDOW_NORMAL);
-		imshow("Match " + to_string(j), temp);
-		waitKey(0);*/
+		namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
+		imshow("Matches " + to_string(j), outImgMatches);
+		waitKey(0);
 
 	}
+	waitKey(0);
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
