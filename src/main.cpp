@@ -52,11 +52,13 @@ int main(int argc, char* argv[]) {
 	imshow("Equalized image", inputEqualized);
 	waitKey(0);*/
 
-	//watershedSegmentation
+	///watershedSegmentation
 	//watershedSegmentation(inputImg, segmentedImg);
 
-	//template matching with generalized hough trasform
-	templateSegmentation(inputImg, "../data/template/");
+	///template matching with generalized hough trasform
+	//templateSegmentation(inputImg, "../data/template/");
+
+	///
 	
 	return 0;
 }
