@@ -26,6 +26,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate);
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures);
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
+void slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -73,6 +74,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	//Mat grayImg;
 	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
 	utils::fs::glob(pathTemplate, "*.jpg", files);
+	vector<double> scales = { 1.0,1.5,2.0 };
 
 	//extract from input image
 	vector<KeyPoint> imgFeatures;
@@ -82,6 +84,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	int indexMaxMatches;
 	double  maxMatches = 0.0;
 	for (int j = 0; j < files.size(); j++) {
+		
 		Mat temp;
 		inputImg.copyTo(temp);
 		Mat templImg = imread(files[j]);
@@ -89,7 +92,13 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
 		extractFeatures(templImg, templFeatures, templDescr, 2000);
-		vector<DMatch> matches;
+
+		for (int i = 0; i < scales.size(); i++) {
+			slidingWindow(inputImg, templFeatures, templDescr, scales[i]);
+		}
+		
+
+		/*vector<DMatch> matches;
 		computeMatches(templDescr, imgDescr, matches, 2);
 
 		//refine with RANSAC algorithm
@@ -140,7 +149,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		imshow("Matches " + to_string(j), outImgMatches);
 		waitKey(0);*/
 		
-		vector<Point2f> rectangleCorners, rectTranlated;
+		/*vector<Point2f> rectangleCorners, rectTranlated;
 		//matchObject(img, firstFrame, firstObjPoints, hom);
 		rectangleCorners.push_back(Point2f(0, 0));
 		rectangleCorners.push_back(Point2f(0, templImg.rows - 1));
@@ -152,7 +161,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 		namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
 		imshow("Matches " + to_string(j), outImgMatches);
-		waitKey(0);
+		waitKey(0);*/
 
 	}
 	waitKey(0);
@@ -162,6 +171,64 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	namedWindow("Best match", WINDOW_NORMAL);
 	imshow("Best match", inputImg);
 	waitKey(0);
+}
+
+void slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale) {
+	cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
+	Mat imgInput;
+	resize(img, img, Size(img.cols / scale, img.rows / scale));
+	cout << "Scaled size " << img.size() << endl;
+	int win_rows = 60, win_cols = 60, stepSize = 30;
+	for (int row = 0; row <= img.rows - win_rows; row += stepSize) {
+		for (int col = 0; col < img.cols - win_cols; col += stepSize) {
+			img.copyTo(imgInput);
+			Rect windows(col, row, win_rows, win_cols);
+			cout << "Rect: " << windows;
+			Mat win = imgInput(windows);
+			vector<KeyPoint> features;
+			Mat descr;
+			extractFeatures(win, features, descr, 2000);
+			vector<DMatch> matches;
+			computeMatches(templateDescr, descr, matches, 2);
+			cout << "Computer matches " << matches.size() << endl;
+			if (matches.size() == 0) continue;
+			//refine with RANSAC algorithm
+			vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined, objPointsRefined2;
+			Mat mask;
+			for (int i = 0; i < matches.size(); i++) {
+				templateImagePoints.push_back(templateFeatures.at(matches[i].queryIdx).pt);
+				frameImagePoints.push_back(features.at(matches[i].trainIdx).pt);
+			}
+			cout << "Find homography" << endl;
+			Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
+			cout << "Refining" << endl;
+			if (homography.empty()) continue;
+			for (int i = 0; i < mask.rows; i++) {
+				if ((unsigned int)mask.at<uchar>(i)) {
+					circle(win, frameImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255),1);
+					//circle(win, templateImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
+					objPointsRefined.push_back(frameImagePoints[i]);
+				}
+				else {
+				}
+			}
+			//remove duplicates
+			auto end = objPointsRefined.end();
+			for (auto it = objPointsRefined.begin(); it != end; ++it) {
+				end = std::remove(it + 1, end, *it);
+			}
+
+			objPointsRefined.erase(end, objPointsRefined.end());
+
+			//Mat temp = imgInput.clone();
+			rectangle(imgInput, windows, Scalar(255), 1, 8);
+			namedWindow("SlidingWindow", WINDOW_NORMAL);
+			imshow("SlidingWindow", imgInput);
+			namedWindow("Features", WINDOW_NORMAL);
+			imshow("Features", win);
+			waitKey(0);
+		}
+	}
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
