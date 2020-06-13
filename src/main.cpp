@@ -76,9 +76,11 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 	//extract from input image
 	vector<KeyPoint> imgFeatures;
+	vector<Point2f> maxMatchesPointsRefined;
 	Mat imgDescr;
 	extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
-
+	int indexMaxMatches;
+	double  maxMatches = 0.0;
 	for (int j = 0; j < files.size(); j++) {
 		Mat temp;
 		inputImg.copyTo(temp);
@@ -91,7 +93,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		computeMatches(templDescr, imgDescr, matches, 2);
 
 		//refine with RANSAC algorithm
-		vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined;
+		vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined, objPointsRefined2;
 		Mat mask;
 		for (int i = 0; i < matches.size(); i++) {
 			templateImagePoints.push_back(templFeatures.at(matches[i].queryIdx).pt);
@@ -109,9 +111,24 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 			else {
 			}
 		}
-		cout << "boundary image " << files[j]<< " - "  << temp.size() << endl;
+		//remove duplicates
+		auto end = objPointsRefined.end();
+		for (auto it = objPointsRefined.begin(); it != end; ++it) {
+			end = std::remove(it + 1, end, *it);
+		}
+
+		objPointsRefined.erase(end, objPointsRefined.end());
+
+		
+		cout << "boundary image " << files[j] << " - " << temp.size() << " - number of matching: " << objPointsRefined.size() << endl;
 		for (int k = 0; k < objPointsRefined.size(); k++) cout << objPointsRefined[k] << endl;
 		cout << endl;
+
+		if (maxMatches < objPointsRefined.size()) {
+			maxMatches = objPointsRefined.size();
+			indexMaxMatches = j;
+			maxMatchesPointsRefined = objPointsRefined;
+		}
 		Rect r = boundingRect(objPointsRefined);
 		rectangle(temp, r, Scalar(0, 255, 0), 2);
 
@@ -138,6 +155,12 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		waitKey(0);
 
 	}
+	waitKey(0);
+	cout << "Image with max matches: " << files[indexMaxMatches] << " - number of matches: " << maxMatches;
+	Rect r = boundingRect(maxMatchesPointsRefined);
+	rectangle(inputImg, r, Scalar(0, 255, 0), 2);
+	namedWindow("Best match", WINDOW_NORMAL);
+	imshow("Best match", inputImg);
 	waitKey(0);
 }
 
