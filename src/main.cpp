@@ -9,6 +9,9 @@
 #include <opencv2/calib3d.hpp>
 #include <iostream>
 
+#define WIN_ROWS 60
+#define WIN_COLS 60
+
 using namespace std;
 using namespace cv;
 
@@ -25,8 +28,9 @@ void templateSegmentation(Mat img, string pathTemplate);
 void searchTemplateWithfeatures(Mat inputImg, string pathTemplate);
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures);
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
+void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
-void slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale);
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, struct treeData &data);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -34,6 +38,11 @@ int erosion_size = 0;
 int const max_elem = 2;
 int const max_kernel_size = 21;
 
+struct treeData {
+	string fileName;
+	double scale, dist, diffMean;
+	Rect rect;
+};
 
 
 int main(int argc, char* argv[]) {
@@ -74,140 +83,117 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	//Mat grayImg;
 	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
 	utils::fs::glob(pathTemplate, "*.jpg", files);
-	vector<double> scales = { 1.0,1.5,2.0 };
+	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6 };
 
 	//extract from input image
-	vector<KeyPoint> imgFeatures;
-	vector<Point2f> maxMatchesPointsRefined;
-	Mat imgDescr;
-	extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
-	int indexMaxMatches;
+	//vector<KeyPoint> imgFeatures;
+	//vector<Point2f> maxMatchesPointsRefined;
+	//Mat imgDescr;
+	//extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
+	int indexMaxMatches, numMatches;
 	double  maxMatches = 0.0;
+	vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
-		
-		Mat temp;
-		inputImg.copyTo(temp);
+		//for (int j = 0; j < 2; j++) {
+
 		Mat templImg = imread(files[j]);
-		resize(templImg, templImg, Size(300, 500));
+		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
-		extractFeatures(templImg, templFeatures, templDescr, 2000);
+		extractFeatures(templImg, templFeatures, templDescr, 500);
+		struct treeData treeDataSelected;
+		treeDataSelected.diffMean = DBL_MAX;
+		treeDataSelected.dist = DBL_MAX;
 
 		for (int i = 0; i < scales.size(); i++) {
-			slidingWindow(inputImg, templFeatures, templDescr, scales[i]);
-		}
-		
-
-		/*vector<DMatch> matches;
-		computeMatches(templDescr, imgDescr, matches, 2);
-
-		//refine with RANSAC algorithm
-		vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined, objPointsRefined2;
-		Mat mask;
-		for (int i = 0; i < matches.size(); i++) {
-			templateImagePoints.push_back(templFeatures.at(matches[i].queryIdx).pt);
-			frameImagePoints.push_back(imgFeatures.at(matches[i].trainIdx).pt);
-		}
-		//cout << "Find homography" << endl;
-		Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
-		if (homography.empty()) continue;
-		for (int i = 0; i < mask.rows; i++) {
-			if ((unsigned int)mask.at<uchar>(i)) {
-				circle(temp, frameImagePoints[i], 10, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
-				circle(templImg, templateImagePoints[i], 10, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
-				objPointsRefined.push_back(frameImagePoints[i]);
+			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << " - templ img size: " << templImg.size() << endl;
+			Mat temp;
+			inputImg.copyTo(temp);
+			struct treeData data;
+			data.fileName = files[j];
+			data.scale = scales[i];
+			data.diffMean = norm(mean(templImg));
+			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], data);
+			cout << " -> Number of matches: " << numMatches << endl;
+			if (numMatches > 0 && treeDataSelected.dist > data.dist && treeDataSelected.diffMean > data.diffMean) {
+				treeDataSelected = data;
+				cout << "Updated" << endl;
 			}
-			else {
-			}
+
 		}
-		//remove duplicates
-		auto end = objPointsRefined.end();
-		for (auto it = objPointsRefined.begin(); it != end; ++it) {
-			end = std::remove(it + 1, end, *it);
-		}
-
-		objPointsRefined.erase(end, objPointsRefined.end());
-
-		
-		cout << "boundary image " << files[j] << " - " << temp.size() << " - number of matching: " << objPointsRefined.size() << endl;
-		for (int k = 0; k < objPointsRefined.size(); k++) cout << objPointsRefined[k] << endl;
-		cout << endl;
-
-		if (maxMatches < objPointsRefined.size()) {
-			maxMatches = objPointsRefined.size();
-			indexMaxMatches = j;
-			maxMatchesPointsRefined = objPointsRefined;
-		}
-		Rect r = boundingRect(objPointsRefined);
-		rectangle(temp, r, Scalar(0, 255, 0), 2);
-
-		Mat outImgMatches = Mat(max(temp.rows,templImg.rows),temp.cols+templImg.cols,temp.type());
-		temp.copyTo(outImgMatches(Range(0,temp.rows), Range(0, temp.cols)));
-		templImg.copyTo(outImgMatches(Range(0, templImg.rows), Range(temp.cols, temp.cols + templImg.cols)));
-		//drawMatches(templImg, templFeatures, inputImg, imgFeatures, matches, outImgMatches);
-		/*namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
-		imshow("Matches " + to_string(j), outImgMatches);
-		waitKey(0);*/
-		
-		/*vector<Point2f> rectangleCorners, rectTranlated;
-		//matchObject(img, firstFrame, firstObjPoints, hom);
-		rectangleCorners.push_back(Point2f(0, 0));
-		rectangleCorners.push_back(Point2f(0, templImg.rows - 1));
-		rectangleCorners.push_back(Point2f(templImg.cols - 1, 0));
-		rectangleCorners.push_back(Point2f(templImg.cols - 1, templImg.rows - 1));
-		cout << homography << endl;
-		perspectiveTransform(rectangleCorners, rectTranlated, homography);
-		printRectangle(outImgMatches, rectTranlated, Scalar(255, 0, 0));
-
-		namedWindow("Matches " + to_string(j), WINDOW_NORMAL);
-		imshow("Matches " + to_string(j), outImgMatches);
-		waitKey(0);*/
+		if(!treeDataSelected.fileName.empty()) treesDetected.push_back(treeDataSelected);
+		cout << "ended" << endl << endl;
+		waitKey(1);
+	}
+	cout << "--- Over all trees selected ---" << endl;
+	cout << "Number of tree detected: " << treesDetected.size() << endl;
+	Size originalSize = inputImg.size();
+	for (int i = 0; i < treesDetected.size(); i++) {
+		//resize(inputImg, inputImg, Size(inputImg.cols / treesDetected[i].scale, inputImg.rows / treesDetected[i].scale));
+		double sc = treesDetected[i].scale;
+		Rect treeWindow(treesDetected[i].rect.x*sc, treesDetected[i].rect.y*sc, treesDetected[i].rect.width*sc, treesDetected[i].rect.height*sc);
+		rectangle(inputImg, treeWindow,Scalar(i));
+		//resize(inputImg, inputImg, originalSize);
+		cout << "Rect: " << treeWindow;
+		cout << " - scale: " << sc;
+		cout << " - dist: " << treesDetected[i].dist;
+		cout << " - diffMean: " << treesDetected[i].diffMean;
+		cout << " - file name: " << treesDetected[i].fileName << endl << endl;
+		namedWindow("Final detection",WINDOW_NORMAL);
+		imshow("Final detection", inputImg);
+		waitKey(0);
 
 	}
 	waitKey(0);
-	cout << "Image with max matches: " << files[indexMaxMatches] << " - number of matches: " << maxMatches;
-	Rect r = boundingRect(maxMatchesPointsRefined);
-	rectangle(inputImg, r, Scalar(0, 255, 0), 2);
-	namedWindow("Best match", WINDOW_NORMAL);
-	imshow("Best match", inputImg);
-	waitKey(0);
 }
 
-void slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale) {
-	cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
-	Mat imgInput;
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, struct treeData &data ) {
+	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
+	int numCorrMatches = 0;
+	Mat imgInput, originalImg;
 	resize(img, img, Size(img.cols / scale, img.rows / scale));
-	cout << "Scaled size " << img.size() << endl;
-	int win_rows = 60, win_cols = 60, stepSize = 30;
+	img.copyTo(imgInput);
+	img.copyTo(originalImg);
+	//cout << "Scaled size " << img.size() << endl;
+	int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
 	for (int row = 0; row <= img.rows - win_rows; row += stepSize) {
 		for (int col = 0; col < img.cols - win_cols; col += stepSize) {
-			img.copyTo(imgInput);
+			match = 0;
 			Rect windows(col, row, win_rows, win_cols);
-			cout << "Rect: " << windows;
+			//cout << "Rect: " << windows;
 			Mat win = imgInput(windows);
 			vector<KeyPoint> features;
 			Mat descr;
 			extractFeatures(win, features, descr, 2000);
+			/*rectangle(imgInput, windows, Scalar(50), 1, 8); //to visualize sliding widows progression
+			namedWindow("SlidingWindow", WINDOW_NORMAL);
+			imshow("SlidingWindow", imgInput);
+			waitKey(1);*/
 			vector<DMatch> matches;
 			computeMatches(templateDescr, descr, matches, 2);
-			cout << "Computer matches " << matches.size() << endl;
+			//cout << "Computed matches " << matches.size() << endl;
 			if (matches.size() == 0) continue;
 			//refine with RANSAC algorithm
-			vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined, objPointsRefined2;
+			vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined;
+			vector<float> distances, refinedDistances;
 			Mat mask;
 			for (int i = 0; i < matches.size(); i++) {
 				templateImagePoints.push_back(templateFeatures.at(matches[i].queryIdx).pt);
 				frameImagePoints.push_back(features.at(matches[i].trainIdx).pt);
+				distances.push_back(matches[i].distance);
 			}
-			cout << "Find homography" << endl;
+			//cout << "Find homography" << endl;
 			Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
-			cout << "Refining" << endl;
+			//cout << "Refining" << endl;
 			if (homography.empty()) continue;
 			for (int i = 0; i < mask.rows; i++) {
 				if ((unsigned int)mask.at<uchar>(i)) {
 					circle(win, frameImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255),1);
 					//circle(win, templateImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
 					objPointsRefined.push_back(frameImagePoints[i]);
+					refinedDistances.push_back(distances[i]);
+					//cout << "ref. distances " << distances[i] << endl;
+					match++;
 				}
 				else {
 				}
@@ -217,18 +203,30 @@ void slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr
 			for (auto it = objPointsRefined.begin(); it != end; ++it) {
 				end = std::remove(it + 1, end, *it);
 			}
-
 			objPointsRefined.erase(end, objPointsRefined.end());
-
-			//Mat temp = imgInput.clone();
-			rectangle(imgInput, windows, Scalar(255), 1, 8);
-			namedWindow("SlidingWindow", WINDOW_NORMAL);
-			imshow("SlidingWindow", imgInput);
-			namedWindow("Features", WINDOW_NORMAL);
-			imshow("Features", win);
-			waitKey(0);
+			data.diffMean = norm(mean(originalImg(windows))) - data.diffMean;
+			//cout << "Matches: " << match << " unique: " << objPointsRefined.size() << endl;
+			//select tree
+			if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data.diffMean < 150) {
+				cout << " -> Matches: " << match << " unique: " << objPointsRefined.size() << endl;
+				data.dist = norm(refinedDistances);
+				cout << "Norm of distances: " << data.dist << endl;
+				//data.diffMean = norm(mean(originalImg(windows))) - data.diffMean;
+				if(data.diffMean < 0) data.diffMean = -data.diffMean;
+				cout << "Mean diff of rectangle with template: " << data.diffMean << endl;
+				data.rect = windows;
+				rectangle(img, windows, Scalar(255), 1, 8);
+				namedWindow("SlidingWindow"+to_string(scale), WINDOW_NORMAL);
+				imshow("SlidingWindow"+to_string(scale), img);
+				namedWindow("Features", WINDOW_NORMAL);
+				imshow("Features", win);
+				waitKey(1);
+				numCorrMatches++;
+			}
+			
 		}
 	}
+	return numCorrMatches;
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
@@ -249,6 +247,26 @@ void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch
 	for (DMatch d : m) {
 		if (d.distance < ratio*minDist) matches.push_back(d);
 	}
+
+}
+
+void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio) {
+	vector<vector<DMatch>> knn_matches;
+	cout << "Matcher flann" << endl;
+	Ptr<BFMatcher> matcher = BFMatcher::create(NORM_L2);
+	cout << "Compute matches with flann" << endl;
+	matcher->knnMatch(templateDescriptors, imageDescriptors, knn_matches, 2);
+	//-- Filter matches using the Lowe's ratio test
+	const float ratio_thresh = 0.7f;
+	cout << "refine matches" << endl;
+	for (size_t i = 0; i < knn_matches.size(); i++)
+	{
+		if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance)
+		{
+			matches.push_back(knn_matches[i][0]);
+		}
+	}
+	cout << "matches size: " << matches.size() << endl;
 
 }
 
