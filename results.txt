@@ -1,0 +1,52 @@
+Score [0 - 4] (no - troppo piccolo - accettabile - bene - molto bene)
+
+--- Over all trees selected --- ../data/Figure 2.jpg ---- Parametri - stdDevIn > 100 && ratioMatches > 0.7 && dist < 1000 - ord by max rappStdDevSQ && min dist
+Number of tree detected: 13
+[3] Rect: [300 x 300 from (600, 150)] - scale: 5 - %match: 0.833333 - dist: 816.452 - diffMean: 10750.4 - stdDevIn: 111.142 - stdDevOut: 85.5894 - rappStdDev: 1.29855 - rappStdDevSQ: 1.68622 - file name: ../data/template3/download (1).jpg
+[3] Rect: [300 x 300 from (600, 150)] - scale: 5 - %match: 0.8 - dist: 955.093 - diffMean: 14898.9 - stdDevIn: 111.142 - stdDevOut: 85.5894 - rappStdDev: 1.29855 - rappStdDevSQ: 1.68622 - file name: ../data/template3/download (3).png
+[3] Rect: [300 x 300 from (600, 150)] - scale: 5 - %match: 1 - dist: 830.393 - diffMean: 14745.9 - stdDevIn: 111.142 - stdDevOut: 85.5894 - rappStdDev: 1.29855 - rappStdDevSQ: 1.68622 - file name: ../data/template3/download (11).png
+[2] Rect: [150 x 150 from (750, 300)] - scale: 2.5 - %match: 1 - dist: 904.116 - diffMean: 12478.9 - stdDevIn: 112.796 - stdCpQCZFCpQC9j - rappStdDev: 1.26948 - rappStdDevSQ: 1.61157 - file name: --
+[0] Rect: [240 x 240 from (840, 240)] - scale: 4 - %match: 1 - dist: 918.248 - diffMean: 13182.6 - stdDevIn: 114.922 - stdDevOut: 88.8435 - rappStdDev: 1.29353 - rappStdDevSQ: 1.67322 - file name: --
+[0] Rect: [150 x 150 from (825, 225)] - scale: 2.5 - %match: 1 - dist: 771.66 - diffMean: 13036.3 - stdDevIn: 106.876 - stdDevOut: 89.8038 - rappStdDev: 1.19011 - rappStdDevSQ: 1.41636 - file name:   --
+[0] Rect: [120 x 120 from (600, 300)] - scale: 2 - %match: 1 - dist: 647.535 - diffMean: 12605.2 - stdDevIn: 105.205 - stdDevOut: 91.2433 - rappStdDev: 1.15301 - rappStdDevSQ: 1.32944 - file name: --
+[0] Rect: [120 x 120 from (600, 300)] - scale: 2 - %match: 0.8 - dist: 840.736 - diffMean: 12992 - stdDevIn: 105.205 - stdDevOut: 91.2433 - rappStdDev: 1.15301 - rappStdDevSQ: 1.32944 - file name: ­--
+[0] Rect: [120 x 120 from (900, 300)] - scale: 2 - %match: 0.8 - dist: 783.771 - diffMean: 11010.6 - stdDevIn: 110.528 - stdDevOut: 91.1187 - rappStdDev: 1.21302 - rappStdDevSQ: 1.47141 - file name: --
+[0] Rect: [90 x 90 from (810, 360)] - scale: 1.5 - %match: 0.857143 - dist: 995.966 - diffMean: 12615.1 - stdDevIn: 121.077 - stdDevOut: 91.2234 - rappStdDev: 1.32726 - rappStdDevSQ: 1.76162 - file name: --
+[0] Rect: [150 x 150 from (750, 300)] - scale: 2.5 - %match: 0.833333 - dist: 966.174 - diffMean: 12877 - stdDevIn: 112.796 - stdDevOut: 88.8524 - rappStdDev: 1.26948 - rappStdDevSQ: 1.61157 - file name: --
+[0] Rect: [120 x 120 from (840, 300)] - scale: 2 - %match: 0.714286 - dist: 960.86 - diffMean: 11463.9 - stdDevIn: 125.582 - stdDevOut: 90.263 - rappStdDev: 1.39129 - rappStdDevSQ: 1.93568 - file name: --
+[0] Rect: [90 x 90 from (855, 360)] - scale: 1.5 - %match: 0.8 - dist: 528.822 - diffMean: 11612.8 - stdDevIn: 109.391 - stdDevOut: 91.503 - rappStdDev: 1.19549 - rappStdDevSQ: 1.4292 - file name: --
+
+
+--- Over all trees selected --- ../data/Figure 1.jpg ---- Parametri - stdDevIn > 100 && ratioMatches > 0.7 && dist < 1000 - ord by max rappStdDevSQ && min dist
+Number of tree detected: 16 [non ha segmentato il primo albero a sinistra]
+[1] Rect: [150 x 150 from (825, 150)] - scale: 2.5 - %match: 1 - dist: 688.416 - diffMean: 13794.1 - stdDevIn: 101.433 - stdDevOut: 89.3786 - rappStdDev: 1.13487 - rappStdDevSQ: 1.28793 - file name: --
+[0] Rect: [300 x 300 from (600, 150)] - scale: 5 - %match: 0.8 - dist: 877.346 - diffMean: 16420.4 - stdDevIn: 128.13 - stdDevOut: 83.302 - rappStdDev: 1.53813 - rappStdDevSQ: 2.36586 - file name: ../data/template3/download (1).png
+[1] Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 1 - dist: 908.068 - diffMean: 6220.56 - stdDevIn: 136.566 - stdDevOut: 83.3147 - rappStdDev: 1.63916 - rappStdDevSQ: 2.68685 - file name: ../data/template3/download (11).png
+[0] Rect: [90 x 90 from (765, 270)] - scale: 1.5 - %match: 1 - dist: 633.869 - diffMean: 13560.6 - stdDevIn: 145.039 - stdDevOut: 94.3478 - rappStdDev: 1.53727 - rappStdDevSQ: 2.36321 - file name:  --
+[1] Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 1 - dist: 922.527 - diffMean: 6637.32 - stdDevIn: 136.566 - stdDevOut: 83.3147 - rappStdDev: 1.63916 - rappStdDevSQ: 2.68685 - file name: ../data/template3/download (13).png
+[1] Rect: [90 x 90 from (765, 135)] - scale: 1.5 - %match: 1 - dist: 982.567 - diffMean: 15827.5 - stdDevIn: 122.217 - stdDevOut: 94.3223 - rappStdDev: 1.29574 - rappStdDevSQ: 1.67894 - file name:--
+[0] Rect: [180 x 180 from (630, 270)] - scale: 3 - %match: 0.714286 - dist: 994.634 - diffMean: 15186.6 - stdDevIn: 103.216 - stdDevOut: 95.4073 - rappStdDev: 1.08185 - rappStdDevSQ: 1.1704 - file name: --
+[1] Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 0.8 - dist: 886.328 - diffMean: 7585 - stdDevIn: 136.566 - stdDevOut: 83.3147 - rappStdDev: 1.63916 - rappStdDevSQ: 2.68685 - file name: ../data/template3/download (3).png
+[1] Rect: [300 x 300 from (600, 150)] - scale: 5 - %match: 1 - dist: 729.923 - diffMean: 13627 - stdDevIn: 128.13 - stdDevOut: 83.302 - rappStdDev: 1.53813 - rappStdDevSQ: 2.36586 - file name: ../data/template3/download (4).jpg
+[1] Rect: [90 x 90 from (810, 135)] - scale: 1.5 - %match: 0.833333 - dist: 984.713 - diffMean: 14074.7 - stdDevIn: 115.817 - stdDevOut: 94.1258 - rappStdDev: 1.23045 - rappStdDevSQ: 1.514 - file name: --
+[0] Rect: [90 x 90 from (720, 270)] - scale: 1.5 - %match: 0.714286 - dist: 980.508 - diffMean: 13374.9 - stdDevIn: 129.904 - stdDevOut: 94.9644 - rappStdDev: 1.36792 - rappStdDevSQ: 1.8712 - file name: --
+[0] Rect: [150 x 150 from (825, 225)] - scale: 2.5 - %match: 0.8 - dist: 912.481 - diffMean: 7692.86 - stdDevIn: 154.754 - stdDevOut: 91.9312 - rappStdDev: 1.68337 - rappStdDevSQ: 2.83374 - file name: --
+[0] Rect: [120 x 120 from (780, 240)] - scale: 2 - %match: 0.8 - dist: 882.319 - diffMean: 8027.54 - stdDevIn: 153.277 - stdDevOut: 92.4744 - rappStdDev: 1.6575 - rappStdDevSQ: 2.74732 - file name: --
+[1] Rect: [150 x 150 from (750, 75)] - scale: 2.5 - %match: 0.833333 - dist: 942.844 - diffMean: 11278.6 - stdDevIn: 102.064 - stdDevOut: 92.9325 - rappStdDev: 1.09826 - rappStdDevSQ: 1.20617 - file name: --
+[1] Rect: [180 x 180 from (810, 180)] - scale: 3 - %match: 0.8 - dist: 938.788 - diffMean: 16114.2 - stdDevIn: 147.066 - stdDevOut: 88.7715 - rappStdDev: 1.65668 - rappStdDevSQ: 2.74459 - file name: --
+[3] Rect: [240 x 240 from (720, 120)] - scale: 4 - %match: 1 - dist: 615.14 - diffMean: 14098.1 - stdDevIn: 132.975 - stdDevOut: 82.5054 - rappStdDev: 1.61172 - rappStdDevSQ: 2.59764 - file name: --
+
+--- Over all trees selected --- ../data/Figure 7.jpg  ---- Parametri - stdDevIn > 100 && ratioMatches > 0.7 && dist < 1000 - ord by max rappStdDevSQ && min dist
+Number of tree detected: 12 [solo prato - no alberi nell'immagine!]
+Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 0.8 - dist: 965.896 - diffMean: 19739.6 - stdDevIn: 136.778 - stdDevOut: 139.756 - rappStdDev: 0.978692 - rappStdDevSQ: 0.957839 - file name: ../data/template3/download (11).png
+Rect: [120 x 120 from (960, 300)] - scale: 2 - %match: 0.8 - dist: 952.918 - diffMean: 16972 - stdDevIn: 145.898 - stdDevOut: 140.102 - rappStdDev: 1.04137 - rappStdDevSQ: 1.08444 - file name: --
+Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 0.8 - dist: 933.284 - diffMean: 19903.5 - stdDevIn: 136.778 - stdDevOut: 139.756 - rappStdDev: 0.978692 - rappStdDevSQ: 0.957839 - file name: ../data/template3/download (13).png
+Rect: [240 x 240 from (720, 240)] - scale: 4 - %match: 1 - dist: 880.145 - diffMean: 11650 - stdDevIn: 135.789 - stdDevO       71 - rappStdDev: 0.96943 - rappStdDevSQ: 0.939794 - file name: --
+Rect: [90 x 90 from (990, 315)] - scale: 1.5 - %match: 0.8 - dist: 761.526 - diffMean: 10389.4 - stdDevIn: 151.843 - std       40.156 - rappStdDev: 1.08338 - rappStdDevSQ: 1.17372 - file name: --
+Rect: [300 x 300 from (750, 150)] - scale: 5 - %match: 1 - dist: 803.632 - diffMean: 19548.4 - stdDevIn: 136.778 - stdDevOut: 139.756 - rappStdDev: 0.978692 - rappStdDevSQ: 0.957839 - file name: ../data/template3/download (3).png
+Rect: [150 x 150 from (825, 300)] - scale: 2.5 - %match: 1 - dist: 776.607 - diffMean: 14358.5 - stdDevIn: 132.804 - stdDevOut: 140.299 - rappStdDev: 0.946577 - rappStdDevSQ: 0.896008 - file name: --
+Rect: [120 x 120 from (780, 300)] - scale: 2 - %match: 1 - dist: 800.831 - diffMean: 17279.4 - stdDevIn: 136.595 - stdDevOut: 140.239 - rappStdDev: 0.974015 - rappStdDevSQ: 0.948704 - file name: --
+Rect: [120 x 120 from (1020, 300)] - scale: 2 - %match: 0.8 - dist: 761.707 - diffMean: 15732.4 - stdDevIn: 143.083 - stdDevOut: 140.171 - rappStdDev: 1.02077 - rappStdDevSQ: 1.04197 - file name: --
+Rect: [180 x 180 from (990, 270)] - scale: 3 - %match: 1 - dist: 696.999 - diffMean: 16693.5 - stdDevIn: 137.31 - stdDevOut: 140.372 - rappStdDev: 0.978181 - rappStdDevSQ: 0.956838 - file name: --
+Rect: [150 x 150 from (975, 300)] - scale: 2.5 - %match: 0.8 - dist: 990.929 - diffMean: 12633.4 - stdDevIn: 137.676 - stdDevOut: 140.28 - rappStdDev: 0.981435 - rappStdDevSQ: 0.963214 - file name: --
+Rect: [150 x 150 from (975, 300)] - scale: 2.5 - %match: 0.8 - dist: 904.299 - diffMean: 13281.6 - stdDevIn: 137.676 - stdDevOut: 140.28 - rappStdDev: 0.981435 - rappStdDevSQ: 0.963214 - file name: --

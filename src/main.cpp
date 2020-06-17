@@ -30,7 +30,8 @@ void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int n
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
-int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, struct treeData &data);
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect);
+void printTreeData(struct treeData *data);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -38,9 +39,11 @@ int erosion_size = 0;
 int const max_elem = 2;
 int const max_kernel_size = 21;
 
+string inputImageName;
+
 struct treeData {
-	string fileName;
-	double scale, dist, diffMean;
+	string fileName ="";
+	double scale=0.0, dist=0.0, diffMean=0.0, stdDevIn=0.0, stdDevOut=0.0, ratioMatches=0.0;
 	Rect rect;
 };
 
@@ -54,10 +57,12 @@ int main(int argc, char* argv[]) {
 	}
 	Mat inputImg, inputEqualized, segmentedImg;
 	
+	inputImageName = argv[1];
 	inputImg = imread(argv[1]);
 	namedWindow("Input image", WINDOW_NORMAL);
 	imshow("Input image", inputImg);
 	waitKey();
+
 
 	//equalization of the input image in HSV color code
 	/*equalize(inputImg, inputEqualized);
@@ -72,7 +77,7 @@ int main(int argc, char* argv[]) {
 	//templateSegmentation(inputImg, "../data/template/");
 
 	///Matching features by template
-	searchTemplateWithfeatures(inputImg, "../data/template/");
+	searchTemplateWithfeatures(inputImg, "../data/template3/");
 	//extractFeatures();
 	
 	return 0;
@@ -82,16 +87,16 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	vector<String> files;
 	//Mat grayImg;
 	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
-	utils::fs::glob(pathTemplate, "*.jpg", files);
-	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6 };
+	utils::fs::glob(pathTemplate, "*.*", files);
+	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5};
 
+	resize(inputImg, inputImg, Size(1200, 600));
 	//extract from input image
 	//vector<KeyPoint> imgFeatures;
 	//vector<Point2f> maxMatchesPointsRefined;
 	//Mat imgDescr;
 	//extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
-	int indexMaxMatches, numMatches;
-	double  maxMatches = 0.0;
+	int numMatches;
 	vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
 		//for (int j = 0; j < 2; j++) {
@@ -100,54 +105,72 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
-		extractFeatures(templImg, templFeatures, templDescr, 500);
-		struct treeData treeDataSelected;
-		treeDataSelected.diffMean = DBL_MAX;
-		treeDataSelected.dist = DBL_MAX;
+		extractFeatures(templImg, templFeatures, templDescr, 2000);
+		struct treeData *treeDataSelected = new struct treeData;
+		treeDataSelected->diffMean = DBL_MAX;
+		treeDataSelected->dist = DBL_MAX;
+		double ratioSel = 0;
 
 		for (int i = 0; i < scales.size(); i++) {
 			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << " - templ img size: " << templImg.size() << endl;
 			Mat temp;
 			inputImg.copyTo(temp);
-			struct treeData data;
-			data.fileName = files[j];
-			data.scale = scales[i];
-			data.diffMean = norm(mean(templImg));
-			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], data);
+			vector<struct treeData> dataV;
+
+			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], dataV);
 			cout << " -> Number of matches: " << numMatches << endl;
-			if (numMatches > 0 && treeDataSelected.dist > data.dist && treeDataSelected.diffMean > data.diffMean) {
-				treeDataSelected = data;
-				cout << "Updated" << endl;
+			if (numMatches != 0) {
+				cout << "size dataVector: " << dataV.size() << endl;
+				for (struct treeData data : dataV){
+					data.fileName = files[j];
+					data.scale = scales[i];
+					Mat dst;
+					absdiff(inputImg(data.rect), templImg, dst);
+					data.diffMean = norm(dst);
+					//if (treeDataSelected.dist > data->dist) {
+					double ratioData = pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
+					if (ratioSel < ratioData && treeDataSelected->dist > data.dist) {
+						//if (treeDataSelected.diffMean > data->diffMean) {
+						treeDataSelected = &data;
+						ratioSel = ratioData;
+						cout << "Updated" << endl;
+					}
+				}
 			}
 
 		}
-		if(!treeDataSelected.fileName.empty()) treesDetected.push_back(treeDataSelected);
+		if (treeDataSelected->scale != 0) {
+			treesDetected.push_back(*treeDataSelected);
+			//cout << "Rect: " << treeDataSelected->rect;
+			/*cout << "Selected Tree ";
+			printTreeData(treeDataSelected);*/
+			//waitKey();
+		}
 		cout << "ended" << endl << endl;
 		waitKey(1);
 	}
-	cout << "--- Over all trees selected ---" << endl;
+	cout << "--- Over all trees selected --- " <<  inputImageName << endl;
 	cout << "Number of tree detected: " << treesDetected.size() << endl;
 	Size originalSize = inputImg.size();
 	for (int i = 0; i < treesDetected.size(); i++) {
+		Mat t;
+		inputImg.copyTo(t);
 		//resize(inputImg, inputImg, Size(inputImg.cols / treesDetected[i].scale, inputImg.rows / treesDetected[i].scale));
 		double sc = treesDetected[i].scale;
 		Rect treeWindow(treesDetected[i].rect.x*sc, treesDetected[i].rect.y*sc, treesDetected[i].rect.width*sc, treesDetected[i].rect.height*sc);
-		rectangle(inputImg, treeWindow,Scalar(i));
+		rectangle(t, treeWindow,Scalar(125),2);
 		//resize(inputImg, inputImg, originalSize);
 		cout << "Rect: " << treeWindow;
-		cout << " - scale: " << sc;
-		cout << " - dist: " << treesDetected[i].dist;
-		cout << " - diffMean: " << treesDetected[i].diffMean;
-		cout << " - file name: " << treesDetected[i].fileName << endl << endl;
+		printTreeData(&treesDetected[i]);
 		namedWindow("Final detection",WINDOW_NORMAL);
-		imshow("Final detection", inputImg);
+		imshow("Final detection", t);
 		waitKey(0);
 
 	}
 	waitKey(0);
 }
 
-int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, struct treeData &data ) {
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect ) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
 	int numCorrMatches = 0;
 	Mat imgInput, originalImg;
@@ -204,24 +227,40 @@ int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr,
 				end = std::remove(it + 1, end, *it);
 			}
 			objPointsRefined.erase(end, objPointsRefined.end());
-			data.diffMean = norm(mean(originalImg(windows))) - data.diffMean;
-			//cout << "Matches: " << match << " unique: " << objPointsRefined.size() << endl;
-			//select tree
-			if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data.diffMean < 150) {
-				cout << " -> Matches: " << match << " unique: " << objPointsRefined.size() << endl;
-				data.dist = norm(refinedDistances);
-				cout << "Norm of distances: " << data.dist << endl;
-				//data.diffMean = norm(mean(originalImg(windows))) - data.diffMean;
-				if(data.diffMean < 0) data.diffMean = -data.diffMean;
-				cout << "Mean diff of rectangle with template: " << data.diffMean << endl;
-				data.rect = windows;
+
+			//compute statistics on the rectangle and select only those with some properties
+			struct treeData *data = new struct treeData;
+			cv::Scalar mean, stddev;
+			cv::meanStdDev(originalImg(windows), mean, stddev);
+			data->stdDevIn = norm(stddev);
+			data->dist = norm(refinedDistances);
+			data->ratioMatches = objPointsRefined.size() / static_cast<double>(match);
+			//if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data->diffMean < 150) {
+			if ((data->ratioMatches > 0.7 ) && (data->dist < 1000) && (data->stdDevIn > 100)) {
+				Mat mask = Mat::ones(originalImg.size(),CV_8U); //creation of the mask
+				data->scale = scale;
+				cout << "-> Matches: " << match << " unique: " << objPointsRefined.size() << " -> %matches: " << data->ratioMatches << endl;
+				
+				//data->dist = norm(refinedDistances)/data->scale;
+				cout << "Norm of distances: " << data->dist;
+				
+				mask(windows) = 0;
+				cv::meanStdDev(originalImg, mean, stddev,mask);
+				data->stdDevOut = norm(stddev);
+				double ratioStd = pow(data->stdDevIn, 2) / pow(data->stdDevOut, 2);
+				cout << " - stdIn: " << data->stdDevIn << " - stdDevRappSQ: " << ratioStd << " - scale: " << data->scale << endl;
+				
+				if (ratioStd < 0.8) continue;
+				data->rect = windows;
 				rectangle(img, windows, Scalar(255), 1, 8);
-				namedWindow("SlidingWindow"+to_string(scale), WINDOW_NORMAL);
-				imshow("SlidingWindow"+to_string(scale), img);
+				namedWindow("SlidingWindow" + to_string(scale), WINDOW_NORMAL);
+				imshow("SlidingWindow" + to_string(scale), img);
 				namedWindow("Features", WINDOW_NORMAL);
 				imshow("Features", win);
 				waitKey(1);
 				numCorrMatches++;
+				dataVect.push_back(*data);
+				
 			}
 			
 		}
@@ -488,4 +527,17 @@ void Erosion(int, void*)
 		Point(erosion_size, erosion_size));
 	erode(src, erosion_dst, element);
 	imshow("Erosion Demo", erosion_dst);
+}
+
+
+void printTreeData(struct treeData *data) {
+	cout << " - scale: " << data->scale;
+	cout << " - %match: " << data->ratioMatches;
+	cout << " - dist: " << data->dist;
+	cout << " - diffMean: " << data->diffMean;
+	cout << " - stdDevIn: " << data->stdDevIn;
+	cout << " - stdDevOut: " << data->stdDevOut;
+	cout << " - rappStdDev: " << data->stdDevIn / data->stdDevOut;
+	cout << " - rappStdDevSQ: " << pow(data->stdDevIn, 2) / pow(data->stdDevOut, 2);
+	cout << " - file name: " << data->fileName << endl;
 }
