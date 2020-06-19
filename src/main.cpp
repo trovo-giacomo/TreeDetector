@@ -11,6 +11,7 @@
 
 #define WIN_ROWS 60
 #define WIN_COLS 60
+#define THRESHOLD_STD_IN 80
 
 using namespace std;
 using namespace cv;
@@ -31,7 +32,8 @@ void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch
 void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
 int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect);
-void printTreeData(struct treeData *data);
+void printTreeData(struct treeData data);
+double computeZNCC(Mat img, Mat templImg);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -39,11 +41,14 @@ int erosion_size = 0;
 int const max_elem = 2;
 int const max_kernel_size = 21;
 
+Mat tImg;
 string inputImageName;
 
 struct treeData {
 	string fileName ="";
 	double scale=0.0, dist=0.0, diffMean=0.0, stdDevIn=0.0, stdDevOut=0.0, ratioMatches=0.0;
+	double zncc;
+	Scalar avg, sigma;
 	Rect rect;
 };
 
@@ -88,7 +93,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	//Mat grayImg;
 	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
 	utils::fs::glob(pathTemplate, "*.*", files);
-	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5};
+	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6, 10};
 
 	resize(inputImg, inputImg, Size(1200, 600));
 	//extract from input image
@@ -103,13 +108,17 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 		Mat templImg = imread(files[j]);
 		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
+		tImg = templImg;
+		/*cv::Scalar meanT, stddevT;
+		cv::meanStdDev(templImg, meanT, stddevT);*/
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
 		extractFeatures(templImg, templFeatures, templDescr, 2000);
-		struct treeData *treeDataSelected = new struct treeData;
-		treeDataSelected->diffMean = DBL_MAX;
-		treeDataSelected->dist = DBL_MAX;
+		struct treeData treeDataSelected;
+		treeDataSelected.diffMean = DBL_MAX;
+		treeDataSelected.dist = DBL_MAX;
 		double ratioSel = 0;
+		double targetZncc = 0;
 
 		for (int i = 0; i < scales.size(); i++) {
 			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << " - templ img size: " << templImg.size() << endl;
@@ -120,31 +129,34 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], dataV);
 			cout << " -> Number of matches: " << numMatches << endl;
 			if (numMatches != 0) {
-				cout << "size dataVector: " << dataV.size() << endl;
-				for (struct treeData data : dataV){
-					data.fileName = files[j];
-					data.scale = scales[i];
-					Mat dst;
-					absdiff(inputImg(data.rect), templImg, dst);
-					data.diffMean = norm(dst);
-					//if (treeDataSelected.dist > data->dist) {
-					double ratioData = pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
-					if (ratioSel < ratioData && treeDataSelected->dist > data.dist) {
-						//if (treeDataSelected.diffMean > data->diffMean) {
-						treeDataSelected = &data;
+				//cout << "size dataVector: " << dataV.size() << endl;
+				for (int k = 0; k < dataV.size(); k++) {
+					dataV[k].fileName = files[j];
+					dataV[k].scale = scales[i];
+					//SSD metric
+					//Mat dst;
+					//absdiff(inputImg(dataV[k].rect), templImg, dst);
+					//dataV[k].diffMean = norm(dst);
+					//ZNCC
+					//dataV[k].zncc = computeZNCC(inputImg(dataV[k].rect), templImg);
+					//cout << "zncc: " << dataV[k].zncc << endl;
+					//if (treeDataSelected.dist > data.dist) {
+					double ratioData = pow(dataV[k].stdDevIn, 2) / pow(dataV[k].stdDevOut, 2);
+					//if (dataV[k].zncc > targetZncc) {
+					//if (dataV[k].zncc > targetZncc && treeDataSelected.dist > dataV[k].dist) {
+					//if (dataV[k].zncc < targetZncc && ratioSel < ratioData && treeDataSelected.dist > dataV[k].dist) {
+					if (treeDataSelected.diffMean > dataV[k].dist) {
+						treeDataSelected = dataV[k];
 						ratioSel = ratioData;
+						targetZncc = dataV[k].zncc;
 						cout << "Updated" << endl;
 					}
 				}
 			}
 
 		}
-		if (treeDataSelected->scale != 0) {
-			treesDetected.push_back(*treeDataSelected);
-			//cout << "Rect: " << treeDataSelected->rect;
-			/*cout << "Selected Tree ";
-			printTreeData(treeDataSelected);*/
-			//waitKey();
+		if (treeDataSelected.scale != 0) {
+			treesDetected.push_back(treeDataSelected);
 		}
 		cout << "ended" << endl << endl;
 		waitKey(1);
@@ -160,8 +172,8 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		Rect treeWindow(treesDetected[i].rect.x*sc, treesDetected[i].rect.y*sc, treesDetected[i].rect.width*sc, treesDetected[i].rect.height*sc);
 		rectangle(t, treeWindow,Scalar(125),2);
 		//resize(inputImg, inputImg, originalSize);
-		cout << "Rect: " << treeWindow;
-		printTreeData(&treesDetected[i]);
+		//cout << "Rect: " << treeWindow;
+		printTreeData(treesDetected[i]);
 		namedWindow("Final detection",WINDOW_NORMAL);
 		imshow("Final detection", t);
 		waitKey(0);
@@ -187,6 +199,16 @@ int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr,
 			Mat win = imgInput(windows);
 			vector<KeyPoint> features;
 			Mat descr;
+
+			//compute statistics on the rectangle and select only those with some properties
+			struct treeData data;
+			cv::Scalar meanI, stddev;
+			cv::meanStdDev(originalImg(windows), meanI, stddev);
+			data.avg = meanI;
+			data.sigma = stddev;
+			data.stdDevIn = norm(stddev);
+			if (data.stdDevIn < THRESHOLD_STD_IN) continue;
+			//extract features from the window
 			extractFeatures(win, features, descr, 2000);
 			/*rectangle(imgInput, windows, Scalar(50), 1, 8); //to visualize sliding widows progression
 			namedWindow("SlidingWindow", WINDOW_NORMAL);
@@ -203,6 +225,7 @@ int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr,
 			for (int i = 0; i < matches.size(); i++) {
 				templateImagePoints.push_back(templateFeatures.at(matches[i].queryIdx).pt);
 				frameImagePoints.push_back(features.at(matches[i].trainIdx).pt);
+				//cout << "dist: " << matches[i].distance << endl;
 				distances.push_back(matches[i].distance);
 			}
 			//cout << "Find homography" << endl;
@@ -228,30 +251,36 @@ int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr,
 			}
 			objPointsRefined.erase(end, objPointsRefined.end());
 
-			//compute statistics on the rectangle and select only those with some properties
-			struct treeData *data = new struct treeData;
-			cv::Scalar mean, stddev;
-			cv::meanStdDev(originalImg(windows), mean, stddev);
-			data->stdDevIn = norm(stddev);
-			data->dist = norm(refinedDistances);
-			data->ratioMatches = objPointsRefined.size() / static_cast<double>(match);
-			//if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data->diffMean < 150) {
-			if ((data->ratioMatches > 0.7 ) && (data->dist < 1000) && (data->stdDevIn > 100)) {
+			data.dist = mean(refinedDistances)[0];
+			//cout << "mean distances " << data.dist << " norm dist: " <<norm(refinedDistances) << endl;
+			data.ratioMatches = objPointsRefined.size() / static_cast<double>(match);
+			//if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data.diffMean < 150) {
+			//if ((data.ratioMatches > 0.7 ) && (data.dist < 1000)) {
+			if ((data.ratioMatches > 0.7)) {
 				Mat mask = Mat::ones(originalImg.size(),CV_8U); //creation of the mask
-				data->scale = scale;
-				cout << "-> Matches: " << match << " unique: " << objPointsRefined.size() << " -> %matches: " << data->ratioMatches << endl;
+				data.scale = scale;
+				cout << "-> Matches: " << match << " unique: " << objPointsRefined.size() << " -> %matches: " << data.ratioMatches << endl;
 				
-				//data->dist = norm(refinedDistances)/data->scale;
-				cout << "Norm of distances: " << data->dist;
+				//data.dist = norm(refinedDistances)/data.scale;
+				cout << "Norm of distances: " << data.dist;
 				
 				mask(windows) = 0;
-				cv::meanStdDev(originalImg, mean, stddev,mask);
-				data->stdDevOut = norm(stddev);
-				double ratioStd = pow(data->stdDevIn, 2) / pow(data->stdDevOut, 2);
-				cout << " - stdIn: " << data->stdDevIn << " - stdDevRappSQ: " << ratioStd << " - scale: " << data->scale << endl;
+				//stddev of the rest od the image
+				cv::meanStdDev(originalImg, meanI, stddev,mask);
+				data.stdDevOut = norm(stddev);
+				//if (data.stdDevOut / data.stdDevIn < 1.5) continue;
+				Mat dst;
+				absdiff(originalImg(windows), tImg, dst);
+				data.diffMean = norm(dst);
+				//ZNCC
+				data.zncc = computeZNCC(originalImg(windows), tImg);
+				cout << " - zncc: " << data.zncc << " - diffMean: " << data.diffMean;;
+
+				double ratioStd = pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
+				cout << " - stdIn: " << data.stdDevIn << " - stdDevRappSQ: " << ratioStd << " - scale: " << data.scale << endl;
 				
-				if (ratioStd < 0.8) continue;
-				data->rect = windows;
+				//if (ratioStd < 0.8) continue;
+				data.rect = windows;
 				rectangle(img, windows, Scalar(255), 1, 8);
 				namedWindow("SlidingWindow" + to_string(scale), WINDOW_NORMAL);
 				imshow("SlidingWindow" + to_string(scale), img);
@@ -259,7 +288,7 @@ int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr,
 				imshow("Features", win);
 				waitKey(1);
 				numCorrMatches++;
-				dataVect.push_back(*data);
+				dataVect.push_back(data);
 				
 			}
 			
@@ -530,14 +559,69 @@ void Erosion(int, void*)
 }
 
 
-void printTreeData(struct treeData *data) {
-	cout << " - scale: " << data->scale;
-	cout << " - %match: " << data->ratioMatches;
-	cout << " - dist: " << data->dist;
-	cout << " - diffMean: " << data->diffMean;
-	cout << " - stdDevIn: " << data->stdDevIn;
-	cout << " - stdDevOut: " << data->stdDevOut;
-	cout << " - rappStdDev: " << data->stdDevIn / data->stdDevOut;
-	cout << " - rappStdDevSQ: " << pow(data->stdDevIn, 2) / pow(data->stdDevOut, 2);
-	cout << " - file name: " << data->fileName << endl;
+void printTreeData(struct treeData data) {
+	cout << " - scale: " << data.scale;
+	cout << " - %match: " << data.ratioMatches;
+	cout << " - dist: " << data.dist;
+	cout << " - diffMean: " << data.diffMean;
+	cout << " - ZNCC: " << data.zncc;
+	cout << " - stdDevIn: " << data.stdDevIn;
+	cout << " - stdDevOut: " << data.stdDevOut;
+	cout << " - rappStdDev: " << data.stdDevIn / data.stdDevOut;
+	cout << " - rappStdDevSQ: " << pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
+	cout << " - file name: " << data.fileName << endl;
+}
+
+double computeZNCC(Mat img, Mat templImg) {
+	if (img.size() != templImg.size()) return -1;
+	Mat img2, t2;
+	Scalar meanI, meanT, stdevI, stdevT, meanI2, meanT2, stdevI2, stdevT2;
+	double sum = 0, zncc, sum2=0, zncc2;
+	int numPixel = img.rows*img.cols;
+	cvtColor(img, img, COLOR_BGR2HSV);
+	cvtColor(templImg, templImg, COLOR_BGR2HSV);
+
+	cvtColor(img, img2, COLOR_BGR2GRAY);
+	cvtColor(templImg, t2, COLOR_BGR2GRAY);
+
+	/*Mat mask = Mat::zeros(templImg.size(), CV_8UC1);
+	for (int i = 0; i < img.rows; i++) {
+		for (int j = 0; j < img.cols; j++) {
+			if (templImg.at<Scalar>(i, j)[0] != 179 && templImg.at<Scalar>(i, j)[2] != 254) {
+				mask.at<uchar>(i,j) = 1;
+				numPixel++;
+			}
+		}
+	}*/
+
+	meanStdDev(img, meanI, stdevI);
+	meanStdDev(templImg, meanT, stdevT);
+	//meanStdDev(templImg, meanT, stdevT, mask);
+
+	meanStdDev(img2, meanI2, stdevI2);
+	meanStdDev(t2, meanT2, stdevT2);
+
+	for (int i = 0; i < img.rows; i++) {
+		for (int j = 0; j < img.cols; j++) {
+			//if (mask.at<uchar>(i, j) == 1) {
+				double temp = (img.at<Vec3b>(i, j)[0] - meanI[0])*(templImg.at<Vec3b>(i, j)[0] - meanT[0]);
+				//cout << temp << " "  << sum << endl; 
+				sum += temp;
+				sum2 += (img2.at<Vec3b>(i, j)[0] - meanI2[0])*(t2.at<Vec3b>(i, j)[0] - meanT2[0]);
+			//}
+		}
+	}
+
+	zncc = abs(sum / (stdevI[0] * stdevT[0]*numPixel));
+
+	zncc2 = abs(sum2 / (stdevI2[0] * stdevT2[0] * numPixel));
+
+
+	cout << endl << "Mean Img: " << meanI[0] << " MeanT: " << meanT[0] << " stdDevI: " << stdevI[0] << " stdDevT: " << stdevT[0] << endl;
+	cout << "zncc h: " << zncc << " - zncc gray: " << zncc2 << endl;
+	/*cout << "Input Img: " << img << endl << endl; 
+	cout << "Templ Img: " << templImg << endl << endl;*/
+	
+
+	return zncc;
 }
