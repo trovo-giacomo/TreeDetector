@@ -108,12 +108,16 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 		Mat templImg = imread(files[j]);
 		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
-		tImg = templImg;
+		Canny(templImg, tImg, 500, 600);
+		namedWindow("canny templ", WINDOW_NORMAL);
+		imshow("canny templ", tImg);
+		waitKey();
+		//tImg = templImg;
 		/*cv::Scalar meanT, stddevT;
 		cv::meanStdDev(templImg, meanT, stddevT);*/
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
-		extractFeatures(templImg, templFeatures, templDescr, 2000);
+		//extractFeatures(templImg, templFeatures, templDescr, 2000);
 		struct treeData treeDataSelected;
 		treeDataSelected.diffMean = DBL_MAX;
 		treeDataSelected.dist = DBL_MAX;
@@ -128,7 +132,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], dataV);
 			cout << " -> Number of matches: " << numMatches << endl;
-			if (numMatches != 0) {
+			/*if (numMatches != 0) {
 				//cout << "size dataVector: " << dataV.size() << endl;
 				for (int k = 0; k < dataV.size(); k++) {
 					dataV[k].fileName = files[j];
@@ -152,7 +156,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 						cout << "Updated" << endl;
 					}
 				}
-			}
+			}*/
 
 		}
 		if (treeDataSelected.scale != 0) {
@@ -184,115 +188,43 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect ) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
+	//vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED };
+	//vector<string> methodsNames = { "TM_CCOEFF","TM_CCOEFF_NORMED", "TM_CCORR",	"TM_CCORR_NORMED", "TM_SQDIFF", "TM_SQDIFF_NORMED" };
+	vector<string> methodsNames = { "TM_CCOEFF", "TM_CCORR", "TM_SQDIFF" };
+	vector<int> methods = { TM_CCOEFF, TM_CCORR, TM_SQDIFF };
 	int numCorrMatches = 0;
-	Mat imgInput, originalImg;
+	Mat imgInput, originalImg, cImg;
 	resize(img, img, Size(img.cols / scale, img.rows / scale));
-	img.copyTo(imgInput);
+	Canny(img, cImg, 500, 600);
+	//namedWindow("canny img", WINDOW_NORMAL);
+	//imshow("canny img", cImg);
+	//img.copyTo(imgInput);
 	img.copyTo(originalImg);
-	//cout << "Scaled size " << img.size() << endl;
-	int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
-	for (int row = 0; row <= img.rows - win_rows; row += stepSize) {
-		for (int col = 0; col < img.cols - win_cols; col += stepSize) {
-			match = 0;
-			Rect windows(col, row, win_rows, win_cols);
-			//cout << "Rect: " << windows;
-			Mat win = imgInput(windows);
-			vector<KeyPoint> features;
-			Mat descr;
-
-			//compute statistics on the rectangle and select only those with some properties
-			struct treeData data;
-			cv::Scalar meanI, stddev;
-			cv::meanStdDev(originalImg(windows), meanI, stddev);
-			data.avg = meanI;
-			data.sigma = stddev;
-			data.stdDevIn = norm(stddev);
-			if (data.stdDevIn < THRESHOLD_STD_IN) continue;
-			//extract features from the window
-			extractFeatures(win, features, descr, 2000);
-			/*rectangle(imgInput, windows, Scalar(50), 1, 8); //to visualize sliding widows progression
-			namedWindow("SlidingWindow", WINDOW_NORMAL);
-			imshow("SlidingWindow", imgInput);
-			waitKey(1);*/
-			vector<DMatch> matches;
-			computeMatches(templateDescr, descr, matches, 2);
-			//cout << "Computed matches " << matches.size() << endl;
-			if (matches.size() == 0) continue;
-			//refine with RANSAC algorithm
-			vector<Point2f> templateImagePoints, frameImagePoints, objPointsRefined;
-			vector<float> distances, refinedDistances;
-			Mat mask;
-			for (int i = 0; i < matches.size(); i++) {
-				templateImagePoints.push_back(templateFeatures.at(matches[i].queryIdx).pt);
-				frameImagePoints.push_back(features.at(matches[i].trainIdx).pt);
-				//cout << "dist: " << matches[i].distance << endl;
-				distances.push_back(matches[i].distance);
-			}
-			//cout << "Find homography" << endl;
-			Mat homography = findHomography(templateImagePoints, frameImagePoints, mask, RANSAC);
-			//cout << "Refining" << endl;
-			if (homography.empty()) continue;
-			for (int i = 0; i < mask.rows; i++) {
-				if ((unsigned int)mask.at<uchar>(i)) {
-					circle(win, frameImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255),1);
-					//circle(win, templateImagePoints[i], 2, Scalar((i * 10) % 255, (i * 20) % 255, (i * 50) % 255), 2);
-					objPointsRefined.push_back(frameImagePoints[i]);
-					refinedDistances.push_back(distances[i]);
-					//cout << "ref. distances " << distances[i] << endl;
-					match++;
-				}
-				else {
-				}
-			}
-			//remove duplicates
-			auto end = objPointsRefined.end();
-			for (auto it = objPointsRefined.begin(); it != end; ++it) {
-				end = std::remove(it + 1, end, *it);
-			}
-			objPointsRefined.erase(end, objPointsRefined.end());
-
-			data.dist = mean(refinedDistances)[0];
-			//cout << "mean distances " << data.dist << " norm dist: " <<norm(refinedDistances) << endl;
-			data.ratioMatches = objPointsRefined.size() / static_cast<double>(match);
-			//if ((objPointsRefined.size() >= match / 2) && (norm(refinedDistances) < 500+ 100*scale/2) && data.diffMean < 150) {
-			//if ((data.ratioMatches > 0.7 ) && (data.dist < 1000)) {
-			if ((data.ratioMatches > 0.7)) {
-				Mat mask = Mat::ones(originalImg.size(),CV_8U); //creation of the mask
-				data.scale = scale;
-				cout << "-> Matches: " << match << " unique: " << objPointsRefined.size() << " -> %matches: " << data.ratioMatches << endl;
-				
-				//data.dist = norm(refinedDistances)/data.scale;
-				cout << "Norm of distances: " << data.dist;
-				
-				mask(windows) = 0;
-				//stddev of the rest od the image
-				cv::meanStdDev(originalImg, meanI, stddev,mask);
-				data.stdDevOut = norm(stddev);
-				//if (data.stdDevOut / data.stdDevIn < 1.5) continue;
-				Mat dst;
-				absdiff(originalImg(windows), tImg, dst);
-				data.diffMean = norm(dst);
-				//ZNCC
-				data.zncc = computeZNCC(originalImg(windows), tImg);
-				cout << " - zncc: " << data.zncc << " - diffMean: " << data.diffMean;;
-
-				double ratioStd = pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
-				cout << " - stdIn: " << data.stdDevIn << " - stdDevRappSQ: " << ratioStd << " - scale: " << data.scale << endl;
-				
-				//if (ratioStd < 0.8) continue;
-				data.rect = windows;
-				rectangle(img, windows, Scalar(255), 1, 8);
-				namedWindow("SlidingWindow" + to_string(scale), WINDOW_NORMAL);
-				imshow("SlidingWindow" + to_string(scale), img);
-				namedWindow("Features", WINDOW_NORMAL);
-				imshow("Features", win);
-				waitKey(1);
-				numCorrMatches++;
-				dataVect.push_back(data);
-				
-			}
-			
+	double minVal, maxVal;
+	Point minLoc, maxLoc, topLeft, bottomRight;
+	for (int i = 0; i < methods.size(); i++) {
+		cImg.copyTo(imgInput);
+		//cout << "Scaled size " << img.size() << endl;
+		int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
+		
+		Mat res;
+		matchTemplate(cImg, tImg, res, methods[i]);
+		minMaxLoc(res, &minVal, &maxVal, &minLoc, &maxLoc);
+		if (methods[i] == TM_SQDIFF || (methods[i] == TM_SQDIFF_NORMED)) {
+			topLeft = minLoc;
+			cout << "Method " << methodsNames[i] << " -> score: " << minVal << endl;
 		}
+		else {
+			topLeft = maxLoc;
+			cout << "Method " << methodsNames[i] << " -> score: " << maxVal << endl;
+		}
+		bottomRight = Point2f(topLeft.x+tImg.cols,topLeft.y+tImg.rows);
+		rectangle(imgInput, topLeft, bottomRight, Scalar(255));
+		
+		namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
+		imshow("Img at method " + methodsNames[i], imgInput);
+		waitKey();
+
 	}
 	return numCorrMatches;
 }
