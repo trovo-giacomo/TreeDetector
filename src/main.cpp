@@ -31,7 +31,7 @@ void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int n
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
-int slidingWindow(Mat img, double scale, vector<struct treeData> &dataVect);
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect);
 void printTreeData(struct treeData data);
 double computeZNCC(Mat img, Mat templImg);
 
@@ -104,7 +104,8 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	int numMatches;
 	vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
-		
+		//for (int j = 0; j < 2; j++) {
+
 		Mat templImg = imread(files[j]);
 		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
 		Canny(templImg, tImg, 500, 600);
@@ -113,12 +114,10 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		waitKey();
 		//tImg = templImg;
 		/*cv::Scalar meanT, stddevT;
-		cv::meanStdDev(templImg, meanT, stddevT);
-
+		cv::meanStdDev(templImg, meanT, stddevT);*/
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
-		//extractFeatures(templImg, templFeatures, templDescr, 2000);*/
-
+		//extractFeatures(templImg, templFeatures, templDescr, 2000);
 		struct treeData treeDataSelected;
 		treeDataSelected.diffMean = DBL_MAX;
 		treeDataSelected.dist = DBL_MAX;
@@ -131,9 +130,33 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 			inputImg.copyTo(temp);
 			vector<struct treeData> dataV;
 
-			numMatches = slidingWindow(temp, scales[i], dataV);
+			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], dataV);
 			cout << " -> Number of matches: " << numMatches << endl;
-			
+			/*if (numMatches != 0) {
+				//cout << "size dataVector: " << dataV.size() << endl;
+				for (int k = 0; k < dataV.size(); k++) {
+					dataV[k].fileName = files[j];
+					dataV[k].scale = scales[i];
+					//SSD metric
+					//Mat dst;
+					//absdiff(inputImg(dataV[k].rect), templImg, dst);
+					//dataV[k].diffMean = norm(dst);
+					//ZNCC
+					//dataV[k].zncc = computeZNCC(inputImg(dataV[k].rect), templImg);
+					//cout << "zncc: " << dataV[k].zncc << endl;
+					//if (treeDataSelected.dist > data.dist) {
+					double ratioData = pow(dataV[k].stdDevIn, 2) / pow(dataV[k].stdDevOut, 2);
+					//if (dataV[k].zncc > targetZncc) {
+					//if (dataV[k].zncc > targetZncc && treeDataSelected.dist > dataV[k].dist) {
+					//if (dataV[k].zncc < targetZncc && ratioSel < ratioData && treeDataSelected.dist > dataV[k].dist) {
+					if (treeDataSelected.diffMean > dataV[k].dist) {
+						treeDataSelected = dataV[k];
+						ratioSel = ratioData;
+						targetZncc = dataV[k].zncc;
+						cout << "Updated" << endl;
+					}
+				}
+			}*/
 
 		}
 		if (treeDataSelected.scale != 0) {
@@ -163,7 +186,7 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 	waitKey(0);
 }
 
-int slidingWindow(Mat img, double scale, vector<struct treeData> &dataVect ) {
+int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect ) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
 	//vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED };
 	//vector<string> methodsNames = { "TM_CCOEFF","TM_CCOEFF_NORMED", "TM_CCORR",	"TM_CCORR_NORMED", "TM_SQDIFF", "TM_SQDIFF_NORMED" };
@@ -195,7 +218,6 @@ int slidingWindow(Mat img, double scale, vector<struct treeData> &dataVect ) {
 			topLeft = maxLoc;
 			cout << "Method " << methodsNames[i] << " -> score: " << maxVal << endl;
 		}
-		cout << res.size() << endl;
 		bottomRight = Point2f(topLeft.x+tImg.cols,topLeft.y+tImg.rows);
 		rectangle(imgInput, topLeft, bottomRight, Scalar(255));
 		
