@@ -19,13 +19,19 @@ using namespace cv;
  * Goal: develop a system that is capable of automatically detecting trees in an image by creating a bounding box around each one.
  * In order to be recognized as a tree, it should be clearly visible and evident � small trees in the background, grass etc. do not need to be detected
  */
+struct treeData {
+	string fileName = "";
+	double scale, score;
+	int qlt; //quality of the matching [0,4]
+	Rect rect;
+};
 
 void equalize(Mat inputImg, Mat &inputEqualized);
 void watershedSegmentation(Mat img, Mat &segmentedImg);
 void Erosion(int, void*);
 void templateSegmentation(Mat img, string pathTemplate);
 
-void searchTemplateWithfeatures(Mat inputImg, string pathTemplate);
+vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate);
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures);
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
@@ -35,6 +41,7 @@ int slidingWindow(Mat img, double scale, struct treeData &data);
 void printTreeData(struct treeData data);
 void findCanny(Mat inputImg, string templImg);
 void computeCanny(int, void* data);
+vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees);
 
 //double computeZNCC(Mat img, Mat templImg);
 
@@ -47,12 +54,6 @@ int const max_kernel_size = 21;
 string inputImageName;
 Mat tImg;
 
-struct treeData {
-	string fileName ="";
-	double scale, score;
-	int qlt; //quality of the matching [0,4]
-	Rect rect;
-};
 
 
 int main(int argc, char* argv[]) {
@@ -86,7 +87,8 @@ int main(int argc, char* argv[]) {
 	///Matching features by template Canny
 	//find canny parameter
 	//findCanny(inputImg, "../data/template3/");
-	searchTemplateWithfeatures(inputImg, "../data/cannyTemplate/");
+	vector<treeData> selectTrees = searchTemplateCanny(inputImg, "../data/cannyTemplate/");
+	selectTrees = refineWithFeatureMatching(inputImg, "../data/template3/", selectTrees);
 	//extractFeatures();
 	
 	return 0;
@@ -126,21 +128,15 @@ void computeCanny(int , void* data) {
 	imshow(d->fileName, d->dstCanny);
 }
 
-void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
+vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 	vector<String> files;
-	//Mat grayImg;
-	//cvtColor(img, grayImg, COLOR_BGR2GRAY);
+
 	utils::fs::glob(pathTemplate, "*.*", files);
 	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6, 10};
-
+	int numMatches;
 	resize(inputImg, inputImg, Size(1200, 600));
 	//extract from input image
-	vector<KeyPoint> imgFeatures;
-	vector<Point2f> maxMatchesPointsRefined;
-	Mat imgDescr;
-	extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
-	int numMatches;
-	vector<struct treeData> treesDetected;
+		vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
 		//for (int j = 0; j < 2; j++) {
 
@@ -215,11 +211,14 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 		int k = waitKey(0);
 		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
 		cout << "Key pressed: " << treesDetected[i].qlt << endl;
+		treesDetected[i].rect = treeWindow;
 		printTreeData(treesDetected[i]);
 		cout << "Rect: " << treeWindow << endl;
 
+
 	}
 	waitKey(0);
+	return treesDetected;
 }
 
 int slidingWindow(Mat img, double scale, struct treeData &data ) {
@@ -274,6 +273,42 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 
 	//}
 	return numCorrMatches;
+}
+
+
+vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees) {
+	vector<treeData> redinedTress;
+	vector<String> files;
+	vector <vector <KeyPoint>> templateKeyPoints;
+	vector<Mat> templateDescrs;
+	utils::fs::glob(templateFeaturePath, "*.*", files);
+	//compute descriptors and key point for each template image
+	for (int i = 0; i < files.size(); i++) {
+		Mat templImg = imread(files[i]);
+		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
+		vector<KeyPoint> tFeatures;
+		Mat tDescr;
+		extractFeatures(templImg,tFeatures,tDescr,500);
+		templateKeyPoints.push_back(tFeatures);
+		templateDescrs.push_back(tDescr);
+	}
+
+	//for every selected tree refine the number of trees by comparing features with template images
+	for (treeData tree : selecTrees) {
+		for (int i = 0; i < files.size(); i++) {
+			vector<KeyPoint> rectFeatures;
+			Mat rectDescr;
+			vector<DMatch> matches;
+			Mat outImg;
+			extractFeatures(inputImage(tree.rect), rectFeatures, rectDescr, 500);
+			computeMatches(templateDescrs[i], rectDescr, matches, 2.0);
+			drawMatches(imread(files[i]), templateKeyPoints[i], inputImage(tree.rect), rectFeatures, matches, outImg);
+			namedWindow("Matches", WINDOW_NORMAL);
+			imshow("Matches", outImg);
+			waitKey();
+		}
+	}
+
 }
 
 void printTreeData(treeData data){
