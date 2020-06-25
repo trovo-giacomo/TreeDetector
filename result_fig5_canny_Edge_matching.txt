@@ -1,0 +1,101 @@
+--- Over all trees selected --- ../data/Figure 5.jpg <MAX Matching on each template image>
+Number of tree detected: 16
+Key pressed: 0
+Tree - ../data/cannyTemplate/t0.jpg scale: 3 score: 2.23068e+06 quality: 0
+Rect: [180 x 180 from (126, 255)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t1.jpg scale: 3 score: 2.29767e+06 quality: 0
+Rect: [180 x 180 from (849, 201)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t10.jpg scale: 3 score: 2.07608e+06 quality: 0
+Rect: [180 x 180 from (765, 75)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t11.jpg scale: 2.5 score: 2.25577e+06 quality: 0
+Rect: [150 x 150 from (312, 332)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t12.jpg scale: 3 score: 2.35982e+06 quality: 0
+Rect: [180 x 180 from (627, 351)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 3.2161e+06 quality: 0
+Rect: [360 x 360 from (120, 198)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t15.jpg scale: 2.5 score: 2.50741e+06 quality: 0
+Rect: [150 x 150 from (282, 335)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t17.jpg scale: 1.5 score: 2.68486e+06 quality: 0
+Rect: [90 x 90 from (958, 343)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t18.jpg scale: 3 score: 2.19864e+06 quality: 0
+Rect: [180 x 180 from (126, 252)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t2.jpg scale: 3 score: 2.40098e+06 quality: 0
+Rect: [180 x 180 from (144, 246)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t3.jpg scale: 3 score: 2.31976e+06 quality: 0
+Rect: [180 x 180 from (744, 258)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t4.jpg scale: 1.5 score: 2.29689e+06 quality: 0
+Rect: [90 x 90 from (325, 385)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t5.jpg scale: 1.5 score: 3.3053e+06 quality: 0
+Rect: [90 x 90 from (954, 343)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t6.jpg scale: 3 score: 1.99248e+06 quality: 0
+Rect: [180 x 180 from (813, 84)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t7.jpg scale: 1.5 score: 1.91219e+06 quality: 0
+Rect: [90 x 90 from (616, 340)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t9.jpg scale: 2 score: 2.65788e+06 quality: 0
+Rect: [120 x 120 from (230, 366)]
+
+--- Over all trees selected --- ../data/Figure 5.jpg <MAX Matching on each template image - score*scale>
+Number of tree detected: 16
+Key pressed: 3
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 1.09217e+07 quality: 3
+Rect: [600 x 600 from (400, 0)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 8.9165e+06 quality: 3
+Rect: [600 x 600 from (420, 0)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 1.11054e+07 quality: 3
+Rect: [600 x 600 from (400, 0)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.49204e+07 quality: 3
+Rect: [600 x 600 from (420, 0)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.19081e+07 quality: 3
+Rect: [600 x 600 from (460, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.92966e+07 quality: 1
+Rect: [360 x 360 from (120, 198)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.51509e+07 quality: 3
+Rect: [600 x 600 from (450, 0)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.79991e+07 quality: 2
+Rect: [600 x 600 from (540, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.25189e+06 quality: 1
+Rect: [360 x 360 from (78, 234)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.38638e+07 quality: 2
+Rect: [600 x 600 from (460, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 1.04175e+07 quality: 1
+Rect: [300 x 300 from (675, 15)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 1.06561e+07 quality: 0
+Rect: [300 x 300 from (675, 25)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.49815e+07 quality: 1
+Rect: [600 x 600 from (110, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.4557e+07 quality: 1
+Rect: [600 x 600 from (170, 0)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 8.65459e+06 quality: 0
+Rect: [300 x 300 from (185, 60)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.86342e+07 quality: 1
+Rect: [600 x 600 from (460, 0)]

@@ -11,14 +11,13 @@
 
 #define WIN_ROWS 60
 #define WIN_COLS 60
-#define THRESHOLD_STD_IN 80
 
 using namespace std;
 using namespace cv;
 
 /*
  * Goal: develop a system that is capable of automatically detecting trees in an image by creating a bounding box around each one.
- * In order to be recognized as a tree, it should be clearly visible and evident – small trees in the background, grass etc. do not need to be detected
+ * In order to be recognized as a tree, it should be clearly visible and evident ï¿½ small trees in the background, grass etc. do not need to be detected
  */
 
 void equalize(Mat inputImg, Mat &inputEqualized);
@@ -30,10 +29,14 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate);
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures);
 void computeMatches(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
 void computeMatchesFlann(Mat templateDescriptors, Mat imageDescriptors, vector<DMatch> &matches, float ratio);
+
 int printRectangle(Mat &frame, vector<Point2f> corners, Scalar color);
-int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect);
+int slidingWindow(Mat img, double scale, struct treeData &data);
 void printTreeData(struct treeData data);
-double computeZNCC(Mat img, Mat templImg);
+void findCanny(Mat inputImg, string templImg);
+void computeCanny(int, void* data);
+
+//double computeZNCC(Mat img, Mat templImg);
 
 Mat src, erosion_dst, dilation_dst;
 int erosion_elem = 0;
@@ -41,14 +44,13 @@ int erosion_size = 0;
 int const max_elem = 2;
 int const max_kernel_size = 21;
 
-Mat tImg;
 string inputImageName;
+Mat tImg;
 
 struct treeData {
 	string fileName ="";
-	double scale=0.0, dist=0.0, diffMean=0.0, stdDevIn=0.0, stdDevOut=0.0, ratioMatches=0.0;
-	double zncc;
-	Scalar avg, sigma;
+	double scale, score;
+	int qlt; //quality of the matching [0,4]
 	Rect rect;
 };
 
@@ -81,11 +83,47 @@ int main(int argc, char* argv[]) {
 	///template matching with generalized hough trasform
 	//templateSegmentation(inputImg, "../data/template/");
 
-	///Matching features by template
-	searchTemplateWithfeatures(inputImg, "../data/template3/");
+	///Matching features by template Canny
+	//find canny parameter
+	//findCanny(inputImg, "../data/template3/");
+	searchTemplateWithfeatures(inputImg, "../data/cannyTemplate/");
 	//extractFeatures();
 	
 	return 0;
+}
+
+struct DataCanny {
+	Mat src, dstBlur, dstCanny;
+	int sigma, th, tl;
+	string fileName;
+};
+
+void findCanny(Mat inputImg, string pathTemplate) {
+	vector<String> files;
+	utils::fs::glob(pathTemplate, "*.*", files);
+	for (int i = 5; i < files.size(); i++) {
+		DataCanny *d = new DataCanny();
+		namedWindow(files[i], WINDOW_NORMAL);
+		d->src = imread(files[i]);
+		resize(d->src, d->src, Size(WIN_COLS, WIN_ROWS));
+		d->fileName = files[i];
+		imshow(files[i], d->src);
+		createTrackbar("Blur[*10]: ", files[i], &(d->sigma), 1000, computeCanny, d);
+		createTrackbar("Th: ", files[i], &(d->th), 1000, computeCanny, d);
+		createTrackbar("Tl: ", files[i], &(d->tl), 1000, computeCanny, d);
+		waitKey();
+
+		imwrite("../data/cannyTemplate/t"+to_string(i)+".jpg", d->dstCanny);
+	}
+}
+
+void computeCanny(int , void* data) {
+	DataCanny *d = (DataCanny *)data;
+	double sig = d->sigma / 10;
+	GaussianBlur(d->src, d->dstBlur, Size(5, 5), sig, sig);
+	Canny(d->dstBlur, d->dstCanny, d->th, d->tl);
+	namedWindow(d->fileName, WINDOW_NORMAL);
+	imshow(d->fileName, d->dstCanny);
 }
 
 void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
@@ -97,136 +135,149 @@ void searchTemplateWithfeatures(Mat inputImg, string pathTemplate) {
 
 	resize(inputImg, inputImg, Size(1200, 600));
 	//extract from input image
-	//vector<KeyPoint> imgFeatures;
-	//vector<Point2f> maxMatchesPointsRefined;
-	//Mat imgDescr;
-	//extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
+	vector<KeyPoint> imgFeatures;
+	vector<Point2f> maxMatchesPointsRefined;
+	Mat imgDescr;
+	extractFeatures(inputImg, imgFeatures, imgDescr, 5000);
 	int numMatches;
 	vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
 		//for (int j = 0; j < 2; j++) {
 
-		Mat templImg = imread(files[j]);
-		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
-		Canny(templImg, tImg, 500, 600);
+		tImg = imread(files[j], IMREAD_GRAYSCALE);
+		if(tImg.size() != Size(WIN_COLS, WIN_ROWS))	resize(tImg, tImg, Size(WIN_COLS, WIN_ROWS));
+		//Canny(templImg, tImg, 500, 600);
+
 		namedWindow("canny templ", WINDOW_NORMAL);
 		imshow("canny templ", tImg);
-		waitKey();
+		waitKey(1);
 		//tImg = templImg;
 		/*cv::Scalar meanT, stddevT;
 		cv::meanStdDev(templImg, meanT, stddevT);*/
 		vector<KeyPoint> templFeatures;
 		Mat templDescr;
 		//extractFeatures(templImg, templFeatures, templDescr, 2000);
-		struct treeData treeDataSelected;
-		treeDataSelected.diffMean = DBL_MAX;
-		treeDataSelected.dist = DBL_MAX;
+		vector<struct treeData> treeDataScales;
 		double ratioSel = 0;
-		double targetZncc = 0;
 
 		for (int i = 0; i < scales.size(); i++) {
-			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << " - templ img size: " << templImg.size() << endl;
+			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << endl;
 			Mat temp;
 			inputImg.copyTo(temp);
-			vector<struct treeData> dataV;
-
-			numMatches = slidingWindow(temp, templFeatures, templDescr, scales[i], dataV);
-			cout << " -> Number of matches: " << numMatches << endl;
-			/*if (numMatches != 0) {
-				//cout << "size dataVector: " << dataV.size() << endl;
-				for (int k = 0; k < dataV.size(); k++) {
-					dataV[k].fileName = files[j];
-					dataV[k].scale = scales[i];
-					//SSD metric
-					//Mat dst;
-					//absdiff(inputImg(dataV[k].rect), templImg, dst);
-					//dataV[k].diffMean = norm(dst);
-					//ZNCC
-					//dataV[k].zncc = computeZNCC(inputImg(dataV[k].rect), templImg);
-					//cout << "zncc: " << dataV[k].zncc << endl;
-					//if (treeDataSelected.dist > data.dist) {
-					double ratioData = pow(dataV[k].stdDevIn, 2) / pow(dataV[k].stdDevOut, 2);
-					//if (dataV[k].zncc > targetZncc) {
-					//if (dataV[k].zncc > targetZncc && treeDataSelected.dist > dataV[k].dist) {
-					//if (dataV[k].zncc < targetZncc && ratioSel < ratioData && treeDataSelected.dist > dataV[k].dist) {
-					if (treeDataSelected.diffMean > dataV[k].dist) {
-						treeDataSelected = dataV[k];
-						ratioSel = ratioData;
-						targetZncc = dataV[k].zncc;
-						cout << "Updated" << endl;
-					}
-				}
-			}*/
+			struct treeData data;	
+			data.fileName = files[j];
+			numMatches = slidingWindow(temp, scales[i], data);
+			treeDataScales.push_back(data);
 
 		}
-		if (treeDataSelected.scale != 0) {
-			treesDetected.push_back(treeDataSelected);
+		treeData selectTree;
+		selectTree.score = 0;
+		for (treeData td : treeDataScales) {
+			if (td.score > selectTree.score) selectTree = td;
 		}
+		treesDetected.push_back(selectTree);
+	
 		cout << "ended" << endl << endl;
 		waitKey(1);
 	}
 	cout << "--- Over all trees selected --- " <<  inputImageName << endl;
 	cout << "Number of tree detected: " << treesDetected.size() << endl;
 	Size originalSize = inputImg.size();
+	/*for (int j = 0; j < 5; j++) {
+		cout << "Quality: " << j << endl;
+		for (int i = 0; i < treesDetected.size(); i++) {
+			if (treesDetected[i].qlt != j) continue;
+			Mat t;
+			inputImg.copyTo(t);
+
+			double sc = treesDetected[i].scale;
+			Rect treeWindow(treesDetected[i].rect.x*sc, treesDetected[i].rect.y*sc, treesDetected[i].rect.width*sc, treesDetected[i].rect.height*sc);
+			rectangle(t, treeWindow, Scalar(125), 2);
+
+			printTreeData(treesDetected[i]);
+			cout << "Rect: " << treeWindow << endl;
+			namedWindow("Final detection", WINDOW_NORMAL);
+			imshow("Final detection", t);
+			waitKey(0);
+
+		}
+		cout << endl;
+	}*/
 	for (int i = 0; i < treesDetected.size(); i++) {
 		Mat t;
 		inputImg.copyTo(t);
-		//resize(inputImg, inputImg, Size(inputImg.cols / treesDetected[i].scale, inputImg.rows / treesDetected[i].scale));
+
 		double sc = treesDetected[i].scale;
 		Rect treeWindow(treesDetected[i].rect.x*sc, treesDetected[i].rect.y*sc, treesDetected[i].rect.width*sc, treesDetected[i].rect.height*sc);
-		rectangle(t, treeWindow,Scalar(125),2);
-		//resize(inputImg, inputImg, originalSize);
-		//cout << "Rect: " << treeWindow;
-		printTreeData(treesDetected[i]);
-		namedWindow("Final detection",WINDOW_NORMAL);
+		rectangle(t, treeWindow, Scalar(125), 2);
+		namedWindow("Final detection", WINDOW_NORMAL);
 		imshow("Final detection", t);
-		waitKey(0);
+		int k = waitKey(0);
+		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
+		cout << "Key pressed: " << treesDetected[i].qlt << endl;
+		printTreeData(treesDetected[i]);
+		cout << "Rect: " << treeWindow << endl;
 
 	}
 	waitKey(0);
 }
 
-int slidingWindow(Mat img, vector<KeyPoint> templateFeatures, Mat templateDescr, double scale, vector<struct treeData> &dataVect ) {
+int slidingWindow(Mat img, double scale, struct treeData &data ) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
 	//vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED };
 	//vector<string> methodsNames = { "TM_CCOEFF","TM_CCOEFF_NORMED", "TM_CCORR",	"TM_CCORR_NORMED", "TM_SQDIFF", "TM_SQDIFF_NORMED" };
 	vector<string> methodsNames = { "TM_CCOEFF", "TM_CCORR", "TM_SQDIFF" };
 	vector<int> methods = { TM_CCOEFF, TM_CCORR, TM_SQDIFF };
 	int numCorrMatches = 0;
+	double maxVal, minVal;
+	Point topLeft, bottomRight, minLoc, maxLoc;
 	Mat imgInput, originalImg, cImg;
 	resize(img, img, Size(img.cols / scale, img.rows / scale));
 	Canny(img, cImg, 500, 600);
 	//namedWindow("canny img", WINDOW_NORMAL);
 	//imshow("canny img", cImg);
-	//img.copyTo(imgInput);
+	
 	img.copyTo(originalImg);
-	double minVal, maxVal;
-	Point minLoc, maxLoc, topLeft, bottomRight;
-	for (int i = 0; i < methods.size(); i++) {
+	//cout << "Scaled size " << img.size() << endl;
+	int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
+	int i = 0; //method
+	//for (int i = 0; i < methods.size(); i++) {
 		cImg.copyTo(imgInput);
-		//cout << "Scaled size " << img.size() << endl;
-		int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
-		
 		Mat res;
 		matchTemplate(cImg, tImg, res, methods[i]);
 		minMaxLoc(res, &minVal, &maxVal, &minLoc, &maxLoc);
-		if (methods[i] == TM_SQDIFF || (methods[i] == TM_SQDIFF_NORMED)) {
+
+		data.scale = scale;
+		
+		if(methods[i]== TM_SQDIFF || methods[i] == TM_SQDIFF_NORMED){
 			topLeft = minLoc;
 			cout << "Method " << methodsNames[i] << " -> score: " << minVal << endl;
+			data.score = minVal;
 		}
 		else {
 			topLeft = maxLoc;
 			cout << "Method " << methodsNames[i] << " -> score: " << maxVal << endl;
+			data.score = maxVal*scale;
 		}
 		bottomRight = Point2f(topLeft.x+tImg.cols,topLeft.y+tImg.rows);
+		data.rect = Rect(topLeft, bottomRight);
+
 		rectangle(imgInput, topLeft, bottomRight, Scalar(255));
 		
 		namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
 		imshow("Img at method " + methodsNames[i], imgInput);
-		waitKey();
+		waitKey(1);
+		/*int k = waitKey();
+		data.qlt = (k - 48); // '0' = 48 number associated with 0 character
+		cout << "Key pressed: " << data.qlt << endl;*/
 
-	}
+
+	//}
 	return numCorrMatches;
+}
+
+void printTreeData(treeData data){
+	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " quality: " << data.qlt << endl;
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
@@ -488,72 +539,4 @@ void Erosion(int, void*)
 		Point(erosion_size, erosion_size));
 	erode(src, erosion_dst, element);
 	imshow("Erosion Demo", erosion_dst);
-}
-
-
-void printTreeData(struct treeData data) {
-	cout << " - scale: " << data.scale;
-	cout << " - %match: " << data.ratioMatches;
-	cout << " - dist: " << data.dist;
-	cout << " - diffMean: " << data.diffMean;
-	cout << " - ZNCC: " << data.zncc;
-	cout << " - stdDevIn: " << data.stdDevIn;
-	cout << " - stdDevOut: " << data.stdDevOut;
-	cout << " - rappStdDev: " << data.stdDevIn / data.stdDevOut;
-	cout << " - rappStdDevSQ: " << pow(data.stdDevIn, 2) / pow(data.stdDevOut, 2);
-	cout << " - file name: " << data.fileName << endl;
-}
-
-double computeZNCC(Mat img, Mat templImg) {
-	if (img.size() != templImg.size()) return -1;
-	Mat img2, t2;
-	Scalar meanI, meanT, stdevI, stdevT, meanI2, meanT2, stdevI2, stdevT2;
-	double sum = 0, zncc, sum2=0, zncc2;
-	int numPixel = img.rows*img.cols;
-	cvtColor(img, img, COLOR_BGR2HSV);
-	cvtColor(templImg, templImg, COLOR_BGR2HSV);
-
-	cvtColor(img, img2, COLOR_BGR2GRAY);
-	cvtColor(templImg, t2, COLOR_BGR2GRAY);
-
-	/*Mat mask = Mat::zeros(templImg.size(), CV_8UC1);
-	for (int i = 0; i < img.rows; i++) {
-		for (int j = 0; j < img.cols; j++) {
-			if (templImg.at<Scalar>(i, j)[0] != 179 && templImg.at<Scalar>(i, j)[2] != 254) {
-				mask.at<uchar>(i,j) = 1;
-				numPixel++;
-			}
-		}
-	}*/
-
-	meanStdDev(img, meanI, stdevI);
-	meanStdDev(templImg, meanT, stdevT);
-	//meanStdDev(templImg, meanT, stdevT, mask);
-
-	meanStdDev(img2, meanI2, stdevI2);
-	meanStdDev(t2, meanT2, stdevT2);
-
-	for (int i = 0; i < img.rows; i++) {
-		for (int j = 0; j < img.cols; j++) {
-			//if (mask.at<uchar>(i, j) == 1) {
-				double temp = (img.at<Vec3b>(i, j)[0] - meanI[0])*(templImg.at<Vec3b>(i, j)[0] - meanT[0]);
-				//cout << temp << " "  << sum << endl; 
-				sum += temp;
-				sum2 += (img2.at<Vec3b>(i, j)[0] - meanI2[0])*(t2.at<Vec3b>(i, j)[0] - meanT2[0]);
-			//}
-		}
-	}
-
-	zncc = abs(sum / (stdevI[0] * stdevT[0]*numPixel));
-
-	zncc2 = abs(sum2 / (stdevI2[0] * stdevT2[0] * numPixel));
-
-
-	cout << endl << "Mean Img: " << meanI[0] << " MeanT: " << meanT[0] << " stdDevI: " << stdevI[0] << " stdDevT: " << stdevT[0] << endl;
-	cout << "zncc h: " << zncc << " - zncc gray: " << zncc2 << endl;
-	/*cout << "Input Img: " << img << endl << endl; 
-	cout << "Templ Img: " << templImg << endl << endl;*/
-	
-
-	return zncc;
 }
