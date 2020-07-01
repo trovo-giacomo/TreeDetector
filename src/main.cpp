@@ -253,7 +253,7 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 		if(methods[i]== TM_SQDIFF || methods[i] == TM_SQDIFF_NORMED){
 			topLeft = minLoc;
 			cout << "Method " << methodsNames[i] << " -> score: " << minVal << endl;
-			data.score = minVal;
+			data.score = minVal*scale;
 		}
 		else {
 			topLeft = maxLoc;
@@ -300,6 +300,7 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 	//for every selected tree refine the number of trees by comparing features with template images
 	for (treeData tree : selecTrees) {
 		int totMatches = 0;
+		double totDist = 0;
 		for (int i = 0; i < files.size(); i++) {
 			vector<KeyPoint> rectFeatures;
 			Mat rectDescr;
@@ -310,6 +311,7 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 			extractFeatures(inputImage(tree.rect), rectFeatures, rectDescr, 500);
 			//cout << "Compute matches wit template " << files[i] << endl;
 			computeMatches(templateDescrs[i], rectDescr, matches, 1.25);
+			for (DMatch d : matches) totDist += d.distance;
 			totMatches += matches.size();
 			//cout << "Number of matches: " << matches.size() << endl;
 			//cout << "Draw matches" << endl;
@@ -318,9 +320,9 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 			//imshow("Matches", outImg);
 			//waitKey(1);
 		}
-		double avgMatches = totMatches / (files.size());
-		cout << "Average matches: " << avgMatches << endl;
-		if(avgMatches > 50)	refinedTrees.push_back(tree);
+		double avgDist = totDist / (files.size());
+		cout << "Average distances: " << avgDist << endl;
+		if(avgDist <= 4000)	refinedTrees.push_back(tree);
 	}
 	for (treeData tree : refinedTrees) {
 		Mat t;

@@ -166,9 +166,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\build\erosion.vcxproj">
-      <Project>{A1A2008D-ADD4-34DD-B233-2AFBA09118B0}</Project>
-      <Name>erosion</Name>
+    <ProjectReference Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\build\shape.vcxproj">
+      <Project>{329177E7-CF04-344F-BEA3-7DCD839E9947}</Project>
+      <Name>shape</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\build\treeDetector.vcxproj">
       <Project>{3E506FD2-3059-34BF-A628-C77EB1A645C0}</Project>

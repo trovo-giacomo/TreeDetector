@@ -195,3 +195,104 @@ Average matches: 13
 Average matches: 13
 Average matches: 25
 Average matches: 27
+
+
+Shape Context Matching
+https://docs.opencv.org/4.2.0/d0/d38/modules_2shape_2samples_2shape_example_8cpp-example.html
+https://docs.opencv.org/4.2.0/d8/de3/classcv_1_1ShapeContextDistanceExtractor.html
+
+GeneralizedHough
+https://docs.opencv.org/4.2.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317
+matchShape
+
+
+Fig 1
+Average distances: 1804.85
+Average distances: 1829
+Average distances: 3055.07
+Average distances: 3103.21
+Average distances: 1665.48
+Average distances: 4549.18
+Average distances: 3424.21
+Average distances: 3100.32
+Average distances: 1680.54
+Average distances: 3116.34
+Average distances: 3405.48
+Average distances: 4970.95
+Average distances: 2729.48
+Average distances: 2496.01
+Average distances: 4399.63
+Average distances: 3218.35
+
+Fig 2
+Average distances: 3926.8
+Average distances: 4117.17
+Average distances: 4145
+Average distances: 3680.5
+Average distances: 3681.14
+Average distances: 4068.34
+Average distances: 4117.17
+Average distances: 3754.48
+Average distances: 4088.86
+Average distances: 3692.69
+Average distances: 3996.86
+Average distances: 4043.96
+Average distances: 3754.01
+Average distances: 3844.96
+Average distances: 3644.67
+Average distances: 4135.77
+
+Fig 3
+Average distances: 6644.25
+Average distances: 3151.19
+Average distances: 6827.09
+Average distances: 3483.9
+Average distances: 3492.79
+Average distances: 3483.9
+Average distances: 4360.6
+Average distances: 4181.07
+Average distances: 4941.21
+Average distances: 3474.7
+Average distances: 3483.9
+Average distances: 3958.1
+Average distances: 3152.72
+Average distances: 3033.56
+Average distances: 4619.22
+Average distances: 3483.9
+
+Fig 4
+Average distances: 7485.58
+Average distances: 7922.69
+Average distances: 7485.58
+Average distances: 7922.69
+Average distances: 8088.18
+Average distances: 6748.43
+Average distances: 8647.34
+Average distances: 8100.09
+Average distances: 6427.71
+Average distances: 8088.18
+Average distances: 8923.67
+Average distances: 8766.01
+Average distances: 7406.01
+Average distances: 6969.35
+Average distances: 7031.49
+Average distances: 8088.18
+
+Fig 8
+Average distances: 11102.4
+Average distances: 8732.55
+Average distances: 10872.1
+Average distances: 3934.59
+Average distances: 5056.66
+Average distances: 7684.23
+Average distances: 6057
+Average distances: 7412.84
+Average distances: 10968.2
+Average distances: 5231.62
+Average distances: 6253.31
+Average distances: 8872.92
+Average distances: 3617.31
+Average distances: 3545.5
+Average distances: 7317.97
+Average distances: 7791.36
+
