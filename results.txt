@@ -50,3 +50,148 @@ Rect: [120 x 120 from (1020, 300)] - scale: 2 - %match: 0.8 - dist: 761.707 - di
 Rect: [180 x 180 from (990, 270)] - scale: 3 - %match: 1 - dist: 696.999 - diffMean: 16693.5 - stdDevIn: 137.31 - stdDevOut: 140.372 - rappStdDev: 0.978181 - rappStdDevSQ: 0.956838 - file name: --
 Rect: [150 x 150 from (975, 300)] - scale: 2.5 - %match: 0.8 - dist: 990.929 - diffMean: 12633.4 - stdDevIn: 137.676 - stdDevOut: 140.28 - rappStdDev: 0.981435 - rappStdDevSQ: 0.963214 - file name: --
 Rect: [150 x 150 from (975, 300)] - scale: 2.5 - %match: 0.8 - dist: 904.299 - diffMean: 13281.6 - stdDevIn: 137.676 - stdDevOut: 140.28 - rappStdDev: 0.981435 - rappStdDevSQ: 0.963214 - file name: --
+
+
+Fig 1
+Average matches: 9
+Average matches: 9
+Average matches: 12
+Average matches: 11
+Average matches: 8
+Average matches: 16
+Average matches: 13
+Average matches: 12
+Average matches: 8
+Average matches: 11
+Average matches: 13
+Average matches: 18
+Average matches: 10
+Average matches: 9
+Average matches: 16
+Average matches: 12
+
+Fig 2
+Average matches: 15
+Average matches: 15
+Average matches: 15
+Average matches: 14
+Average matches: 14
+Average matches: 15
+Average matches: 15
+Average matches: 14
+Average matches: 15
+Average matches: 14
+Average matches: 15
+Average matches: 15
+Average matches: 14
+Average matches: 15
+Average matches: 14
+Average matches: 15
+
+Fig 3
+Average matches: 42
+Average matches: 24
+Average matches: 29
+Average matches: 42
+Average matches: 17
+Average matches: 15
+Average matches: 22
+Average matches: 20
+Average matches: 24
+Average matches: 13
+Average matches: 25
+Average matches: 25
+Average matches: 21
+Average matches: 11
+Average matches: 22
+Average matches: 33
+
+Fig 4
+Average matches: 25
+Average matches: 14
+Average matches: 26
+Average matches: 15
+Average matches: 15
+Average matches: 15
+Average matches: 16
+Average matches: 16
+Average matches: 19
+Average matches: 15
+Average matches: 15
+Average matches: 17
+Average matches: 13
+Average matches: 13
+Average matches: 18
+Average matches: 15
+
+Fig 5
+Average matches: 30
+Average matches: 32
+Average matches: 30
+Average matches: 32
+Average matches: 32
+Average matches: 26
+Average matches: 34
+Average matches: 32
+Average matches: 25
+Average matches: 32
+Average matches: 33
+Average matches: 33
+Average matches: 29
+Average matches: 28
+Average matches: 27
+Average matches: 32
+
+Fig 6
+Average matches: 14
+Average matches: 18
+Average matches: 17
+Average matches: 19
+Average matches: 17
+Average matches: 19
+Average matches: 16
+Average matches: 23
+Average matches: 17
+Average matches: 14
+Average matches: 19
+Average matches: 18
+Average matches: 15
+Average matches: 15
+Average matches: 15
+Average matches: 19
+
+Fig 7 - prato
+Average matches: 7
+Average matches: 9
+Average matches: 8
+Average matches: 8
+Average matches: 9
+Average matches: 13
+Average matches: 9
+Average matches: 9
+Average matches: 9
+Average matches: 12
+Average matches: 10
+Average matches: 9
+Average matches: 12
+Average matches: 21
+Average matches: 11
+Average matches: 10
+
+Fig 8 - montagne
+Average matches: 37
+Average matches: 30
+Average matches: 37
+Average matches: 15
+Average matches: 18
+Average matches: 26
+Average matches: 22
+Average matches: 26
+Average matches: 37
+Average matches: 19
+Average matches: 22
+Average matches: 31
+Average matches: 13
+Average matches: 13
+Average matches: 25
+Average matches: 27

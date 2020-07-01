@@ -71,6 +71,8 @@ int main(int argc, char* argv[]) {
 	imshow("Input image", inputImg);
 	waitKey();
 
+	resize(inputImg, inputImg, Size(1200, 600));
+
 
 	//equalization of the input image in HSV color code
 	/*equalize(inputImg, inputEqualized);
@@ -134,7 +136,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 	utils::fs::glob(pathTemplate, "*.*", files);
 	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6, 10};
 	int numMatches;
-	resize(inputImg, inputImg, Size(1200, 600));
+	
 	//extract from input image
 		vector<struct treeData> treesDetected;
 	for (int j = 0; j < files.size(); j++) {
@@ -208,7 +210,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		rectangle(t, treeWindow, Scalar(125), 2);
 		namedWindow("Final detection", WINDOW_NORMAL);
 		imshow("Final detection", t);
-		int k = waitKey(0);
+		int k = waitKey(1);
 		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
 		cout << "Key pressed: " << treesDetected[i].qlt << endl;
 		treesDetected[i].rect = treeWindow;
@@ -277,37 +279,59 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 
 
 vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees) {
-	vector<treeData> redinedTress;
+	vector<treeData> refinedTrees;
 	vector<String> files;
 	vector <vector <KeyPoint>> templateKeyPoints;
 	vector<Mat> templateDescrs;
+	vector<Mat> templateImages;
 	utils::fs::glob(templateFeaturePath, "*.*", files);
 	//compute descriptors and key point for each template image
 	for (int i = 0; i < files.size(); i++) {
 		Mat templImg = imread(files[i]);
-		resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
+		//resize(templImg, templImg, Size(WIN_COLS, WIN_ROWS));
+		templateImages.push_back(templImg);
 		vector<KeyPoint> tFeatures;
 		Mat tDescr;
-		extractFeatures(templImg,tFeatures,tDescr,500);
+		cout << "Extract features template " << files[i] << endl;
+		extractFeatures(templImg, tFeatures, tDescr, 500);
 		templateKeyPoints.push_back(tFeatures);
 		templateDescrs.push_back(tDescr);
 	}
-
 	//for every selected tree refine the number of trees by comparing features with template images
 	for (treeData tree : selecTrees) {
+		int totMatches = 0;
 		for (int i = 0; i < files.size(); i++) {
 			vector<KeyPoint> rectFeatures;
 			Mat rectDescr;
 			vector<DMatch> matches;
 			Mat outImg;
+			//cout << "Extract features img - rect " << tree.rect << endl;
+			//cout <<  " - img size " << inputImage.size() << " - img rect size " << inputImage(tree.rect).size() <<  endl;
 			extractFeatures(inputImage(tree.rect), rectFeatures, rectDescr, 500);
-			computeMatches(templateDescrs[i], rectDescr, matches, 2.0);
-			drawMatches(imread(files[i]), templateKeyPoints[i], inputImage(tree.rect), rectFeatures, matches, outImg);
-			namedWindow("Matches", WINDOW_NORMAL);
-			imshow("Matches", outImg);
-			waitKey();
+			//cout << "Compute matches wit template " << files[i] << endl;
+			computeMatches(templateDescrs[i], rectDescr, matches, 1.25);
+			totMatches += matches.size();
+			//cout << "Number of matches: " << matches.size() << endl;
+			//cout << "Draw matches" << endl;
+			//drawMatches(templateImages[i], templateKeyPoints[i], inputImage(tree.rect), rectFeatures, matches, outImg);
+			//namedWindow("Matches", WINDOW_NORMAL);
+			//imshow("Matches", outImg);
+			//waitKey(1);
 		}
+		double avgMatches = totMatches / (files.size());
+		cout << "Average matches: " << avgMatches << endl;
+		if(avgMatches > 50)	refinedTrees.push_back(tree);
 	}
+	for (treeData tree : refinedTrees) {
+		Mat t;
+		inputImage.copyTo(t);
+
+		rectangle(t, tree.rect, Scalar(125), 2);
+		namedWindow("Final detection", WINDOW_NORMAL);
+		imshow("Final detection", t);
+		waitKey(0);
+	}
+	return refinedTrees;
 
 }
 
