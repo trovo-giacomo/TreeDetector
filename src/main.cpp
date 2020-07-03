@@ -21,7 +21,7 @@ using namespace cv;
  */
 struct treeData {
 	string fileName = "";
-	double scale, score;
+	double scale, score, zncc;
 	int qlt; //quality of the matching [0,4]
 	Rect rect;
 };
@@ -42,6 +42,9 @@ void printTreeData(struct treeData data);
 void findCanny(Mat inputImg, string templImg);
 void computeCanny(int, void* data);
 vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees);
+double zncc(Mat inputRect, Mat templ);
+double avgZncc(Mat inputRect, string templPath);
+
 
 //double computeZNCC(Mat img, Mat templImg);
 
@@ -90,7 +93,7 @@ int main(int argc, char* argv[]) {
 	//find canny parameter
 	//findCanny(inputImg, "../data/template3/");
 	vector<treeData> selectTrees = searchTemplateCanny(inputImg, "../data/cannyTemplate/");
-	selectTrees = refineWithFeatureMatching(inputImg, "../data/template3/", selectTrees);
+	//selectTrees = refineWithFeatureMatching(inputImg, "../data/template3/", selectTrees);
 	//extractFeatures();
 	
 	return 0;
@@ -169,14 +172,30 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 
 		}
 		treeData selectTree;
+		//Select trees according to the highest score
 		selectTree.score = 0;
 		for (treeData td : treeDataScales) {
 			if (td.score > selectTree.score) selectTree = td;
 		}
-		treesDetected.push_back(selectTree);
+		//treesDetected.push_back(selectTree);
+		//Select trees according to the lower ZNCC
+		/*selectTree.zncc = DBL_MAX;
+		for (treeData td : treeDataScales) {
+			if (td.zncc < selectTree.zncc) selectTree = td;
+		}
+		treesDetected.push_back(selectTree);*/
+
+		//Select trees according to the ratio score/zncc
+		/*for (treeData td : treeDataScales) {
+			//if ( ((td.score > 7e+6) && (td.score / td.zncc) > 400000 ) && ((td.score / td.zncc) <  1.40e+6) ) selectTree = td;
+			if (((td.score > 7e+6))) treesDetected.push_back(td);// selectTree = td;
+		}*/
+		//if(selectTree.fileName != "") treesDetected.push_back(selectTree);
+
+		if ((selectTree.score > 7e+6) && (selectTree.zncc < 500)) treesDetected.push_back(selectTree);
 	
 		cout << "ended" << endl << endl;
-		waitKey(1);
+		//waitKey(1);
 	}
 	cout << "--- Over all trees selected --- " <<  inputImageName << endl;
 	cout << "Number of tree detected: " << treesDetected.size() << endl;
@@ -210,9 +229,9 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		rectangle(t, treeWindow, Scalar(125), 2);
 		namedWindow("Final detection", WINDOW_NORMAL);
 		imshow("Final detection", t);
-		int k = waitKey(1);
+		int k = waitKey(0);
 		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
-		cout << "Key pressed: " << treesDetected[i].qlt << endl;
+		//cout << "Key pressed: " << treesDetected[i].qlt << endl;
 		treesDetected[i].rect = treeWindow;
 		printTreeData(treesDetected[i]);
 		cout << "Rect: " << treeWindow << endl;
@@ -252,17 +271,19 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 		
 		if(methods[i]== TM_SQDIFF || methods[i] == TM_SQDIFF_NORMED){
 			topLeft = minLoc;
-			cout << "Method " << methodsNames[i] << " -> score: " << minVal << endl;
+			cout << "Method " << methodsNames[i] << " -> score: " << minVal ;
 			data.score = minVal*scale;
 		}
 		else {
 			topLeft = maxLoc;
-			cout << "Method " << methodsNames[i] << " -> score: " << maxVal << endl;
+			cout << "Method " << methodsNames[i] << " -> score: " << maxVal ;
 			data.score = maxVal*scale;
 		}
 		bottomRight = Point2f(topLeft.x+tImg.cols,topLeft.y+tImg.rows);
 		data.rect = Rect(topLeft, bottomRight);
-
+		data.zncc = zncc(imgInput(data.rect), tImg);
+		cout << " ZNCC: " << data.zncc << endl;
+		//draw rectangle in the output image
 		rectangle(imgInput, topLeft, bottomRight, Scalar(255));
 		
 		namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
@@ -275,6 +296,35 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 
 	//}
 	return numCorrMatches;
+}
+
+double zncc(Mat inputRect, Mat templ) {
+	double zncc;
+	Scalar meanImg, stdDevImg, meanT, stdDevT;
+	meanStdDev(inputRect, meanImg, stdDevImg);
+	meanStdDev(templ, meanT, stdDevT);
+	for (int i = 0; i < inputRect.rows; i++) {
+		for (int j = 0; j < inputRect.cols; j++) {
+			zncc += ( (inputRect.at<uchar>(i, j) - meanImg[0]) * (templ.at<uchar>(i, j) - meanT[0]) );
+		}
+	}
+	zncc = zncc / (stdDevImg[0] * stdDevT[0]);
+	return abs(zncc);
+
+}
+
+double avgZncc(Mat inputRect, string templPath) {
+	vector<String> files;
+
+	utils::fs::glob(templPath, "*.*", files);
+	double tempZncc = 0.0;
+	//read template images to compute avg zncc
+	for (int j = 0; j < files.size(); j++) {
+		Mat tImg = imread(files[j], IMREAD_GRAYSCALE);
+		resize(tImg, tImg, inputRect.size());
+		tempZncc += zncc(inputRect, tImg);
+	}
+	return (tempZncc / files.size());
 }
 
 
@@ -338,7 +388,7 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 }
 
 void printTreeData(treeData data){
-	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " quality: " << data.qlt << endl;
+	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score/data.zncc) << " quality: " << data.qlt << endl;
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {

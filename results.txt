@@ -296,3 +296,1175 @@ Average distances: 3545.5
 Average distances: 7317.97
 Average distances: 7791.36
 
+-- min ZNCC selection
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 16
+Key pressed: 0
+Tree - ../data/cannyTemplate/t0.jpg scale: 1.5 score: 2.65998e+06 ZNCC: 0.127923 quality: 0
+Rect: [90 x 90 from (778, 252)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 4.30217e+06 ZNCC: 40.9015 quality: 0
+Rect: [600 x 600 from (300, 0)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 913640 ZNCC: 64.3159 quality: 0
+Rect: [600 x 600 from (310, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t11.jpg scale: 2 score: 4.17151e+06 ZNCC: 6.48261 quality: 1
+Rect: [120 x 120 from (834, 194)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t12.jpg scale: 4 score: 7.25146e+06 ZNCC: 12.4732 quality: 2
+Rect: [240 x 240 from (752, 104)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 7.07092e+06 ZNCC: 43.4961 quality: 1
+Rect: [240 x 240 from (632, 112)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 7.44491e+06 ZNCC: 18.1826 quality: 0
+Rect: [600 x 600 from (330, 0)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t17.jpg scale: 2 score: 4.23969e+06 ZNCC: 0.902739 quality: 1
+Rect: [120 x 120 from (782, 138)]
+Key pressed: 1
+Tree - ../data/cannyTemplate/t18.jpg scale: 2 score: 3.42973e+06 ZNCC: 10.1911 quality: 1
+Rect: [120 x 120 from (848, 196)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 4.63577e+06 ZNCC: 13.7449 quality: 0
+Rect: [600 x 600 from (400, 0)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t3.jpg scale: 2.5 score: 4.54366e+06 ZNCC: 28.7711 quality: 2
+Rect: [150 x 150 from (782, 112)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 3.00441e+06 ZNCC: 31.3204 quality: 0
+Rect: [600 x 600 from (380, 0)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t5.jpg scale: 2.5 score: 5.39361e+06 ZNCC: 8.02208 quality: 2
+Rect: [150 x 150 from (785, 130)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t6.jpg scale: 2.5 score: 3.5667e+06 ZNCC: 26.9097 quality: 0
+Rect: [150 x 150 from (842, 167)]
+Key pressed: 2
+Tree - ../data/cannyTemplate/t7.jpg scale: 1.5 score: 2.29924e+06 ZNCC: 8.67001 quality: 2
+Rect: [90 x 90 from (795, 150)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t9.jpg scale: 2.5 score: 4.23638e+06 ZNCC: 9.99316 quality: 0
+Rect: [150 x 150 from (837, 167)]
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 16
+Key pressed: 0
+Tree - ../data/cannyTemplate/t0.jpg scale: 2 score: 3.26797e+06 ZNCC: 4.36573 quality: 0
+Rect: [120 x 120 from (896, 326)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t1.jpg scale: 2.5 score: 3.6069e+06 ZNCC: 22.2844 quality: 0
+Rect: [150 x 150 from (567, 342)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t10.jpg scale: 2.5 score: 3.21031e+06 ZNCC: 9.09774 quality: 0
+Rect: [150 x 150 from (752, 305)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t11.jpg scale: 1.5 score: 2.30951e+06 ZNCC: 6.25205 quality: 0
+Rect: [90 x 90 from (861, 334)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t12.jpg scale: 1.5 score: 2.29873e+06 ZNCC: 10.1983 quality: 0
+Rect: [90 x 90 from (853, 325)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t14.jpg scale: 2.5 score: 4.77619e+06 ZNCC: 6.01575 quality: 0
+Rect: [150 x 150 from (890, 317)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t15.jpg scale: 1.5 score: 3.29326e+06 ZNCC: 10.9425 quality: 0
+Rect: [90 x 90 from (865, 334)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t17.jpg scale: 2 score: 3.76852e+06 ZNCC: 20.7303 quality: 0
+Rect: [120 x 120 from (676, 348)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t18.jpg scale: 1.5 score: 2.51788e+06 ZNCC: 17.5388 quality: 0
+Rect: [90 x 90 from (784, 337)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t2.jpg scale: 2 score: 3.49392e+06 ZNCC: 7.563 quality: 0
+Rect: [120 x 120 from (758, 320)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t3.jpg scale: 1.5 score: 2.05524e+06 ZNCC: 37.6643 quality: 0
+Rect: [90 x 90 from (786, 352)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t4.jpg scale: 2 score: 3.15821e+06 ZNCC: 4.10011 quality: 0
+Rect: [120 x 120 from (862, 342)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t5.jpg scale: 2.5 score: 5.63156e+06 ZNCC: 23.7487 quality: 0
+Rect: [150 x 150 from (850, 325)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t6.jpg scale: 2.5 score: 3.0625e+06 ZNCC: 21.7426 quality: 0
+Rect: [150 x 150 from (857, 322)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t7.jpg scale: 2 score: 2.60775e+06 ZNCC: 18.9116 quality: 0
+Rect: [120 x 120 from (836, 314)]
+Key pressed: 3
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.28115e+07 ZNCC: 17.5854 quality: 3
+Rect: [360 x 360 from (570, 102)]
+
+--- Over all trees selected --- ../data/Figure 7.jpg
+Number of tree detected: 16
+Key pressed: 0
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.90897e+06 ZNCC: 2.50079 quality: 0
+Rect: [360 x 360 from (840, 96)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t1.jpg scale: 3 score: 3.62976e+06 ZNCC: 2.56036 quality: 0
+Rect: [180 x 180 from (519, 207)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t10.jpg scale: 4 score: 5.36508e+06 ZNCC: 1.33365 quality: 0
+Rect: [240 x 240 from (756, 192)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 6.502e+06 ZNCC: 0.640362 quality: 0
+Rect: [360 x 360 from (726, 168)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 6.95928e+06 ZNCC: 15.1903 quality: 0
+Rect: [300 x 300 from (720, 200)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.27414e+07 ZNCC: 0.896066 quality: 0
+Rect: [360 x 360 from (828, 90)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t15.jpg scale: 2.5 score: 3.18688e+06 ZNCC: 1.78028 quality: 0
+Rect: [150 x 150 from (807, 177)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 9.00382e+06 ZNCC: 11.7324 quality: 0
+Rect: [300 x 300 from (185, 110)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t18.jpg scale: 4 score: 6.12444e+06 ZNCC: 1.0208 quality: 0
+Rect: [240 x 240 from (792, 176)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 6.39039e+06 ZNCC: 10.5301 quality: 0
+Rect: [300 x 300 from (300, 75)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t3.jpg scale: 4 score: 4.79065e+06 ZNCC: 33.2378 quality: 0
+Rect: [240 x 240 from (508, 188)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 7.21832e+06 ZNCC: 12.8785 quality: 0
+Rect: [300 x 300 from (700, 190)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t5.jpg scale: 4 score: 4.88639e+06 ZNCC: 1.39319 quality: 0
+Rect: [240 x 240 from (724, 176)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t6.jpg scale: 4 score: 5.3784e+06 ZNCC: 7.84928 quality: 0
+Rect: [240 x 240 from (452, 164)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t7.jpg scale: 4 score: 3.66194e+06 ZNCC: 29.9285 quality: 0
+Rect: [240 x 240 from (700, 184)]
+Key pressed: 0
+Tree - ../data/cannyTemplate/t9.jpg scale: 3 score: 5.74675e+06 ZNCC: 3.08861 quality: 0
+Rect: [180 x 180 from (159, 153)]
+
+
+-- score/zncc > 500.000 !Error in calculation of zncc!
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 5
+Tree - ../data/cannyTemplate/t0.jpg scale: 1.5 score: 2.65998e+06 ZNCC: 0.127923 ratio: 2.07936e+07 quality: 0
+Rect: [90 x 90 from (778, 252)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 2 score: 4.17151e+06 ZNCC: 6.48261 ratio: 643492 quality: 1
+Rect: [120 x 120 from (834, 194)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 4 score: 7.25146e+06 ZNCC: 12.4732 ratio: 581362 quality: 4
+Rect: [240 x 240 from (752, 104)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 2 score: 4.23969e+06 ZNCC: 0.902739 ratio: 4.69647e+06 quality: 2
+Rect: [120 x 120 from (782, 138)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 2.5 score: 5.39361e+06 ZNCC: 8.02208 ratio: 672346 quality: 3
+Rect: [150 x 150 from (785, 130)]
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 4
+Tree - ../data/cannyTemplate/t0.jpg scale: 2 score: 3.26797e+06 ZNCC: 4.36573 ratio: 748551 quality: 0
+Rect: [120 x 120 from (896, 326)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 2.5 score: 4.77619e+06 ZNCC: 6.01575 ratio: 793949 quality: 0
+Rect: [150 x 150 from (890, 317)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 2 score: 3.15821e+06 ZNCC: 4.10011 ratio: 770275 quality: 0
+Rect: [120 x 120 from (862, 342)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.28115e+07 ZNCC: 17.5854 ratio: 728529 quality: 3
+Rect: [360 x 360 from (570, 102)]
+
+--- Over all trees selected --- ../data/Figure 3.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 2.5 score: 4.39966e+06 ZNCC: 2.59166 ratio: 1.69762e+06 quality: 0
+Rect: [150 x 150 from (942, 372)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 1.5 score: 3.24146e+06 ZNCC: 1.87462 ratio: 1.72913e+06 quality: 0
+Rect: [90 x 90 from (1053, 379)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 3 score: 5.72734e+06 ZNCC: 4.59888 ratio: 1.24538e+06 quality: 0
+Rect: [180 x 180 from (174, 372)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 3 score: 5.35233e+06 ZNCC: 9.46589 ratio: 565434 quality: 0
+Rect: [180 x 180 from (135, 258)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.90828e+06 ZNCC: 17.4212 ratio: 568748 quality: 3
+Rect: [360 x 360 from (24, 6)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 2 score: 5.42509e+06 ZNCC: 0.875014 ratio: 6.20001e+06 quality: 0
+Rect: [120 x 120 from (848, 480)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 1.5 score: 4.00008e+06 ZNCC: 6.3747 ratio: 627493 quality: 0
+Rect: [90 x 90 from (834, 435)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 2 score: 3.99808e+06 ZNCC: 5.1939 ratio: 769766 quality: 0
+Rect: [120 x 120 from (898, 314)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 2 score: 3.95189e+06 ZNCC: 3.13166 ratio: 1.26192e+06 quality: 0
+Rect: [120 x 120 from (1070, 314)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 2 score: 4.19548e+06 ZNCC: 0.972662 ratio: 4.3134e+06 quality: 0
+Rect: [120 x 120 from (846, 474)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 8.75006e+06 ZNCC: 10.7545 ratio: 813618 quality: 0
+Rect: [300 x 300 from (75, 220)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 3 score: 6.32676e+06 ZNCC: 12.5449 ratio: 504329 quality: 0
+Rect: [180 x 180 from (1020, 300)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 2 score: 4.85485e+06 ZNCC: 3.16622 ratio: 1.53333e+06 quality: 0
+Rect: [120 x 120 from (884, 386)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 2 score: 3.51644e+06 ZNCC: 4.13582 ratio: 850241 quality: 0
+Rect: [120 x 120 from (866, 480)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 3 score: 5.7658e+06 ZNCC: 5.95358 ratio: 968460 quality: 1
+Rect: [180 x 180 from (0, 93)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 2 score: 4.31562e+06 ZNCC: 5.55044 ratio: 777528 quality: 0
+Rect: [120 x 120 from (848, 468)]
+
+--- Over all trees selected --- ../data/Figure 4.jpg
+Number of tree detected: 15
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.28156e+06 ZNCC: 2.17323 ratio: 3.81071e+06 quality: 1
+Rect: [360 x 360 from (618, 78)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 9.77651e+06 ZNCC: 13.9888 ratio: 698881 quality: 1
+Rect: [360 x 360 from (186, 120)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.30385e+06 ZNCC: 5.56264 ratio: 1.67256e+06 quality: 1
+Rect: [360 x 360 from (246, 114)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 9.98009e+06 ZNCC: 7.71773 ratio: 1.29314e+06 quality: 1
+Rect: [360 x 360 from (648, 78)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 1.01697e+07 ZNCC: 13.602 ratio: 747665 quality: 1
+Rect: [360 x 360 from (222, 114)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.08143e+07 ZNCC: 14.5251 ratio: 744525 quality: 1
+Rect: [360 x 360 from (198, 102)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.07432e+07 ZNCC: 2.15475 ratio: 4.98584e+06 quality: 1
+Rect: [360 x 360 from (0, 120)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 8.61089e+06 ZNCC: 6.37516 ratio: 1.35069e+06 quality: 1
+Rect: [300 x 300 from (280, 100)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 9.85497e+06 ZNCC: 6.04589 ratio: 1.63003e+06 quality: 1
+Rect: [360 x 360 from (636, 60)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 1.5 score: 2.46705e+06 ZNCC: 2.60958 ratio: 945382 quality: 1
+Rect: [90 x 90 from (486, 253)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 9.36541e+06 ZNCC: 3.00022 ratio: 3.12158e+06 quality: 1
+Rect: [360 x 360 from (150, 144)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 1.0307e+07 ZNCC: 7.29456 ratio: 1.41297e+06 quality: 1
+Rect: [360 x 360 from (732, 186)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 1.04165e+07 ZNCC: 1.67501 ratio: 6.21878e+06 quality: 1
+Rect: [360 x 360 from (630, 30)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 1.01719e+07 ZNCC: 4.32864 ratio: 2.34991e+06 quality: 1
+Rect: [360 x 360 from (150, 126)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 2.5 score: 4.35514e+06 ZNCC: 7.43443 ratio: 585807 quality: 1
+Rect: [150 x 150 from (142, 227)]
+
+--- Over all trees selected --- ../data/Figure 5.jpg
+Number of tree detected: 13
+Tree - ../data/cannyTemplate/t0.jpg scale: 2 score: 3.38019e+06 ZNCC: 5.81966 ratio: 580822 quality: 0
+Rect: [120 x 120 from (352, 372)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 5 score: 8.53417e+06 ZNCC: 8.2732 ratio: 1.03154e+06 quality: 0
+Rect: [300 x 300 from (200, 80)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 3 score: 6.22823e+06 ZNCC: 3.92925 ratio: 1.58509e+06 quality: 0
+Rect: [180 x 180 from (765, 75)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 9.85773e+06 ZNCC: 9.59051 ratio: 1.02786e+06 quality: 0
+Rect: [360 x 360 from (156, 90)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 1.05584e+07 ZNCC: 5.548 ratio: 1.90309e+06 quality: 0
+Rect: [300 x 300 from (695, 55)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 1.0473e+07 ZNCC: 17.2705 ratio: 606413 quality: 0
+Rect: [300 x 300 from (715, 75)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.13789e+07 ZNCC: 14.9827 ratio: 759469 quality: 0
+Rect: [360 x 360 from (162, 222)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 8.85613e+06 ZNCC: 16.6627 ratio: 531494 quality: 0
+Rect: [300 x 300 from (155, 250)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 4 score: 6.2287e+06 ZNCC: 2.85049 ratio: 2.18513e+06 quality: 0
+Rect: [240 x 240 from (844, 356)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 9.57293e+06 ZNCC: 5.42507 ratio: 1.76457e+06 quality: 3
+Rect: [600 x 600 from (240, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.49815e+07 ZNCC: 24.6099 ratio: 608758 quality: 3
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 1.5 score: 2.86828e+06 ZNCC: 5.1283 ratio: 559305 quality: 0
+Rect: [90 x 90 from (616, 340)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 1.01935e+07 ZNCC: 9.46509 ratio: 1.07696e+06 quality: 0
+Rect: [300 x 300 from (210, 190)]
+
+--- Over all trees selected --- ../data/Figure 6.jpg
+Number of tree detected: 6
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.18349e+07 ZNCC: 17.496 ratio: 676434 quality: 3
+Rect: [360 x 360 from (198, 138)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 9.30252e+06 ZNCC: 5.93451 ratio: 1.56753e+06 quality: 3
+Rect: [360 x 360 from (216, 132)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.21266e+07 ZNCC: 7.71273 ratio: 1.57229e+06 quality: 2
+Rect: [360 x 360 from (270, 126)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 1.11517e+07 ZNCC: 20.2722 ratio: 550101 quality: 3
+Rect: [360 x 360 from (180, 132)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.60886e+06 ZNCC: 16.7736 ratio: 513239 quality: 3
+Rect: [360 x 360 from (162, 138)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 7.21322e+06 ZNCC: 5.74682 ratio: 1.25517e+06 quality: 2
+Rect: [300 x 300 from (120, 140)]
+
+--- Over all trees selected --- ../data/Figure 7.jpg -- prato
+Number of tree detected: 13
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.90897e+06 ZNCC: 2.50079 ratio: 3.56246e+06 quality: 0
+Rect: [360 x 360 from (840, 96)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 3 score: 3.62976e+06 ZNCC: 2.56036 ratio: 1.41767e+06 quality: 0
+Rect: [180 x 180 from (519, 207)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 4 score: 5.36508e+06 ZNCC: 1.33365 ratio: 4.02287e+06 quality: 0
+Rect: [240 x 240 from (756, 192)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 6.502e+06 ZNCC: 0.640362 ratio: 1.01536e+07 quality: 0
+Rect: [360 x 360 from (726, 168)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.27414e+07 ZNCC: 0.896066 ratio: 1.42193e+07 quality: 0
+Rect: [360 x 360 from (828, 90)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 2.5 score: 3.18688e+06 ZNCC: 1.78028 ratio: 1.7901e+06 quality: 0
+Rect: [150 x 150 from (807, 177)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 9.05718e+06 ZNCC: 13.7089 ratio: 660677 quality: 0
+Rect: [360 x 360 from (102, 72)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 7.54723e+06 ZNCC: 4.52687 ratio: 1.66721e+06 quality: 0
+Rect: [360 x 360 from (36, 54)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 6.39039e+06 ZNCC: 10.5301 ratio: 606872 quality: 0
+Rect: [300 x 300 from (300, 75)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 7.21832e+06 ZNCC: 12.8785 ratio: 560494 quality: 0
+Rect: [300 x 300 from (700, 190)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 4 score: 4.88639e+06 ZNCC: 1.39319 ratio: 3.50735e+06 quality: 0
+Rect: [240 x 240 from (724, 176)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 4 score: 5.3784e+06 ZNCC: 7.84928 ratio: 685209 quality: 0
+Rect: [240 x 240 from (452, 164)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 3 score: 5.74675e+06 ZNCC: 3.08861 ratio: 1.86063e+06 quality: 0
+
+--- Over all trees selected --- ../data/Figure 8.jpg
+Number of tree detected: 11
+Tree - ../data/cannyTemplate/t0.jpg scale: 3 score: 5.6994e+06 ZNCC: 6.98848 ratio: 815542 quality: 0
+Rect: [180 x 180 from (294, 297)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 2 score: 4.63037e+06 ZNCC: 8.74927 ratio: 529229 quality: 0
+Rect: [120 x 120 from (142, 222)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 4 score: 9.48213e+06 ZNCC: 14.3968 ratio: 658627 quality: 0
+Rect: [240 x 240 from (536, 140)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 9.95024e+06 ZNCC: 10.28 ratio: 967918 quality: 0
+Rect: [300 x 300 from (190, 170)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 7.79172e+06 ZNCC: 13.1045 ratio: 594584 quality: 0
+Rect: [240 x 240 from (616, 116)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 4 score: 9.15201e+06 ZNCC: 2.05435 ratio: 4.45493e+06 quality: 0
+Rect: [240 x 240 from (216, 140)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 3 score: 5.42555e+06 ZNCC: 5.73136 ratio: 946642 quality: 0
+Rect: [180 x 180 from (285, 288)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 4 score: 6.62058e+06 ZNCC: 10.3569 ratio: 639246 quality: 0
+Rect: [240 x 240 from (336, 296)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 2.5 score: 4.84719e+06 ZNCC: 9.03562 ratio: 536453 quality: 0
+Rect: [150 x 150 from (855, 215)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 2 score: 3.51898e+06 ZNCC: 0.303876 ratio: 1.15803e+07 quality: 0
+Rect: [120 x 120 from (862, 280)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 3 score: 5.2352e+06 ZNCC: 9.1496 ratio: 572178 quality: 0
+Rect: [180 x 180 from (789, 255)]
+
+--- Over all trees selected --- ../data/Figure 9.jpg
+Number of tree detected: 1
+Tree - ../data/cannyTemplate/t11.jpg scale: 3 score: 3.08394e+06 ZNCC: 5.24388 ratio: 588103 quality: 0
+Rect: [180 x 180 from (723, 72)]
+
+-- ((td.score > 7e+6) && (td.score / td.zncc) > 400000 ) && ((td.score / td.zncc) <  1.40e+6) !Error in calculation of zncc!
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 2
+Tree - ../data/cannyTemplate/t12.jpg scale: 4 score: 7.25146e+06 ZNCC: 12.4732 ratio: 581362 quality: 4
+Rect: [240 x 240 from (752, 104)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 7.44491e+06 ZNCC: 18.1826 ratio: 409453 quality: 0
+Rect: [600 x 600 from (330, 0)]
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 1
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.28115e+07 ZNCC: 17.5854 ratio: 728529 quality: 3
+Rect: [360 x 360 from (570, 102)]
+
+--- Over all trees selected --- ..\data\Figure 3.jpg
+Number of tree detected: 3
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.90828e+06 ZNCC: 17.4212 ratio: 568748 quality: 3
+Rect: [360 x 360 from (24, 6)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 8.75006e+06 ZNCC: 10.7545 ratio: 813618 quality: 0
+Rect: [300 x 300 from (75, 220)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 9.24524e+06 ZNCC: 20.4353 ratio: 452416 quality: 0
+Rect: [300 x 300 from (95, 235)]
+
+--- Over all trees selected --- ..\data\Figure 4.jpg
+Number of tree detected: 12
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 8.68839e+06 ZNCC: 17.4696 ratio: 497343 quality: 0
+Rect: [300 x 300 from (240, 135)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 9.77651e+06 ZNCC: 13.9888 ratio: 698881 quality: 0
+Rect: [360 x 360 from (186, 120)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 9.98009e+06 ZNCC: 7.71773 ratio: 1.29314e+06 quality: 0
+Rect: [360 x 360 from (648, 78)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 1.01697e+07 ZNCC: 13.602 ratio: 747665 quality: 0
+Rect: [360 x 360 from (222, 114)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.08143e+07 ZNCC: 14.5251 ratio: 744525 quality: 0
+Rect: [360 x 360 from (198, 102)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 1.00417e+07 ZNCC: 8.44249 ratio: 1.18942e+06 quality: 0
+Rect: [300 x 300 from (40, 160)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 8.61089e+06 ZNCC: 6.37516 ratio: 1.35069e+06 quality: 0
+Rect: [300 x 300 from (280, 100)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 9.31361e+06 ZNCC: 10.8082 ratio: 861717 quality: 0
+Rect: [300 x 300 from (275, 75)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.38909e+06 ZNCC: 17.7039 ratio: 473857 quality: 0
+Rect: [360 x 360 from (636, 48)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 5 score: 8.91151e+06 ZNCC: 10.4246 ratio: 854852 quality: 0
+Rect: [300 x 300 from (205, 190)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 7.9289e+06 ZNCC: 18.1705 ratio: 436360 quality: 0
+Rect: [300 x 300 from (175, 130)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 4 score: 7.1563e+06 ZNCC: 16.6301 ratio: 430322 quality: 0
+Rect: [240 x 240 from (64, 144)]
+
+
+--- Over all trees selected --- ..\data\Figure 5.jpg
+Number of tree detected: 10
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.2695e+06 ZNCC: 16.954 ratio: 487761 quality: 1
+Rect: [360 x 360 from (324, 210)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 9.85773e+06 ZNCC: 9.59051 ratio: 1.02786e+06 quality: 0
+Rect: [360 x 360 from (156, 90)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 1.0473e+07 ZNCC: 17.2705 ratio: 606413 quality: 0
+Rect: [300 x 300 from (715, 75)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.13789e+07 ZNCC: 14.9827 ratio: 759469 quality: 0
+Rect: [360 x 360 from (162, 222)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 8.85613e+06 ZNCC: 16.6627 ratio: 531494 quality: 0
+Rect: [300 x 300 from (155, 250)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 1.04175e+07 ZNCC: 20.965 ratio: 496899 quality: 0
+Rect: [300 x 300 from (675, 15)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 1.06561e+07 ZNCC: 10.126 ratio: 1.05234e+06 quality: 0
+Rect: [300 x 300 from (675, 25)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.49815e+07 ZNCC: 24.6099 ratio: 608758 quality: 2
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.96808e+06 ZNCC: 17.1804 ratio: 463790 quality: 0
+Rect: [360 x 360 from (0, 240)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 1.01935e+07 ZNCC: 9.46509 ratio: 1.07696e+06 quality: 0
+Rect: [300 x 300 from (210, 190)]
+
+--- Over all trees selected --- ..\data\Figure 6.jpg
+Number of tree detected: 5
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.18349e+07 ZNCC: 17.496 ratio: 676434 quality: 3
+Rect: [360 x 360 from (198, 138)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.34795e+06 ZNCC: 20.2722 ratio: 461123 quality: 3
+Rect: [360 x 360 from (180, 132)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 1.11517e+07 ZNCC: 20.2722 ratio: 550101 quality: 3
+Rect: [360 x 360 from (180, 132)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.60886e+06 ZNCC: 16.7736 ratio: 513239 quality: 3
+Rect: [360 x 360 from (162, 138)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 7.21322e+06 ZNCC: 5.74682 ratio: 1.25517e+06 quality: 2
+Rect: [300 x 300 from (120, 140)]
+
+--- Over all trees selected --- ..\data\Figure 7.jpg -- prato
+Number of tree detected: 3
+Tree - ../data/cannyTemplate/t0.jpg scale: 4 score: 7.42666e+06 ZNCC: 11.8649 ratio: 625936 quality: 0
+Rect: [240 x 240 from (788, 176)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 9.05718e+06 ZNCC: 13.7089 ratio: 660677 quality: 0
+Rect: [360 x 360 from (102, 72)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 1.06112e+07 ZNCC: 25.3459 ratio: 418656 quality: 0
+Rect: [360 x 360 from (720, 162)]
+
+--- Over all trees selected --- ..\data\Figure 8.jpg -- montagne
+Number of tree detected: 4
+Tree - ../data/cannyTemplate/t10.jpg scale: 4 score: 9.48213e+06 ZNCC: 14.3968 ratio: 658627 quality: 0
+Rect: [240 x 240 from (536, 140)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 9.95024e+06 ZNCC: 10.28 ratio: 967918 quality: 0
+Rect: [300 x 300 from (190, 170)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 7.79172e+06 ZNCC: 13.1045 ratio: 594584 quality: 0
+Rect: [240 x 240 from (616, 116)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 4 score: 9.92097e+06 ZNCC: 24.8018 ratio: 400010 quality: 0
+Rect: [240 x 240 from (768, 172)]
+
+--- Over all trees selected --- ..\data\Figure 9.jpg
+Number of tree detected: 0
+
+
+--- Over all trees selected --- ..\data\Figure 10.jpg
+Number of tree detected: 7
+Tree - ../data/cannyTemplate/t1.jpg scale: 4 score: 8.00754e+06 ZNCC: 8.31585 ratio: 962925 quality: 0
+Rect: [240 x 240 from (580, 96)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 4 score: 9.13821e+06 ZNCC: 15.2431 ratio: 599498 quality: 0
+Rect: [240 x 240 from (888, 276)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 1.06025e+07 ZNCC: 19.6885 ratio: 538511 quality: 0
+Rect: [300 x 300 from (170, 280)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 4 score: 7.6952e+06 ZNCC: 15.1433 ratio: 508158 quality: 0
+Rect: [240 x 240 from (956, 328)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 4 score: 7.65103e+06 ZNCC: 7.18283 ratio: 1.06518e+06 quality: 0
+Rect: [240 x 240 from (944, 348)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 1.04615e+07 ZNCC: 25.3619 ratio: 412490 quality: 0
+Rect: [300 x 300 from (575, 90)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.86119e+07 ZNCC: 14.0878 ratio: 1.32114e+06 quality: 2
+Rect: [600 x 600 from (130, 0)]
+
+
+-- (td.score > 7e+6)
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.23186e+07 ZNCC: 792.378 ratio: 15546.3 quality: 2
+Rect: [360 x 360 from (90, 150)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.27025e+06 ZNCC: 513.813 ratio: 16095.8 quality: 2
+Rect: [360 x 360 from (54, 132)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 1.02389e+07 ZNCC: 455.259 ratio: 22490.2 quality: 0
+Rect: [360 x 360 from (522, 60)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 7.78719e+06 ZNCC: 367.423 ratio: 21194.1 quality: 0
+Rect: [360 x 360 from (822, 6)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 9.60905e+06 ZNCC: 281.222 ratio: 34168.9 quality: 0
+Rect: [600 x 600 from (280, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.08549e+07 ZNCC: 405.088 ratio: 26796.5 quality: 2
+Rect: [360 x 360 from (726, 30)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 7.44491e+06 ZNCC: 167.053 ratio: 44566.2 quality: 0
+Rect: [600 x 600 from (330, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.00174e+07 ZNCC: 449.978 ratio: 22262 quality: 1
+Rect: [360 x 360 from (546, 42)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.95246e+06 ZNCC: 633.868 ratio: 15701.2 quality: 2
+Rect: [360 x 360 from (72, 156)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.96335e+06 ZNCC: 381.855 ratio: 23473.2 quality: 0
+Rect: [360 x 360 from (816, 24)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.39322e+06 ZNCC: 374.428 ratio: 22416.1 quality: 0
+Rect: [360 x 360 from (534, 108)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 8.67088e+06 ZNCC: 333.805 ratio: 25975.9 quality: 3
+Rect: [360 x 360 from (714, 108)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.92789e+06 ZNCC: 265.169 ratio: 37439.8 quality: 0
+Rect: [600 x 600 from (410, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.56501e+06 ZNCC: 417.845 ratio: 18104.8 quality: 0
+Rect: [360 x 360 from (828, 48)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 7.60769e+06 ZNCC: 257.408 ratio: 29555 quality: 0
+Rect: [600 x 600 from (290, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 8.09398e+06 ZNCC: 491.95 ratio: 16452.8 quality: 2
+Rect: [360 x 360 from (102, 144)]
+
+--- Over all trees selected --- ..\data\Figure 2.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 9.06157e+06 ZNCC: 403.753 ratio: 22443.3 quality: 3
+Rect: [360 x 360 from (594, 198)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 1.43195e+07 ZNCC: 644.78 ratio: 22208.3 quality: 3
+Rect: [360 x 360 from (600, 198)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 1.05947e+07 ZNCC: 304 ratio: 34851 quality: 1
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 1.09306e+07 ZNCC: 467.788 ratio: 23366.7 quality: 3
+Rect: [360 x 360 from (612, 192)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.39947e+06 ZNCC: 401.842 ratio: 23391 quality: 2
+Rect: [360 x 360 from (630, 216)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.23617e+07 ZNCC: 470.895 ratio: 26251.5 quality: 3
+Rect: [360 x 360 from (588, 162)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05737e+07 ZNCC: 342.677 ratio: 30856.2 quality: 3
+Rect: [360 x 360 from (600, 198)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.41226e+07 ZNCC: 430.077 ratio: 32837.3 quality: 0
+Rect: [600 x 600 from (450, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 7.08354e+06 ZNCC: 325.336 ratio: 21773 quality: 2
+Rect: [360 x 360 from (636, 198)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.25786e+07 ZNCC: 498.31 ratio: 25242.5 quality: 2
+Rect: [360 x 360 from (624, 198)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.50893e+07 ZNCC: 659.981 ratio: 22863.2 quality: 3
+Rect: [360 x 360 from (600, 168)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 1.26912e+07 ZNCC: 503.985 ratio: 25181.8 quality: 2
+Rect: [360 x 360 from (600, 180)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.02982e+07 ZNCC: 271.923 ratio: 37871.6 quality: 0
+Rect: [600 x 600 from (470, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 9.65838e+06 ZNCC: 329.453 ratio: 29316.4 quality: 0
+Rect: [600 x 600 from (380, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 1.12702e+07 ZNCC: 354.663 ratio: 31777.2 quality: 0
+Rect: [600 x 600 from (570, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.28115e+07 ZNCC: 545.218 ratio: 23497.9 quality: 1
+Rect: [360 x 360 from (570, 102)]
+
+--- Over all trees selected --- ..\data\Figure 3.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.06882e+07 ZNCC: 386.529 ratio: 27651.8 quality: 0
+Rect: [360 x 360 from (552, 222)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.12151e+06 ZNCC: 381.686 ratio: 21278 quality: 0
+Rect: [360 x 360 from (354, 12)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 1.06241e+07 ZNCC: 530.34 ratio: 20032.7 quality: 0
+Rect: [360 x 360 from (528, 0)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 7.76907e+06 ZNCC: 169.393 ratio: 45864.1 quality: 0
+Rect: [600 x 600 from (440, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.90828e+06 ZNCC: 305.015 ratio: 32484.6 quality: 3
+Rect: [360 x 360 from (24, 6)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.03648e+07 ZNCC: 306.971 ratio: 33764.8 quality: 1
+Rect: [360 x 360 from (24, 108)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.41914e+07 ZNCC: 247.792 ratio: 57271.5 quality: 0
+Rect: [600 x 600 from (590, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 8.94775e+06 ZNCC: 319.468 ratio: 28008.3 quality: 0
+Rect: [360 x 360 from (246, 216)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.78045e+06 ZNCC: 325.006 ratio: 30093.1 quality: 0
+Rect: [360 x 360 from (192, 222)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.2018e+07 ZNCC: 361.482 ratio: 33246.6 quality: 0
+Rect: [360 x 360 from (78, 96)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 8.91501e+06 ZNCC: 208.014 ratio: 42857.7 quality: 0
+Rect: [600 x 600 from (550, 0)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 9.24997e+06 ZNCC: 343.381 ratio: 26937.9 quality: 0
+Rect: [360 x 360 from (366, 180)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 9.60249e+06 ZNCC: 274.018 ratio: 35043.2 quality: 0
+Rect: [360 x 360 from (144, 228)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.54582e+06 ZNCC: 308.06 ratio: 24494.6 quality: 0
+Rect: [360 x 360 from (252, 60)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 8.39844e+06 ZNCC: 335.138 ratio: 25059.7 quality: 0
+Rect: [360 x 360 from (264, 114)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 9.60743e+06 ZNCC: 204.854 ratio: 46898.9 quality: 0
+Rect: [600 x 600 from (360, 0)]
+
+--- Over all trees selected --- ..\data\Figure 4.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 7.00241e+06 ZNCC: 224.402 ratio: 31204.8 quality: 3
+Rect: [600 x 600 from (400, 0)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.21885e+07 ZNCC: 390.567 ratio: 31207.2 quality: 2
+Rect: [600 x 600 from (220, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.30385e+06 ZNCC: 437.84 ratio: 21249.4 quality: 1
+Rect: [360 x 360 from (246, 114)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.11638e+07 ZNCC: 333.93 ratio: 33431.5 quality: 3
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.83901e+07 ZNCC: 581.807 ratio: 31608.7 quality: 3
+Rect: [600 x 600 from (330, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.27229e+07 ZNCC: 344.612 ratio: 36919.6 quality: 2
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 7.96585e+06 ZNCC: 177.694 ratio: 44829.1 quality: 2
+Rect: [600 x 600 from (200, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.02509e+07 ZNCC: 328.689 ratio: 31187.4 quality: 2
+Rect: [600 x 600 from (480, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 8.24588e+06 ZNCC: 451.909 ratio: 18246.8 quality: 3
+Rect: [360 x 360 from (480, 42)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 9.85497e+06 ZNCC: 379.589 ratio: 25962.2 quality: 1
+Rect: [360 x 360 from (636, 60)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 1.09816e+07 ZNCC: 338.637 ratio: 32428.9 quality: 2
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.80582e+07 ZNCC: 556.29 ratio: 32461.9 quality: 3
+Rect: [600 x 600 from (280, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.437e+06 ZNCC: 263.866 ratio: 35764.4 quality: 1
+Rect: [600 x 600 from (480, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.36063e+07 ZNCC: 465.509 ratio: 29228.9 quality: 2
+Rect: [600 x 600 from (210, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 8.03924e+06 ZNCC: 266.225 ratio: 30197.2 quality: 2
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.05165e+07 ZNCC: 313.496 ratio: 33545.9 quality: 2
+Rect: [600 x 600 from (430, 0)]
+
+
+--- Over all trees selected --- ..\data\Figure 5.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 1.09217e+07 ZNCC: 248.949 ratio: 43871.1 quality: 3
+Rect: [600 x 600 from (400, 0)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 8.9165e+06 ZNCC: 202.758 ratio: 43976 quality: 3
+Rect: [600 x 600 from (420, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 1.11054e+07 ZNCC: 243.262 ratio: 45651.9 quality: 3
+Rect: [600 x 600 from (400, 0)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.49204e+07 ZNCC: 319.684 ratio: 46672.4 quality: 3
+Rect: [600 x 600 from (420, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.19081e+07 ZNCC: 247.312 ratio: 48150 quality: 2
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.27395e+07 ZNCC: 251.151 ratio: 50724.6 quality: 2
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.51509e+07 ZNCC: 250.121 ratio: 60574.3 quality: 2
+Rect: [600 x 600 from (450, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.79991e+07 ZNCC: 420.422 ratio: 42811.9 quality: 1
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 9.08899e+06 ZNCC: 198.663 ratio: 45750.7 quality: 2
+Rect: [600 x 600 from (210, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.38638e+07 ZNCC: 276.941 ratio: 50060.4 quality: 1
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 8.47967e+06 ZNCC: 190.32 ratio: 44554.8 quality: 1
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 9.57293e+06 ZNCC: 189.573 ratio: 50497.3 quality: 1
+Rect: [600 x 600 from (240, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.49815e+07 ZNCC: 287.987 ratio: 52021.4 quality: 1
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.4557e+07 ZNCC: 347.178 ratio: 41929.4 quality: 1
+Rect: [600 x 600 from (170, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 7.797e+06 ZNCC: 183.107 ratio: 42581.6 quality: 1
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.86342e+07 ZNCC: 404.305 ratio: 46089.5 quality: 1
+Rect: [600 x 600 from (460, 0)]
+
+--- Over all trees selected --- ..\data\Figure 6.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.18349e+07 ZNCC: 695.331 ratio: 17020.5 quality: 3
+Rect: [360 x 360 from (198, 138)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 1.07768e+07 ZNCC: 647.384 ratio: 16646.6 quality: 3
+Rect: [360 x 360 from (204, 132)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.34795e+06 ZNCC: 536.282 ratio: 17431.1 quality: 3
+Rect: [360 x 360 from (180, 132)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 7.73336e+06 ZNCC: 441.319 ratio: 17523.3 quality: 3
+Rect: [360 x 360 from (222, 132)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.69585e+06 ZNCC: 523.522 ratio: 18520.4 quality: 3
+Rect: [360 x 360 from (204, 120)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 9.18196e+06 ZNCC: 344.582 ratio: 26646.7 quality: 1
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.00313e+07 ZNCC: 433.716 ratio: 23128.8 quality: 0
+Rect: [360 x 360 from (204, 30)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.21266e+07 ZNCC: 750.009 ratio: 16168.6 quality: 0
+Rect: [360 x 360 from (270, 126)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 1.11517e+07 ZNCC: 665.407 ratio: 16759.3 quality: 3
+Rect: [360 x 360 from (180, 132)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 7.36806e+06 ZNCC: 280.179 ratio: 26297.7 quality: 0
+Rect: [600 x 600 from (10, 0)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.34618e+06 ZNCC: 491.015 ratio: 16997.8 quality: 1
+Rect: [360 x 360 from (216, 108)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 8.81091e+06 ZNCC: 470.631 ratio: 18721.5 quality: 1
+Rect: [360 x 360 from (210, 114)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 8.7127e+06 ZNCC: 331.223 ratio: 26304.6 quality: 0
+Rect: [600 x 600 from (110, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.02825e+06 ZNCC: 462.454 ratio: 15197.7 quality: 0
+Rect: [360 x 360 from (168, 102)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 1.08512e+07 ZNCC: 503.972 ratio: 21531.4 quality: 0
+Rect: [600 x 600 from (60, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 7.71431e+06 ZNCC: 438.729 ratio: 17583.3 quality: 2
+Rect: [360 x 360 from (222, 132)]
+
+--- Over all trees selected --- ..\data\Figure 7.jpg -- prato
+Number of tree detected: 13
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.90897e+06 ZNCC: 437.428 ratio: 20366.7 quality: 0
+Rect: [360 x 360 from (840, 96)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.05691e+07 ZNCC: 291.24 ratio: 36290 quality: 0
+Rect: [600 x 600 from (600, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 8.57345e+06 ZNCC: 227.673 ratio: 37656.8 quality: 0
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 7.73729e+06 ZNCC: 204.017 ratio: 37924.7 quality: 0
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.27414e+07 ZNCC: 509.701 ratio: 24997.8 quality: 0
+Rect: [360 x 360 from (828, 90)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05949e+07 ZNCC: 344.103 ratio: 30789.9 quality: 0
+Rect: [360 x 360 from (738, 24)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 9.05718e+06 ZNCC: 610.948 ratio: 14824.8 quality: 0
+Rect: [360 x 360 from (102, 72)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 1.10868e+07 ZNCC: 304.825 ratio: 36371 quality: 0
+Rect: [600 x 600 from (550, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.03578e+06 ZNCC: 328.838 ratio: 24436.9 quality: 0
+Rect: [360 x 360 from (816, 84)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.00034e+06 ZNCC: 423.105 ratio: 18908.7 quality: 0
+Rect: [360 x 360 from (702, 132)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.19665e+07 ZNCC: 292.126 ratio: 40963.5 quality: 0
+Rect: [600 x 600 from (580, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 7.48428e+06 ZNCC: 345.468 ratio: 21664.2 quality: 0
+Rect: [360 x 360 from (792, 168)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 7.4714e+06 ZNCC: 389.735 ratio: 19170.5 quality: 0
+Rect: [360 x 360 from (24, 18)]
+
+--- Over all trees selected --- ..\data\Figure 8.jpg -- montagne
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 8.11362e+06 ZNCC: 234.725 ratio: 34566.4 quality: 0
+Rect: [600 x 600 from (510, 0)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 1.17201e+07 ZNCC: 534.677 ratio: 21920 quality: 0
+Rect: [360 x 360 from (252, 78)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 8.96898e+06 ZNCC: 236.026 ratio: 38000 quality: 0
+Rect: [600 x 600 from (200, 0)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.13831e+07 ZNCC: 296.215 ratio: 38428.6 quality: 0
+Rect: [600 x 600 from (250, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.95213e+06 ZNCC: 406.294 ratio: 24494.9 quality: 0
+Rect: [360 x 360 from (222, 144)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.04795e+07 ZNCC: 270.121 ratio: 38795.5 quality: 0
+Rect: [600 x 600 from (570, 0)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.25373e+07 ZNCC: 252.661 ratio: 49620.8 quality: 0
+Rect: [600 x 600 from (130, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 9.65771e+06 ZNCC: 272.512 ratio: 35439.6 quality: 0
+Rect: [600 x 600 from (440, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 9.12581e+06 ZNCC: 250.342 ratio: 36453.4 quality: 0
+Rect: [600 x 600 from (190, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.20786e+07 ZNCC: 288.393 ratio: 41882.4 quality: 0
+Rect: [600 x 600 from (210, 0)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.03578e+07 ZNCC: 450.148 ratio: 23009.8 quality: 0
+Rect: [360 x 360 from (132, 96)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 8.50599e+06 ZNCC: 218.382 ratio: 38950 quality: 0
+Rect: [600 x 600 from (490, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.1897e+07 ZNCC: 297.831 ratio: 39945.6 quality: 0
+Rect: [600 x 600 from (470, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.5877e+07 ZNCC: 478.341 ratio: 33191.9 quality: 0
+Rect: [600 x 600 from (230, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 9.85108e+06 ZNCC: 292.62 ratio: 33665.1 quality: 0
+Rect: [600 x 600 from (70, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 9.21092e+06 ZNCC: 388.622 ratio: 23701.5 quality: 0
+Rect: [360 x 360 from (600, 90)]
+
+--- Over all trees selected --- ..\data\Figure 9.jpg -- landscape
+Number of tree detected: 7
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 7.32039e+06 ZNCC: 573.92 ratio: 12755.1 quality: 0
+Rect: [360 x 360 from (678, 204)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 7.26769e+06 ZNCC: 561.358 ratio: 12946.6 quality: 0
+Rect: [360 x 360 from (618, 6)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 5 score: 8.04237e+06 ZNCC: 631.666 ratio: 12732 quality: 0
+Rect: [300 x 300 from (545, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.3059e+06 ZNCC: 739.986 ratio: 12575.8 quality: 0
+Rect: [360 x 360 from (372, 204)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 7.13175e+06 ZNCC: 601.434 ratio: 11857.9 quality: 0
+Rect: [360 x 360 from (96, 30)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 7.53565e+06 ZNCC: 345.735 ratio: 21796 quality: 0
+Rect: [600 x 600 from (580, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 4 score: 7.22099e+06 ZNCC: 853.257 ratio: 8462.85 quality: 0
+Rect: [240 x 240 from (572, 4)]
+
+
+--select all with score > 7e+6
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 43
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 7.5688e+06 ZNCC: 568.253 ratio: 13319.4 quality: 3
+Rect: [300 x 300 from (120, 150)]
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.23186e+07 ZNCC: 792.378 ratio: 15546.3 quality: 2
+Rect: [360 x 360 from (90, 150)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 5 score: 8.5073e+06 ZNCC: 634.249 ratio: 13413.2 quality: 4
+Rect: [300 x 300 from (100, 125)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.27025e+06 ZNCC: 513.813 ratio: 16095.8 quality: 1
+Rect: [360 x 360 from (54, 132)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 5 score: 7.11837e+06 ZNCC: 418.946 ratio: 16991.1 quality: 0
+Rect: [300 x 300 from (545, 100)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 1.02389e+07 ZNCC: 455.259 ratio: 22490.2 quality: 0
+Rect: [360 x 360 from (522, 60)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 7.78719e+06 ZNCC: 367.423 ratio: 21194.1 quality: 0
+Rect: [360 x 360 from (822, 6)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 3 score: 7.58858e+06 ZNCC: 519.238 ratio: 14614.8 quality: 3
+Rect: [180 x 180 from (771, 114)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 4 score: 7.25146e+06 ZNCC: 379.33 ratio: 19116.5 quality: 4
+Rect: [240 x 240 from (752, 104)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 8.71554e+06 ZNCC: 597.222 ratio: 14593.5 quality: 1
+Rect: [300 x 300 from (155, 135)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 1.1344e+07 ZNCC: 656.863 ratio: 17270 quality: 1
+Rect: [360 x 360 from (84, 150)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 9.60905e+06 ZNCC: 281.222 ratio: 34168.9 quality: 0
+Rect: [600 x 600 from (280, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 7.07092e+06 ZNCC: 374.133 ratio: 18899.5 quality: 0
+Rect: [240 x 240 from (632, 112)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 5 score: 8.4697e+06 ZNCC: 371.924 ratio: 22772.7 quality: 2
+Rect: [300 x 300 from (770, 75)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.08549e+07 ZNCC: 405.088 ratio: 26796.5 quality: 2
+Rect: [360 x 360 from (726, 30)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 4 score: 7.03505e+06 ZNCC: 307.606 ratio: 22870.3 quality: 1
+Rect: [240 x 240 from (692, 144)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 8.06423e+06 ZNCC: 293.173 ratio: 27506.7 quality: 1
+Rect: [300 x 300 from (630, 35)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 8.16361e+06 ZNCC: 278.12 ratio: 29352.8 quality: 0
+Rect: [360 x 360 from (516, 72)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 7.44491e+06 ZNCC: 167.053 ratio: 44566.2 quality: 0
+Rect: [600 x 600 from (330, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 4 score: 8.18006e+06 ZNCC: 486.885 ratio: 16800.8 quality: 0
+Rect: [240 x 240 from (652, 128)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 8.07903e+06 ZNCC: 411.336 ratio: 19640.9 quality: 0
+Rect: [300 x 300 from (590, 85)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.00174e+07 ZNCC: 449.978 ratio: 22262 quality: 0
+Rect: [360 x 360 from (546, 42)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 7.92565e+06 ZNCC: 715.039 ratio: 11084.2 quality: 0
+Rect: [300 x 300 from (795, 280)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.95246e+06 ZNCC: 633.868 ratio: 15701.2 quality: 1
+Rect: [360 x 360 from (72, 156)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 4 score: 7.02197e+06 ZNCC: 368.8 ratio: 19040.1 quality: 0
+Rect: [240 x 240 from (644, 132)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 7.98536e+06 ZNCC: 417.127 ratio: 19143.7 quality: 0
+Rect: [300 x 300 from (835, 90)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.96335e+06 ZNCC: 381.855 ratio: 23473.2 quality: 0
+Rect: [360 x 360 from (816, 24)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 4 score: 8.08373e+06 ZNCC: 475.439 ratio: 17002.7 quality: 4
+Rect: [240 x 240 from (720, 64)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 7.17815e+06 ZNCC: 356.814 ratio: 20117.4 quality: 0
+Rect: [300 x 300 from (725, 130)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.39322e+06 ZNCC: 374.428 ratio: 22416.1 quality: 0
+Rect: [360 x 360 from (534, 108)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 3 score: 8.52187e+06 ZNCC: 593.172 ratio: 14366.6 quality: 3
+Rect: [180 x 180 from (768, 105)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 4 score: 7.6705e+06 ZNCC: 406.244 ratio: 18881.5 quality: 3
+Rect: [240 x 240 from (744, 68)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 8.17206e+06 ZNCC: 542.068 ratio: 15075.7 quality: 2
+Rect: [300 x 300 from (90, 135)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 8.67088e+06 ZNCC: 333.805 ratio: 25975.9 quality: 0
+Rect: [360 x 360 from (714, 108)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 4 score: 7.03796e+06 ZNCC: 362.362 ratio: 19422.5 quality: 0
+Rect: [240 x 240 from (684, 128)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 5 score: 8.15582e+06 ZNCC: 385.898 ratio: 21134.6 quality: 0
+Rect: [300 x 300 from (655, 165)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 1.00549e+07 ZNCC: 390.478 ratio: 25750.2 quality: 2
+Rect: [360 x 360 from (762, 48)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.92789e+06 ZNCC: 265.169 ratio: 37439.8 quality: 0
+Rect: [600 x 600 from (410, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.56501e+06 ZNCC: 417.845 ratio: 18104.8 quality: 0
+Rect: [360 x 360 from (828, 48)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 7.95074e+06 ZNCC: 366.464 ratio: 21695.8 quality: 1
+Rect: [360 x 360 from (642, 54)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 7.60769e+06 ZNCC: 257.408 ratio: 29555 quality: 0
+Rect: [600 x 600 from (290, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 9.51411e+06 ZNCC: 525.529 ratio: 18103.9 quality: 0
+Rect: [300 x 300 from (550, 40)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 8.09398e+06 ZNCC: 491.95 ratio: 16452.8 quality: 1
+Rect: [360 x 360 from (102, 144)]
+
+--- Over all trees selected --- ..\data\Figure 2.jpg
+Number of tree detected: 44
+Tree - ../data/cannyTemplate/t0.jpg scale: 4 score: 7.11001e+06 ZNCC: 475.197 ratio: 14962.2 quality: 2
+Rect: [240 x 240 from (700, 228)]
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 9.43276e+06 ZNCC: 454.821 ratio: 20739.5 quality: 4
+Rect: [300 x 300 from (640, 200)]
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 9.06157e+06 ZNCC: 403.753 ratio: 22443.3 quality: 2
+Rect: [360 x 360 from (594, 198)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 5 score: 9.8329e+06 ZNCC: 477.089 ratio: 20610.2 quality: 3
+Rect: [300 x 300 from (640, 195)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 1.43195e+07 ZNCC: 644.78 ratio: 22208.3 quality: 2
+Rect: [360 x 360 from (600, 198)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 5 score: 1.07818e+07 ZNCC: 507.284 ratio: 21254 quality: 3
+Rect: [300 x 300 from (630, 200)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.73104e+06 ZNCC: 413.177 ratio: 23551.8 quality: 1
+Rect: [360 x 360 from (582, 192)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 1.05947e+07 ZNCC: 304 ratio: 34851 quality: 1
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 5 score: 9.10546e+06 ZNCC: 416.27 ratio: 21873.9 quality: 4
+Rect: [300 x 300 from (650, 180)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 1.09306e+07 ZNCC: 467.788 ratio: 23366.7 quality: 1
+Rect: [360 x 360 from (612, 192)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 5 score: 7.80132e+06 ZNCC: 427.239 ratio: 18259.9 quality: 0
+Rect: [300 x 300 from (495, 290)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.39947e+06 ZNCC: 401.842 ratio: 23391 quality: 1
+Rect: [360 x 360 from (630, 216)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 8.24359e+06 ZNCC: 561.686 ratio: 14676.5 quality: 1
+Rect: [240 x 240 from (628, 252)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 5 score: 1.08491e+07 ZNCC: 585.914 ratio: 18516.5 quality: 0
+Rect: [300 x 300 from (400, 210)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.23617e+07 ZNCC: 470.895 ratio: 26251.5 quality: 1
+Rect: [360 x 360 from (588, 162)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 4 score: 7.10272e+06 ZNCC: 352.963 ratio: 20123.1 quality: 1
+Rect: [240 x 240 from (768, 260)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 7.52064e+06 ZNCC: 308.2 ratio: 24401.8 quality: 0
+Rect: [300 x 300 from (480, 160)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05737e+07 ZNCC: 342.677 ratio: 30856.2 quality: 1
+Rect: [360 x 360 from (600, 198)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 4 score: 7.51637e+06 ZNCC: 645.673 ratio: 11641.1 quality: 0
+Rect: [240 x 240 from (544, 268)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 8.85566e+06 ZNCC: 470.252 ratio: 18831.7 quality: 1
+Rect: [300 x 300 from (730, 225)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.33857e+07 ZNCC: 594.848 ratio: 22502.7 quality: 1
+Rect: [360 x 360 from (594, 186)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.41226e+07 ZNCC: 430.077 ratio: 32837.3 quality: 0
+Rect: [600 x 600 from (450, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 7.31483e+06 ZNCC: 357.958 ratio: 20434.9 quality: 2
+Rect: [300 x 300 from (630, 210)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 7.08354e+06 ZNCC: 325.336 ratio: 21773 quality: 1
+Rect: [360 x 360 from (636, 198)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 1.10082e+07 ZNCC: 460.988 ratio: 23879.6 quality: 2
+Rect: [300 x 300 from (665, 205)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.25786e+07 ZNCC: 498.31 ratio: 25242.5 quality: 1
+Rect: [360 x 360 from (624, 198)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 9.88627e+06 ZNCC: 528.057 ratio: 18722 quality: 1
+Rect: [300 x 300 from (595, 235)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.50893e+07 ZNCC: 659.981 ratio: 22863.2 quality: 2
+Rect: [360 x 360 from (600, 168)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 7.39329e+06 ZNCC: 315.837 ratio: 23408.6 quality: 3
+Rect: [300 x 300 from (655, 210)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 1.26912e+07 ZNCC: 503.985 ratio: 25181.8 quality: 1
+Rect: [360 x 360 from (600, 180)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 4 score: 7.90774e+06 ZNCC: 531.125 ratio: 14888.7 quality: 0
+Rect: [240 x 240 from (824, 328)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 5 score: 7.84182e+06 ZNCC: 336.847 ratio: 23280 quality: 2
+Rect: [300 x 300 from (625, 195)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 9.53801e+06 ZNCC: 413.944 ratio: 23041.8 quality: 1
+Rect: [360 x 360 from (414, 180)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.02982e+07 ZNCC: 271.923 ratio: 37871.6 quality: 0
+Rect: [600 x 600 from (470, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 5 score: 9.12374e+06 ZNCC: 482.913 ratio: 18893.1 quality: 3
+Rect: [300 x 300 from (660, 160)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 9.09649e+06 ZNCC: 452.701 ratio: 20093.8 quality: 0
+Rect: [360 x 360 from (618, 180)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 9.65838e+06 ZNCC: 329.453 ratio: 29316.4 quality: 0
+Rect: [600 x 600 from (380, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 8.76168e+06 ZNCC: 478.916 ratio: 18294.8 quality: 1
+Rect: [300 x 300 from (695, 220)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 1.24743e+07 ZNCC: 617.571 ratio: 20199.1 quality: 0
+Rect: [360 x 360 from (648, 198)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 1.12702e+07 ZNCC: 354.663 ratio: 31777.2 quality: 0
+Rect: [600 x 600 from (570, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 3 score: 7.0647e+06 ZNCC: 607.972 ratio: 11620.1 quality: 0
+Rect: [180 x 180 from (855, 264)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 4 score: 1.12729e+07 ZNCC: 687.634 ratio: 16393.7 quality: 2
+Rect: [240 x 240 from (700, 192)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 1.09687e+07 ZNCC: 499.74 ratio: 21948.8 quality: 3
+Rect: [300 x 300 from (640, 180)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.28115e+07 ZNCC: 545.218 ratio: 23497.9 quality: 0
+Rect: [360 x 360 from (570, 102)]
+
+--- Over all trees selected --- ..\data\Figure 7.jpg
+Number of tree detected: 28
+Tree - ../data/cannyTemplate/t0.jpg scale: 4 score: 7.42666e+06 ZNCC: 593.106 ratio: 12521.6 quality: 0
+Rect: [240 x 240 from (788, 176)]
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.90897e+06 ZNCC: 437.428 ratio: 20366.7 quality: 0
+Rect: [360 x 360 from (840, 96)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.3376e+06 ZNCC: 567.435 ratio: 14693.5 quality: 0
+Rect: [360 x 360 from (90, 102)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.05691e+07 ZNCC: 291.24 ratio: 36290 quality: 0
+Rect: [600 x 600 from (600, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 7.80144e+06 ZNCC: 384.852 ratio: 20271.3 quality: 0
+Rect: [360 x 360 from (840, 114)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 8.57345e+06 ZNCC: 227.673 ratio: 37656.8 quality: 0
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 8.84924e+06 ZNCC: 451.247 ratio: 19610.6 quality: 0
+Rect: [360 x 360 from (756, 192)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 7.73729e+06 ZNCC: 204.017 ratio: 37924.7 quality: 0
+Rect: [600 x 600 from (460, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 4 score: 7.02045e+06 ZNCC: 482.896 ratio: 14538.2 quality: 0
+Rect: [240 x 240 from (804, 172)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 5 score: 9.61132e+06 ZNCC: 503.921 ratio: 19073.1 quality: 0
+Rect: [300 x 300 from (755, 125)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.27414e+07 ZNCC: 509.701 ratio: 24997.8 quality: 0
+Rect: [360 x 360 from (828, 90)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 5 score: 8.161e+06 ZNCC: 458.421 ratio: 17802.4 quality: 0
+Rect: [300 x 300 from (155, 130)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05949e+07 ZNCC: 344.103 ratio: 30789.9 quality: 0
+Rect: [360 x 360 from (738, 24)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 9.00382e+06 ZNCC: 696.483 ratio: 12927.5 quality: 0
+Rect: [300 x 300 from (185, 110)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 9.05718e+06 ZNCC: 610.948 ratio: 14824.8 quality: 0
+Rect: [360 x 360 from (102, 72)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 7.54723e+06 ZNCC: 471.964 ratio: 15991.1 quality: 0
+Rect: [360 x 360 from (36, 54)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 1.10868e+07 ZNCC: 304.825 ratio: 36371 quality: 0
+Rect: [600 x 600 from (550, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.03578e+06 ZNCC: 328.838 ratio: 24436.9 quality: 0
+Rect: [360 x 360 from (816, 84)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 5 score: 7.86344e+06 ZNCC: 469.371 ratio: 16753.1 quality: 0
+Rect: [300 x 300 from (775, 150)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.00034e+06 ZNCC: 423.105 ratio: 18908.7 quality: 0
+Rect: [360 x 360 from (702, 132)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 5 score: 7.21832e+06 ZNCC: 414.562 ratio: 17411.9 quality: 0
+Rect: [300 x 300 from (700, 190)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 1.06112e+07 ZNCC: 507.851 ratio: 20894.3 quality: 0
+Rect: [360 x 360 from (720, 162)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.19665e+07 ZNCC: 292.126 ratio: 40963.5 quality: 0
+Rect: [600 x 600 from (580, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 5 score: 7.20871e+06 ZNCC: 382.867 ratio: 18828.2 quality: 0
+Rect: [300 x 300 from (750, 140)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 7.48428e+06 ZNCC: 345.468 ratio: 21664.2 quality: 0
+Rect: [360 x 360 from (792, 168)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 4 score: 8.37674e+06 ZNCC: 733.033 ratio: 11427.5 quality: 0
+Rect: [240 x 240 from (200, 116)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 1.01907e+07 ZNCC: 722.947 ratio: 14096.1 quality: 0
+Rect: [300 x 300 from (40, 45)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 7.4714e+06 ZNCC: 389.735 ratio: 19170.5 quality: 0
+Rect: [360 x 360 from (24, 18)]
+
+
+-- max score + ((selectTree.score > 7e+6) && (selectTree.zncc < 500))
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 11
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 1.02389e+07 ZNCC: 455.259 ratio: 22490.2 quality: 0
+Rect: [360 x 360 from (522, 60)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 7.78719e+06 ZNCC: 367.423 ratio: 21194.1 quality: 0
+Rect: [360 x 360 from (822, 6)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.08549e+07 ZNCC: 405.088 ratio: 26796.5 quality: 1
+Rect: [360 x 360 from (726, 30)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 8.16361e+06 ZNCC: 278.12 ratio: 29352.8 quality: 0
+Rect: [360 x 360 from (516, 72)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.00174e+07 ZNCC: 449.978 ratio: 22262 quality: 0
+Rect: [360 x 360 from (546, 42)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.96335e+06 ZNCC: 381.855 ratio: 23473.2 quality: 0
+Rect: [360 x 360 from (816, 24)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.39322e+06 ZNCC: 374.428 ratio: 22416.1 quality: 0
+Rect: [360 x 360 from (534, 108)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 8.67088e+06 ZNCC: 333.805 ratio: 25975.9 quality: 2
+Rect: [360 x 360 from (714, 108)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 1.00549e+07 ZNCC: 390.478 ratio: 25750.2 quality: 1
+Rect: [360 x 360 from (762, 48)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 7.56501e+06 ZNCC: 417.845 ratio: 18104.8 quality: 1
+Rect: [360 x 360 from (828, 48)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 7.95074e+06 ZNCC: 366.464 ratio: 21695.8 quality: 0
+Rect: [360 x 360 from (642, 54)]
+
+--- Over all trees selected --- ..\data\Figure 2.jpg
+Number of tree detected: 10
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 9.43276e+06 ZNCC: 454.821 ratio: 20739.5 quality: 4
+Rect: [300 x 300 from (640, 200)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 1.09306e+07 ZNCC: 467.788 ratio: 23366.7 quality: 2
+Rect: [360 x 360 from (612, 192)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.39947e+06 ZNCC: 401.842 ratio: 23391 quality: 2
+Rect: [360 x 360 from (630, 216)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.23617e+07 ZNCC: 470.895 ratio: 26251.5 quality: 3
+Rect: [360 x 360 from (588, 162)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05737e+07 ZNCC: 342.677 ratio: 30856.2 quality: 2
+Rect: [360 x 360 from (600, 198)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.41226e+07 ZNCC: 430.077 ratio: 32837.3 quality: 0
+Rect: [600 x 600 from (450, 0)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 7.31483e+06 ZNCC: 357.958 ratio: 20434.9 quality: 2
+Rect: [300 x 300 from (630, 210)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.25786e+07 ZNCC: 498.31 ratio: 25242.5 quality: 2
+Rect: [360 x 360 from (624, 198)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.02982e+07 ZNCC: 271.923 ratio: 37871.6 quality: 0
+Rect: [600 x 600 from (470, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 9.65838e+06 ZNCC: 329.453 ratio: 29316.4 quality: 0
+Rect: [600 x 600 from (380, 0)]
+
+--- Over all trees selected --- ..\data\Figure 3.jpg
+Number of tree detected: 15
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 1.06882e+07 ZNCC: 386.529 ratio: 27651.8 quality: 0
+Rect: [360 x 360 from (552, 222)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.12151e+06 ZNCC: 381.686 ratio: 21278 quality: 0
+Rect: [360 x 360 from (354, 12)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 9.57567e+06 ZNCC: 314.992 ratio: 30399.7 quality: 0
+Rect: [360 x 360 from (570, 222)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.90828e+06 ZNCC: 305.015 ratio: 32484.6 quality: 3
+Rect: [360 x 360 from (24, 6)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.03648e+07 ZNCC: 306.971 ratio: 33764.8 quality: 0
+Rect: [360 x 360 from (24, 108)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.41914e+07 ZNCC: 247.792 ratio: 57271.5 quality: 1
+Rect: [600 x 600 from (590, 0)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 8.94775e+06 ZNCC: 319.468 ratio: 28008.3 quality: 0
+Rect: [360 x 360 from (246, 216)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 9.78045e+06 ZNCC: 325.006 ratio: 30093.1 quality: 0
+Rect: [360 x 360 from (192, 222)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.2018e+07 ZNCC: 361.482 ratio: 33246.6 quality: 0
+Rect: [360 x 360 from (78, 96)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.06127e+07 ZNCC: 341.725 ratio: 31056.3 quality: 0
+Rect: [360 x 360 from (198, 174)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 9.24997e+06 ZNCC: 343.381 ratio: 26937.9 quality: 0
+Rect: [360 x 360 from (366, 180)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 5 score: 1.02233e+07 ZNCC: 341.108 ratio: 29970.8 quality: 0
+Rect: [300 x 300 from (145, 155)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 5 score: 8.50419e+06 ZNCC: 354.87 ratio: 23964.2 quality: 0
+Rect: [300 x 300 from (130, 140)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 8.39844e+06 ZNCC: 335.138 ratio: 25059.7 quality: 0
+Rect: [360 x 360 from (264, 114)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 1.04272e+07 ZNCC: 333.877 ratio: 31230.8 quality: 0
+Rect: [360 x 360 from (576, 228)]
+
+--- Over all trees selected --- ..\data\Figure 4.jpg
+Number of tree detected: 14
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 8.68839e+06 ZNCC: 440.188 ratio: 19737.9 quality: 0
+Rect: [300 x 300 from (240, 135)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.21885e+07 ZNCC: 390.567 ratio: 31207.2 quality: 1
+Rect: [600 x 600 from (220, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 9.30385e+06 ZNCC: 437.84 ratio: 21249.4 quality: 0
+Rect: [360 x 360 from (246, 114)]
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.11638e+07 ZNCC: 333.93 ratio: 33431.5 quality: 2
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.27229e+07 ZNCC: 344.612 ratio: 36919.6 quality: 2
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.04088e+07 ZNCC: 346.406 ratio: 30048.1 quality: 1
+Rect: [360 x 360 from (18, 60)]
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 1.07432e+07 ZNCC: 498.078 ratio: 21569.4 quality: 1
+Rect: [360 x 360 from (0, 120)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 8.61089e+06 ZNCC: 462.152 ratio: 18632.2 quality: 0
+Rect: [300 x 300 from (280, 100)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 9.85497e+06 ZNCC: 379.589 ratio: 25962.2 quality: 1
+Rect: [360 x 360 from (636, 60)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 1.09816e+07 ZNCC: 338.637 ratio: 32428.9 quality: 1
+Rect: [600 x 600 from (430, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 1.0307e+07 ZNCC: 433.326 ratio: 23785.8 quality: 0
+Rect: [360 x 360 from (732, 186)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.36063e+07 ZNCC: 465.509 ratio: 29228.9 quality: 2
+Rect: [600 x 600 from (210, 0)]
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 1.01719e+07 ZNCC: 484.669 ratio: 20987.3 quality: 0
+Rect: [360 x 360 from (150, 126)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.05165e+07 ZNCC: 313.496 ratio: 33545.9 quality: 1
+Rect: [600 x 600 from (430, 0)]
+
+--- Over all trees selected --- ..\data\Figure 7.jpg -- prato
+Number of tree detected: 10
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 8.90897e+06 ZNCC: 437.428 ratio: 20366.7 quality: 0
+Rect: [360 x 360 from (840, 96)]
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.05691e+07 ZNCC: 291.24 ratio: 36290 quality: 0
+Rect: [600 x 600 from (600, 0)]
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 8.57345e+06 ZNCC: 227.673 ratio: 37656.8 quality: 0
+Rect: [600 x 600 from (540, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 8.84924e+06 ZNCC: 451.247 ratio: 19610.6 quality: 0
+Rect: [360 x 360 from (756, 192)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.05949e+07 ZNCC: 344.103 ratio: 30789.9 quality: 0
+Rect: [360 x 360 from (738, 24)]
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 1.10868e+07 ZNCC: 304.825 ratio: 36371 quality: 0
+Rect: [600 x 600 from (550, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.03578e+06 ZNCC: 328.838 ratio: 24436.9 quality: 0
+Rect: [360 x 360 from (816, 84)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.00034e+06 ZNCC: 423.105 ratio: 18908.7 quality: 0
+Rect: [360 x 360 from (702, 132)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.19665e+07 ZNCC: 292.126 ratio: 40963.5 quality: 0
+Rect: [600 x 600 from (580, 0)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 7.48428e+06 ZNCC: 345.468 ratio: 21664.2 quality: 0
+Rect: [360 x 360 from (792, 168)]
+
+--- Over all trees selected --- ..\data\Figure 8.jpg
+Number of tree detected: 10
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.13831e+07 ZNCC: 296.215 ratio: 38428.6 quality: 0
+Rect: [600 x 600 from (250, 0)]
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 9.95213e+06 ZNCC: 406.294 ratio: 24494.9 quality: 0
+Rect: [360 x 360 from (222, 144)]
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.12233e+07 ZNCC: 476.924 ratio: 23532.6 quality: 0
+Rect: [360 x 360 from (282, 24)]
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.25373e+07 ZNCC: 252.661 ratio: 49620.8 quality: 0
+Rect: [600 x 600 from (130, 0)]
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.20786e+07 ZNCC: 288.393 ratio: 41882.4 quality: 0
+Rect: [600 x 600 from (210, 0)]
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.03578e+07 ZNCC: 450.148 ratio: 23009.8 quality: 0
+Rect: [360 x 360 from (132, 96)]
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 1.04217e+07 ZNCC: 427.93 ratio: 24353.8 quality: 0
+Rect: [360 x 360 from (282, 78)]
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.1897e+07 ZNCC: 297.831 ratio: 39945.6 quality: 0
+Rect: [600 x 600 from (470, 0)]
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.5877e+07 ZNCC: 478.341 ratio: 33191.9 quality: 0
+Rect: [600 x 600 from (230, 0)]
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 9.50873e+06 ZNCC: 489.887 ratio: 19410 quality: 0
+Rect: [300 x 300 from (225, 45)]
+
