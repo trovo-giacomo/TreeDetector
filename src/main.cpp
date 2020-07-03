@@ -24,6 +24,8 @@ struct treeData {
 	double scale, score, zncc;
 	int qlt; //quality of the matching [0,4]
 	Rect rect;
+	int numOverlRect;
+	double scoreOverlRect;
 };
 
 void equalize(Mat inputImg, Mat &inputEqualized);
@@ -168,15 +170,20 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 			struct treeData data;	
 			data.fileName = files[j];
 			numMatches = slidingWindow(temp, scales[i], data);
-			treeDataScales.push_back(data);
+			//treeDataScales.push_back(data);
+			double sc = data.scale;
+			Rect treeWindow(data.rect.x*sc, data.rect.y*sc, data.rect.width*sc, data.rect.height*sc);
+			data.rect = treeWindow;
+			//add every rectangle to an vector in order to count how many overlapping rectangle there are for each one
+			treesDetected.push_back(data);
 
 		}
 		treeData selectTree;
 		//Select trees according to the highest score
-		selectTree.score = 0;
-		for (treeData td : treeDataScales) {
-			if (td.score > selectTree.score) selectTree = td;
-		}
+		//selectTree.score = 0;
+		/*for (treeData td : treeDataScales) {
+			//if (td.score > selectTree.score) selectTree = td;
+		}*/
 		//treesDetected.push_back(selectTree);
 		//Select trees according to the lower ZNCC
 		/*selectTree.zncc = DBL_MAX;
@@ -192,7 +199,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		}*/
 		//if(selectTree.fileName != "") treesDetected.push_back(selectTree);
 
-		if ((selectTree.score > 7e+6) && (selectTree.zncc < 500)) treesDetected.push_back(selectTree);
+		//if ((selectTree.score > 7e+6) && (selectTree.zncc < 500)) treesDetected.push_back(selectTree);
 	
 		cout << "ended" << endl << endl;
 		//waitKey(1);
@@ -220,7 +227,8 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		}
 		cout << endl;
 	}*/
-	for (int i = 0; i < treesDetected.size(); i++) {
+	//visulalize better rectangle and assign each a score
+	/*for (int i = 0; i < treesDetected.size(); i++) {
 		Mat t;
 		inputImg.copyTo(t);
 
@@ -237,6 +245,27 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		cout << "Rect: " << treeWindow << endl;
 
 
+	}*/
+
+	//count for each rectangle number of overlapping rectangle comparing its central points
+	for (int i = 0; i < treesDetected.size(); i++) {
+		Point *center = new Point((treesDetected[i].rect.x+ treesDetected[i].rect.width)/2, (treesDetected[i].rect.y + treesDetected[i].rect.height) / 2);
+		for (int j = 0; j < treesDetected.size(); j++) {
+			//compare if the center of the current rectangle i is contained in the rectangle 
+			if (treesDetected[j].rect.contains(*center) && i != j) {
+				treesDetected[i].numOverlRect++;
+				treesDetected[i].scoreOverlRect += (1 / treesDetected[j].scale);
+			}
+		}
+		Mat t;
+		inputImg.copyTo(t);
+		rectangle(t, treesDetected[i].rect, Scalar(125), 2);
+		namedWindow("Final detection", WINDOW_NORMAL);
+		imshow("Final detection", t);
+		int k = waitKey(0);
+		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
+		printTreeData(treesDetected[i]);
+		
 	}
 	waitKey(0);
 	return treesDetected;
@@ -389,6 +418,7 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 
 void printTreeData(treeData data){
 	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score/data.zncc) << " quality: " << data.qlt << endl;
+	cout << "Rect: " << data.rect << " Overlapping rectangle: " << data.numOverlRect << " Score overlapping rect: " << data.scoreOverlRect <<  endl;
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {
