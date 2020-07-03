@@ -97,6 +97,8 @@ int main(int argc, char* argv[]) {
 	vector<treeData> selectTrees = searchTemplateCanny(inputImg, "../data/cannyTemplate/");
 	//selectTrees = refineWithFeatureMatching(inputImg, "../data/template3/", selectTrees);
 	//extractFeatures();
+
+	destroyAllWindows();
 	
 	return 0;
 }
@@ -170,19 +172,50 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 			struct treeData data;	
 			data.fileName = files[j];
 			numMatches = slidingWindow(temp, scales[i], data);
-			//treeDataScales.push_back(data);
+			
 			double sc = data.scale;
 			Rect treeWindow(data.rect.x*sc, data.rect.y*sc, data.rect.width*sc, data.rect.height*sc);
 			data.rect = treeWindow;
 			//add every rectangle to an vector in order to count how many overlapping rectangle there are for each one
+			//treeDataScales.push_back(data);
 			treesDetected.push_back(data);
-
 		}
+		//count how many rectangle are ovelapping for the the same template image in different scales
+		/*Mat t;
+		inputImg.copyTo(t);
+		for (int i = 0; i < treeDataScales.size(); i++) {
+			int cx = treeDataScales[i].rect.x + (treeDataScales[i].rect.width / 2.0);
+			int cy = treeDataScales[i].rect.y + (treeDataScales[i].rect.height / 2.0);
+			Point center = Point(cx, cy);
+			cout << "x: " << treeDataScales[i].rect.x << " y: " << treeDataScales[i].rect.y << " w: " << treeDataScales[i].rect.width << " h: " << treeDataScales[i].rect.height << endl;
+			treeDataScales[i].numOverlRect = 0;
+			treeDataScales[i].scoreOverlRect = 0.0;
+			for (int j = 0; j < treeDataScales.size(); j++) {
+				//compare if the center of the current rectangle i is contained in the rectangle 
+				if ((treeDataScales[j].rect.contains(center)) && (i != j)) {
+					treeDataScales[i].numOverlRect++;
+					treeDataScales[i].scoreOverlRect += (1 / treeDataScales[j].scale);
+				}
+			}
+			//treesDetected[i].scoreOverlRect /= treesDetected[i].scale;
+			//if(treesDetected[i].score[i] )
+			
+			circle(t, center, 3, Scalar(50),2);
+			cout << "Center: " << center << endl;
+			rectangle(t, treeDataScales[i].rect, Scalar(125), 2);
+			namedWindow("Final detection", WINDOW_NORMAL);
+			imshow("Final detection", t);
+			int k = waitKey(0);
+			treeDataScales[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
+			printTreeData(treeDataScales[i]);
+
+		}*/
+
 		treeData selectTree;
 		//Select trees according to the highest score
-		//selectTree.score = 0;
-		/*for (treeData td : treeDataScales) {
-			//if (td.score > selectTree.score) selectTree = td;
+		/*selectTree.score = 0;
+		for (treeData td : treeDataScales) {
+			if (td.score > selectTree.score) selectTree = td;
 		}*/
 		//treesDetected.push_back(selectTree);
 		//Select trees according to the lower ZNCC
@@ -249,22 +282,31 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 
 	//count for each rectangle number of overlapping rectangle comparing its central points
 	for (int i = 0; i < treesDetected.size(); i++) {
-		Point *center = new Point((treesDetected[i].rect.x+ treesDetected[i].rect.width)/2, (treesDetected[i].rect.y + treesDetected[i].rect.height) / 2);
+		int cx = treesDetected[i].rect.x + (treesDetected[i].rect.width / 2.0);
+		int cy = treesDetected[i].rect.y + (treesDetected[i].rect.height / 2.0);
+		Point center = Point(cx, cy);
+		treesDetected[i].numOverlRect = 0;
+		treesDetected[i].scoreOverlRect = 0.0;
 		for (int j = 0; j < treesDetected.size(); j++) {
 			//compare if the center of the current rectangle i is contained in the rectangle 
-			if (treesDetected[j].rect.contains(*center) && i != j) {
+			if (treesDetected[j].rect.contains(center) && i != j) {
 				treesDetected[i].numOverlRect++;
 				treesDetected[i].scoreOverlRect += (1 / treesDetected[j].scale);
 			}
 		}
-		Mat t;
-		inputImg.copyTo(t);
-		rectangle(t, treesDetected[i].rect, Scalar(125), 2);
-		namedWindow("Final detection", WINDOW_NORMAL);
-		imshow("Final detection", t);
-		int k = waitKey(0);
-		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
-		printTreeData(treesDetected[i]);
+		//treesDetected[i].scoreOverlRect /= treesDetected[i].scale;
+		if (treesDetected[i].scoreOverlRect > 150) {
+			Mat t;
+			inputImg.copyTo(t);
+			circle(t, center, 1, Scalar(50), 2);
+			rectangle(t, treesDetected[i].rect, Scalar(125), 2);
+			namedWindow("Final detection", WINDOW_NORMAL);
+			imshow("Final detection", t);
+			int k = waitKey(0);
+			treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
+			printTreeData(treesDetected[i]);
+		}
+		
 		
 	}
 	waitKey(0);
