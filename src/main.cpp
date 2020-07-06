@@ -11,6 +11,11 @@
 
 #define WIN_ROWS 60
 #define WIN_COLS 60
+/* Definition of status code for the finite state machine for the post-processing template matching results */
+#define S_UNKNOWN 0 
+#define S_FST_MTD 1
+#define S_SND_MTD 2
+
 
 using namespace std;
 using namespace cv;
@@ -27,6 +32,7 @@ struct treeData {
 	int numOverlRect;
 	double scoreOverlRect;
 };
+int status = S_UNKNOWN;
 
 void equalize(Mat inputImg, Mat &inputEqualized);
 void watershedSegmentation(Mat img, Mat &segmentedImg);
@@ -46,6 +52,7 @@ void computeCanny(int, void* data);
 vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees);
 double zncc(Mat inputRect, Mat templ);
 double avgZncc(Mat inputRect, string templPath);
+void visualizeResults(vector<treeData> selectTrees, Mat inputImg);
 
 
 //double computeZNCC(Mat img, Mat templImg);
@@ -95,6 +102,7 @@ int main(int argc, char* argv[]) {
 	//find canny parameter
 	//findCanny(inputImg, "../data/template3/");
 	vector<treeData> selectTrees = searchTemplateCanny(inputImg, "../data/cannyTemplate/");
+	visualizeResults(selectTrees, inputImg);
 	//selectTrees = refineWithFeatureMatching(inputImg, "../data/template3/", selectTrees);
 	//extractFeatures();
 
@@ -166,7 +174,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		double ratioSel = 0;
 
 		for (int i = 0; i < scales.size(); i++) {
-			cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << endl;
+			//cout << "Sliding win file " << files[j] << " - scale: " << scales[i] << endl;
 			Mat temp;
 			inputImg.copyTo(temp);
 			struct treeData data;	
@@ -177,8 +185,8 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 			Rect treeWindow(data.rect.x*sc, data.rect.y*sc, data.rect.width*sc, data.rect.height*sc);
 			data.rect = treeWindow;
 			//add every rectangle to an vector in order to count how many overlapping rectangle there are for each one
-			//treeDataScales.push_back(data);
-			treesDetected.push_back(data);
+			treeDataScales.push_back(data);
+			//treesDetected.push_back(data);
 		}
 		//count how many rectangle are ovelapping for the the same template image in different scales
 		/*Mat t;
@@ -212,18 +220,24 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		}*/
 
 		treeData selectTree;
-		//Select trees according to the highest score
-		/*selectTree.score = 0;
+		///Select trees according to the highest score
+		selectTree.score = 0;
 		for (treeData td : treeDataScales) {
 			if (td.score > selectTree.score) selectTree = td;
-		}*/
+		}
 		//treesDetected.push_back(selectTree);
-		//Select trees according to the lower ZNCC
+		///Select trees according to the lower ZNCC
 		/*selectTree.zncc = DBL_MAX;
 		for (treeData td : treeDataScales) {
 			if (td.zncc < selectTree.zncc) selectTree = td;
-		}
-		treesDetected.push_back(selectTree);*/
+		}*/
+		///Select according to the highest ratio - not working at all! -> select only scale 10 rectangles
+		/*double ratio = DBL_MAX;
+		for (treeData td : treeDataScales) {
+			double r = td.score / td.zncc;
+			if (r < ratio) selectTree = td;
+		}*/
+		treesDetected.push_back(selectTree);
 
 		//Select trees according to the ratio score/zncc
 		/*for (treeData td : treeDataScales) {
@@ -237,8 +251,8 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		cout << "ended" << endl << endl;
 		//waitKey(1);
 	}
-	cout << "--- Over all trees selected --- " <<  inputImageName << endl;
-	cout << "Number of tree detected: " << treesDetected.size() << endl;
+	//cout << "--- Over all trees selected --- " <<  inputImageName << endl;
+	//cout << "Number of tree detected: " << treesDetected.size() << endl;
 	Size originalSize = inputImg.size();
 	/*for (int j = 0; j < 5; j++) {
 		cout << "Quality: " << j << endl;
@@ -281,6 +295,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 	}*/
 
 	//count for each rectangle number of overlapping rectangle comparing its central points
+	vector<treeData> fst_mtd_trees, snd_mtd_trees;
 	for (int i = 0; i < treesDetected.size(); i++) {
 		int cx = treesDetected[i].rect.x + (treesDetected[i].rect.width / 2.0);
 		int cy = treesDetected[i].rect.y + (treesDetected[i].rect.height / 2.0);
@@ -291,12 +306,26 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 			//compare if the center of the current rectangle i is contained in the rectangle 
 			if (treesDetected[j].rect.contains(center) && i != j) {
 				treesDetected[i].numOverlRect++;
-				treesDetected[i].scoreOverlRect += (1 / treesDetected[j].scale);
+				treesDetected[i].scoreOverlRect += (1 / (2 * treesDetected[j].scale));
 			}
 		}
 		//treesDetected[i].scoreOverlRect /= treesDetected[i].scale;
-		if (treesDetected[i].scoreOverlRect > 150) {
-			Mat t;
+		//if (treesDetected[i].numOverlRect > 85 || treesDetected[i].scoreOverlRect>30 || (/*treesDetected[i].score > 9.9e+6 &&*/ treesDetected[i].zncc < 320)) {
+		/*if (treesDetected[i].numOverlRect > 12) { //all rectangle are quite in the same position
+			//search the 
+		}*/
+		//detect which method is suitted to post-elaborate each series of rectangles
+		double ratio = treesDetected[i].score / treesDetected[i].zncc;
+		if (treesDetected[i].numOverlRect == 15) {
+			snd_mtd_trees.push_back(treesDetected[i]);
+			if(status != S_SND_MTD)status = S_SND_MTD;
+		}
+		else if (treesDetected[i].numOverlRect >= 8 && ratio < 35000 && status != S_SND_MTD) {
+			fst_mtd_trees.push_back(treesDetected[i]);
+			if (status != S_FST_MTD) status = S_FST_MTD;
+		}
+
+			/*Mat t;
 			inputImg.copyTo(t);
 			circle(t, center, 1, Scalar(50), 2);
 			rectangle(t, treesDetected[i].rect, Scalar(125), 2);
@@ -304,21 +333,26 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 			imshow("Final detection", t);
 			int k = waitKey(0);
 			treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
-			printTreeData(treesDetected[i]);
-		}
+			printTreeData(treesDetected[i]);*/
+		//}
 		
 		
 	}
-	waitKey(0);
-	return treesDetected;
+	//waitKey(0);
+	cout << endl;
+	vector<treeData> emptyList;
+	if (status == S_SND_MTD) return snd_mtd_trees;
+	else if (status == S_FST_MTD) return fst_mtd_trees;
+	return emptyList; //status S_UNKWON -> no trees detected
+	//return treesDetected;
 }
 
 int slidingWindow(Mat img, double scale, struct treeData &data ) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
-	//vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED };
-	//vector<string> methodsNames = { "TM_CCOEFF","TM_CCOEFF_NORMED", "TM_CCORR",	"TM_CCORR_NORMED", "TM_SQDIFF", "TM_SQDIFF_NORMED" };
-	vector<string> methodsNames = { "TM_CCOEFF", "TM_CCORR", "TM_SQDIFF" };
-	vector<int> methods = { TM_CCOEFF, TM_CCORR, TM_SQDIFF };
+	vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED };
+	vector<string> methodsNames = { "TM_CCOEFF","TM_CCOEFF_NORMED", "TM_CCORR",	"TM_CCORR_NORMED", "TM_SQDIFF", "TM_SQDIFF_NORMED" };
+	//vector<string> methodsNames = { "TM_CCOEFF", "TM_CCORR", "TM_SQDIFF" };
+	//vector<int> methods = { TM_CCOEFF, TM_CCORR, TM_SQDIFF };
 	int numCorrMatches = 0;
 	double maxVal, minVal;
 	Point topLeft, bottomRight, minLoc, maxLoc;
@@ -331,7 +365,7 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 	img.copyTo(originalImg);
 	//cout << "Scaled size " << img.size() << endl;
 	int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
-	int i = 0; //method
+	int i = 2; //method -> TM_CCOEFF_NORMED
 	//for (int i = 0; i < methods.size(); i++) {
 		cImg.copyTo(imgInput);
 		Mat res;
@@ -342,24 +376,26 @@ int slidingWindow(Mat img, double scale, struct treeData &data ) {
 		
 		if(methods[i]== TM_SQDIFF || methods[i] == TM_SQDIFF_NORMED){
 			topLeft = minLoc;
-			cout << "Method " << methodsNames[i] << " -> score: " << minVal ;
-			data.score = minVal*scale;
+			//cout << "Method " << methodsNames[i] << " -> score: " << minVal ;
+			data.score = minVal*(scale/2);
+			//data.score = minVal;
 		}
 		else {
 			topLeft = maxLoc;
-			cout << "Method " << methodsNames[i] << " -> score: " << maxVal ;
-			data.score = maxVal*scale;
+			//cout << "Method " << methodsNames[i] << " -> score: " << maxVal ;
+			//data.score = maxVal * scale;
+			data.score = maxVal * (scale / 2);
 		}
 		bottomRight = Point2f(topLeft.x+tImg.cols,topLeft.y+tImg.rows);
 		data.rect = Rect(topLeft, bottomRight);
 		data.zncc = zncc(imgInput(data.rect), tImg);
-		cout << " ZNCC: " << data.zncc << endl;
+		//cout << " ZNCC: " << data.zncc << endl;
 		//draw rectangle in the output image
-		rectangle(imgInput, topLeft, bottomRight, Scalar(255));
+		//rectangle(imgInput, topLeft, bottomRight, Scalar(255));
 		
-		namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
-		imshow("Img at method " + methodsNames[i], imgInput);
-		waitKey(1);
+		//namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
+		//imshow("Img at method " + methodsNames[i], imgInput);
+		//waitKey(1);
 		/*int k = waitKey();
 		data.qlt = (k - 48); // '0' = 48 number associated with 0 character
 		cout << "Key pressed: " << data.qlt << endl;*/
@@ -398,6 +434,43 @@ double avgZncc(Mat inputRect, string templPath) {
 	return (tempZncc / files.size());
 }
 
+void visualizeResults(vector<treeData> trees, Mat inputImg) {
+	treeData selectedTree;
+	if (status == S_SND_MTD) {
+		//select tree with the lower ratio and a zncc < 500
+		double lowestRatio = DBL_MAX;
+		for (treeData tree : trees) {
+			double ratio = tree.score / tree.zncc;
+			if (ratio < lowestRatio && tree.zncc < 500) {
+				lowestRatio = ratio;
+				selectedTree = tree;
+			}
+		}
+	}// if - second method
+	else if (status == S_FST_MTD) {
+		//select tree with higest score
+		double higestScore = 0;
+		for (treeData tree : trees) {
+			if (tree.score > higestScore) {
+				higestScore = tree.score;
+				selectedTree = tree;
+			}
+		}
+	}// - frist method
+	///visualize results
+	if (status == S_UNKNOWN) {
+		cout << "NO TREES DETECTED!" << endl;
+		return;
+	}
+	cout << "Final detected tree - method: " << status << endl;
+	printTreeData(selectedTree);
+
+	rectangle(inputImg, selectedTree.rect, Scalar(125), 2);
+	namedWindow("Final detection", WINDOW_NORMAL);
+	imshow("Final detection", inputImg);
+	waitKey(0);
+
+}
 
 vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees) {
 	vector<treeData> refinedTrees;
@@ -459,8 +532,8 @@ vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeatur
 }
 
 void printTreeData(treeData data){
-	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score/data.zncc) << " quality: " << data.qlt << endl;
-	cout << "Rect: " << data.rect << " Overlapping rectangle: " << data.numOverlRect << " Score overlapping rect: " << data.scoreOverlRect <<  endl;
+	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score/data.zncc) << /*" quality: " << data.qlt <<*/ endl;
+	cout << "Rect: " << data.rect << " Overlapping rectangle: " << data.numOverlRect << " Score overlapping rect: " << data.scoreOverlRect << " score2: " << (data.scoreOverlRect/ data.numOverlRect) <<  endl;
 }
 
 void extractFeatures(Mat img, vector<KeyPoint> &features, Mat &desciptors, int numFeatures) {

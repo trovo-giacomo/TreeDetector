@@ -1468,3 +1468,561 @@ Rect: [600 x 600 from (230, 0)]
 Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 9.50873e+06 ZNCC: 489.887 ratio: 19410 quality: 0
 Rect: [300 x 300 from (225, 45)]
 
+-- ordered by highest score
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 2.05309e+06 ZNCC: 792.378 ratio: 2591.05 quality: 3
+Rect: [360 x 360 from (90, 150)] Overlapping rectangle: 0 Score overlapping rect: 0 score2: -nan(ind)
+Tree - ../data/cannyTemplate/t1.jpg scale: 3 score: 1.84006e+06 ZNCC: 447.142 ratio: 4115.16 quality: 3
+Rect: [180 x 180 from (774, 96)] Overlapping rectangle: 11 Score overlapping rect: 11 score2: 1
+Tree - ../data/cannyTemplate/t10.jpg scale: 2 score: 2.05881e+06 ZNCC: 457.716 ratio: 4498.02 quality: 3
+Rect: [120 x 120 from (800, 114)] Overlapping rectangle: 11 Score overlapping rect: 10.6667 score2: 0.969697
+Tree - ../data/cannyTemplate/t11.jpg scale: 2 score: 2.08575e+06 ZNCC: 479.173 ratio: 4352.82 quality: 1
+Rect: [120 x 120 from (834, 194)] Overlapping rectangle: 10 Score overlapping rect: 8.46667 score2: 0.846667
+Tree - ../data/cannyTemplate/t12.jpg scale: 3 score: 2.52953e+06 ZNCC: 519.238 ratio: 4871.61 quality: 3
+Rect: [180 x 180 from (771, 114)] Overlapping rectangle: 14 Score overlapping rect: 13.8 score2: 0.985714
+Tree - ../data/cannyTemplate/t14.jpg scale: 3 score: 2.20862e+06 ZNCC: 473.321 ratio: 4666.21 quality: 1
+Rect: [180 x 180 from (813, 162)] Overlapping rectangle: 8 Score overlapping rect: 6.8 score2: 0.85
+Tree - ../data/cannyTemplate/t15.jpg scale: 1.5 score: 1.92477e+06 ZNCC: 299.045 ratio: 6436.38 quality: 1
+Rect: [90 x 90 from (793, 138)] Overlapping rectangle: 11 Score overlapping rect: 10.3333 score2: 0.939394
+Tree - ../data/cannyTemplate/t17.jpg scale: 2 score: 2.11984e+06 ZNCC: 459.35 ratio: 4614.88 quality: 1
+Rect: [120 x 120 from (782, 138)] Overlapping rectangle: 14 Score overlapping rect: 13.4667 score2: 0.961905
+Tree - ../data/cannyTemplate/t18.jpg scale: 1.5 score: 1.94381e+06 ZNCC: 400.757 ratio: 4850.35 quality: 1
+Rect: [90 x 90 from (796, 147)] Overlapping rectangle: 12 Score overlapping rect: 11.1333 score2: 0.927778
+Tree - ../data/cannyTemplate/t2.jpg scale: 2.5 score: 1.90944e+06 ZNCC: 429.785 ratio: 4442.79 quality: 1
+Rect: [150 x 150 from (840, 187)] Overlapping rectangle: 7 Score overlapping rect: 5.66667 score2: 0.809524
+Tree - ../data/cannyTemplate/t3.jpg scale: 2 score: 2.94191e+06 ZNCC: 621.558 ratio: 4733.12 quality: 1
+Rect: [120 x 120 from (778, 144)] Overlapping rectangle: 12 Score overlapping rect: 11.6667 score2: 0.972222
+Tree - ../data/cannyTemplate/t4.jpg scale: 3 score: 2.84062e+06 ZNCC: 593.172 ratio: 4788.87 quality: 3
+Rect: [180 x 180 from (768, 105)] Overlapping rectangle: 14 Score overlapping rect: 13.8 score2: 0.985714
+Tree - ../data/cannyTemplate/t5.jpg scale: 2 score: 2.34396e+06 ZNCC: 442.913 ratio: 5292.15 quality: 2
+Rect: [120 x 120 from (796, 152)] Overlapping rectangle: 14 Score overlapping rect: 13.4667 score2: 0.961905
+Tree - ../data/cannyTemplate/t6.jpg scale: 1.5 score: 1.75892e+06 ZNCC: 396.93 ratio: 4431.31 quality: 2
+Rect: [90 x 90 from (796, 148)] Overlapping rectangle: 12 Score overlapping rect: 11.1333 score2: 0.927778
+Tree - ../data/cannyTemplate/t7.jpg scale: 2 score: 2.14317e+06 ZNCC: 490.966 ratio: 4365.21 quality: 2
+Rect: [120 x 120 from (786, 144)] Overlapping rectangle: 14 Score overlapping rect: 13.4667 score2: 0.961905
+Tree - ../data/cannyTemplate/t9.jpg scale: 2 score: 2.05861e+06 ZNCC: 491.833 ratio: 4185.59 quality: 1
+Rect: [120 x 120 from (840, 194)] Overlapping rectangle: 9 Score overlapping rect: 7.46667 score2: 0.82963
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 1.88655e+06 ZNCC: 454.821 ratio: 4147.9 quality: 3
+Rect: [300 x 300 from (640, 200)] Overlapping rectangle: 11 Score overlapping rect: 5.2 score2: 0.472727
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 2.38658e+06 ZNCC: 644.78 ratio: 3701.39 quality: 3
+Rect: [360 x 360 from (600, 198)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t10.jpg scale: 5 score: 2.15636e+06 ZNCC: 507.284 ratio: 4250.8 quality: 3
+Rect: [300 x 300 from (630, 200)] Overlapping rectangle: 11 Score overlapping rect: 5.2 score2: 0.472727
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 1.82177e+06 ZNCC: 467.788 ratio: 3894.44 quality: 3
+Rect: [360 x 360 from (612, 192)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t12.jpg scale: 2.5 score: 1.73775e+06 ZNCC: 488.397 ratio: 3558.06 quality: 0
+Rect: [150 x 150 from (850, 365)] Overlapping rectangle: 12 Score overlapping rect: 5.4 score2: 0.45
+Tree - ../data/cannyTemplate/t14.jpg scale: 2 score: 2.69328e+06 ZNCC: 641.932 ratio: 4195.58 quality: 0
+Rect: [120 x 120 from (760, 322)] Overlapping rectangle: 11 Score overlapping rect: 4.6 score2: 0.418182
+Tree - ../data/cannyTemplate/t15.jpg scale: 1.5 score: 2.19551e+06 ZNCC: 447.708 ratio: 4903.88 quality: 0
+Rect: [90 x 90 from (865, 334)] Overlapping rectangle: 13 Score overlapping rect: 6.2 score2: 0.476923
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 2.23095e+06 ZNCC: 594.848 ratio: 3750.45 quality: 3
+Rect: [360 x 360 from (594, 186)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t18.jpg scale: 2 score: 1.74383e+06 ZNCC: 459.203 ratio: 3797.51 quality: 0
+Rect: [120 x 120 from (864, 324)] Overlapping rectangle: 13 Score overlapping rect: 6.53333 score2: 0.502564
+Tree - ../data/cannyTemplate/t2.jpg scale: 5 score: 2.20164e+06 ZNCC: 460.988 ratio: 4775.92 quality: 3
+Rect: [300 x 300 from (665, 205)] Overlapping rectangle: 11 Score overlapping rect: 5.2 score2: 0.472727
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 2.51489e+06 ZNCC: 659.981 ratio: 3810.54 quality: 3
+Rect: [360 x 360 from (600, 168)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 2.1152e+06 ZNCC: 503.985 ratio: 4196.96 quality: 3
+Rect: [360 x 360 from (600, 180)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t5.jpg scale: 2.5 score: 2.25262e+06 ZNCC: 524.879 ratio: 4291.7 quality: 0
+Rect: [150 x 150 from (850, 325)] Overlapping rectangle: 13 Score overlapping rect: 6.73333 score2: 0.517949
+Tree - ../data/cannyTemplate/t6.jpg scale: 5 score: 1.82475e+06 ZNCC: 482.913 ratio: 3778.63 quality: 3
+Rect: [300 x 300 from (660, 160)] Overlapping rectangle: 10 Score overlapping rect: 4.2 score2: 0.42
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 2.07906e+06 ZNCC: 617.571 ratio: 3366.51 quality: 3
+Rect: [360 x 360 from (648, 198)] Overlapping rectangle: 11 Score overlapping rect: 5.26667 score2: 0.478788
+Tree - ../data/cannyTemplate/t9.jpg scale: 2 score: 3.06792e+06 ZNCC: 847.31 ratio: 3620.77 quality: 0
+Rect: [120 x 120 from (758, 302)] Overlapping rectangle: 11 Score overlapping rect: 4.6 score2: 0.418182
+
+-- ordered by highest score  - Score overlapping rect = 1/(2*scale) + score maxVal*(scale/2)
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 6.15928e+06 ZNCC: 792.378 ratio: 7773.16 quality: 1
+Rect: [360 x 360 from (90, 150)] Overlapping rectangle: 3 Score overlapping rect: 0.266667 score2: 0.0888889
+Tree - ../data/cannyTemplate/t1.jpg scale: 5 score: 4.25365e+06 ZNCC: 634.249 ratio: 6706.59 quality: 3
+Rect: [300 x 300 from (100, 125)] Overlapping rectangle: 3 Score overlapping rect: 0.25 score2: 0.0833333
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 5.11944e+06 ZNCC: 455.259 ratio: 11245.1 quality: 0
+Rect: [360 x 360 from (522, 60)] Overlapping rectangle: 5 Score overlapping rect: 0.433333 score2: 0.0866667
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 3.8936e+06 ZNCC: 367.423 ratio: 10597 quality: 0
+Rect: [360 x 360 from (822, 6)] Overlapping rectangle: 5 Score overlapping rect: 0.416667 score2: 0.0833333
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 5.67201e+06 ZNCC: 656.863 ratio: 8634.99 quality: 1
+Rect: [360 x 360 from (84, 150)] Overlapping rectangle: 3 Score overlapping rect: 0.266667 score2: 0.0888889
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 5.42746e+06 ZNCC: 405.088 ratio: 13398.2 quality: 2
+Rect: [360 x 360 from (726, 30)] Overlapping rectangle: 6 Score overlapping rect: 0.5 score2: 0.0833333
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 4.0818e+06 ZNCC: 278.12 ratio: 14676.4 quality: 0
+Rect: [360 x 360 from (516, 72)] Overlapping rectangle: 5 Score overlapping rect: 0.433333 score2: 0.0866667
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 5.0087e+06 ZNCC: 449.978 ratio: 11131 quality: 0
+Rect: [360 x 360 from (546, 42)] Overlapping rectangle: 7 Score overlapping rect: 0.6 score2: 0.0857143
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 4.97623e+06 ZNCC: 633.868 ratio: 7850.58 quality: 1
+Rect: [360 x 360 from (72, 156)] Overlapping rectangle: 3 Score overlapping rect: 0.266667 score2: 0.0888889
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 4.48168e+06 ZNCC: 381.855 ratio: 11736.6 quality: 0
+Rect: [360 x 360 from (816, 24)] Overlapping rectangle: 6 Score overlapping rect: 0.5 score2: 0.0833333
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 4.19661e+06 ZNCC: 374.428 ratio: 11208 quality: 0
+Rect: [360 x 360 from (534, 108)] Overlapping rectangle: 6 Score overlapping rect: 0.516667 score2: 0.0861111
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 4.33544e+06 ZNCC: 333.805 ratio: 12987.9 quality: 1
+Rect: [360 x 360 from (714, 108)] Overlapping rectangle: 7 Score overlapping rect: 0.583333 score2: 0.0833333
+Tree - ../data/cannyTemplate/t5.jpg scale: 6 score: 5.02744e+06 ZNCC: 390.478 ratio: 12875.1 quality: 0
+Rect: [360 x 360 from (762, 48)] Overlapping rectangle: 6 Score overlapping rect: 0.5 score2: 0.0833333
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 3.7825e+06 ZNCC: 417.845 ratio: 9052.42 quality: 0
+Rect: [360 x 360 from (828, 48)] Overlapping rectangle: 5 Score overlapping rect: 0.416667 score2: 0.0833333
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 3.97537e+06 ZNCC: 366.464 ratio: 10847.9 quality: 2
+Rect: [360 x 360 from (642, 54)] Overlapping rectangle: 10 Score overlapping rect: 0.85 score2: 0.085
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 4.75705e+06 ZNCC: 525.529 ratio: 9051.93 quality: 0
+Rect: [300 x 300 from (550, 40)] Overlapping rectangle: 5 Score overlapping rect: 0.416667 score2: 0.0833333
+
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 4.71638e+06 ZNCC: 454.821 ratio: 10369.8 quality: 3
+Rect: [300 x 300 from (640, 200)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 7.15975e+06 ZNCC: 644.78 ratio: 11104.2 quality: 0
+Rect: [360 x 360 from (600, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t10.jpg scale: 5 score: 5.3909e+06 ZNCC: 507.284 ratio: 10627 quality: 3
+Rect: [300 x 300 from (630, 200)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 5.46532e+06 ZNCC: 467.788 ratio: 11683.3 quality: 3
+Rect: [360 x 360 from (612, 192)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 4.69974e+06 ZNCC: 401.842 ratio: 11695.5 quality: 3
+Rect: [360 x 360 from (630, 216)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 6.18084e+06 ZNCC: 470.895 ratio: 13125.7 quality: 3
+Rect: [360 x 360 from (588, 162)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 5.28685e+06 ZNCC: 342.677 ratio: 15428.1 quality: 3
+Rect: [360 x 360 from (600, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 7.06129e+06 ZNCC: 430.077 ratio: 16418.7 quality: 1
+Rect: [600 x 600 from (450, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.23333 score2: 0.0822222
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 3.65741e+06 ZNCC: 357.958 ratio: 10217.4 quality: 3
+Rect: [300 x 300 from (630, 210)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 6.28929e+06 ZNCC: 498.31 ratio: 12621.3 quality: 3
+Rect: [360 x 360 from (624, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 7.54466e+06 ZNCC: 659.981 ratio: 11431.6 quality: 3
+Rect: [360 x 360 from (600, 168)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 6.34561e+06 ZNCC: 503.985 ratio: 12590.9 quality: 3
+Rect: [360 x 360 from (600, 180)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 5.14908e+06 ZNCC: 271.923 ratio: 18935.8 quality: 0
+Rect: [600 x 600 from (470, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.23333 score2: 0.0822222
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 4.82919e+06 ZNCC: 329.453 ratio: 14658.2 quality: 0
+Rect: [600 x 600 from (380, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.23333 score2: 0.0822222
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 6.23717e+06 ZNCC: 617.571 ratio: 10099.5 quality: 1
+Rect: [360 x 360 from (648, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 6.40574e+06 ZNCC: 545.218 ratio: 11749 quality: 1
+Rect: [360 x 360 from (570, 102)] Overlapping rectangle: 15 Score overlapping rect: 1.2 score2: 0.08
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- ordered by highest score  - Score overlapping rect = 1/(2*scale) + score maxVal*(scale/2) -> method TM_CCORR
+--- Over all trees selected --- ../data/Figure 1.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 6.67692e+06 ZNCC: 339.849 ratio: 19646.7 quality: 3
+Rect: [360 x 360 from (732, 84)] Overlapping rectangle: 8 Score overlapping rect: 0.6 score2: 0.075
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 9.38196e+06 ZNCC: 405.088 ratio: 23160.3 quality: 3
+Rect: [360 x 360 from (726, 30)] Overlapping rectangle: 8 Score overlapping rect: 0.6 score2: 0.075 <- 1st method - highest score
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 8.02714e+06 ZNCC: 333.805 ratio: 24047.4 quality: 2
+Rect: [360 x 360 from (714, 108)] Overlapping rectangle: 9 Score overlapping rect: 0.683333 score2: 0.0759259 <- 1st method - highest overl score
+
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 7.40826e+06 ZNCC: 792.378 ratio: 9349.4 quality: 1
+Rect: [360 x 360 from (90, 150)] Overlapping rectangle: 0 Score overlapping rect: 0 score2: -nan(ind)
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 7.83284e+06 ZNCC: 455.259 ratio: 17205.2 quality: 0
+Rect: [360 x 360 from (522, 60)] Overlapping rectangle: 7 Score overlapping rect: 0.466667 score2: 0.0666667
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 6.28447e+06 ZNCC: 367.423 ratio: 17104.2 quality: 0
+Rect: [360 x 360 from (822, 6)] Overlapping rectangle: 7 Score overlapping rect: 0.55 score2: 0.0785714
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 8.5323e+06 ZNCC: 281.222 ratio: 30340.1 quality: 0
+Rect: [600 x 600 from (280, 0)] Overlapping rectangle: 7 Score overlapping rect: 0.5 score2: 0.0714286
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.04665e+07 ZNCC: 167.053 ratio: 62653.7 quality: 0
+Rect: [600 x 600 from (330, 0)] Overlapping rectangle: 7 Score overlapping rect: 0.5 score2: 0.0714286
+
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 7.65689e+06 ZNCC: 449.978 ratio: 17016.1 quality: 0
+Rect: [360 x 360 from (546, 42)] Overlapping rectangle: 9 Score overlapping rect: 0.633333 score2: 0.0703704
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 6.47726e+06 ZNCC: 432.342 ratio: 14981.8 quality: 0
+Rect: [360 x 360 from (822, 30)] Overlapping rectangle: 7 Score overlapping rect: 0.55 score2: 0.0785714
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 7.47023e+06 ZNCC: 381.855 ratio: 19563 quality: 0
+Rect: [360 x 360 from (816, 24)] Overlapping rectangle: 7 Score overlapping rect: 0.55 score2: 0.0785714
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 6.8873e+06 ZNCC: 374.428 ratio: 18394.2 quality: 0
+Rect: [360 x 360 from (534, 108)] Overlapping rectangle: 8 Score overlapping rect: 0.55 score2: 0.06875
+
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.5013e+06 ZNCC: 265.169 ratio: 35831.1 quality: 0
+Rect: [600 x 600 from (410, 0)] Overlapping rectangle: 7 Score overlapping rect: 0.5 score2: 0.0714286
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 5.50112e+06 ZNCC: 417.845 ratio: 13165.5 quality: 0
+Rect: [360 x 360 from (828, 48)] Overlapping rectangle: 7 Score overlapping rect: 0.55 score2: 0.0785714
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 6.5382e+06 ZNCC: 257.408 ratio: 25400.2 quality: 0
+Rect: [600 x 600 from (290, 0)] Overlapping rectangle: 7 Score overlapping rect: 0.5 score2: 0.0714286
+Tree - ../data/cannyTemplate/t9.jpg scale: 5 score: 6.8544e+06 ZNCC: 525.529 ratio: 13042.8 quality: 0
+Rect: [300 x 300 from (550, 40)] Overlapping rectangle: 7 Score overlapping rect: 0.45 score2: 0.0642857
+
+--- Over all trees selected --- ../data/Figure 2.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 7.5225e+06 ZNCC: 454.821 ratio: 16539.5 quality: 3
+Rect: [300 x 300 from (640, 200)] Overlapping rectangle: 15 Score overlapping rect: 1.1 score2: 0.0733333 <- 2nd method
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 9.79965e+06 ZNCC: 503.985 ratio: 19444.3 quality: 3
+Rect: [360 x 360 from (600, 180)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 5 score: 6.37245e+06 ZNCC: 357.958 ratio: 17802.2 quality: 3
+Rect: [300 x 300 from (630, 210)] Overlapping rectangle: 15 Score overlapping rect: 1.1 score2: 0.0733333
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 1.03512e+07 ZNCC: 659.981 ratio: 15684.1 quality: 3
+Rect: [360 x 360 from (600, 168)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 9.80195e+06 ZNCC: 644.78 ratio: 15202 quality: 2
+Rect: [360 x 360 from (600, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 8.40582e+06 ZNCC: 467.788 ratio: 17969.3 quality: 2
+Rect: [360 x 360 from (612, 192)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 9.96489e+06 ZNCC: 470.895 ratio: 21161.6 quality: 2
+Rect: [360 x 360 from (588, 162)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 9.77594e+06 ZNCC: 498.31 ratio: 19618.2 quality: 2
+Rect: [360 x 360 from (624, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 7.84737e+06 ZNCC: 370.772 ratio: 21164.9 quality: 1
+Rect: [360 x 360 from (606, 204)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 1.07658e+07 ZNCC: 342.677 ratio: 31416.9 quality: 1      <- 1st method - highest score
+Rect: [360 x 360 from (600, 198)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 9.3789e+06 ZNCC: 545.218 ratio: 17202.1 quality: 1
+Rect: [360 x 360 from (570, 102)] Overlapping rectangle: 15 Score overlapping rect: 1.11667 score2: 0.0744444
+
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 9.17363e+06 ZNCC: 304 ratio: 30176.4 quality: 0
+Rect: [600 x 600 from (540, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667      
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.0469e+07 ZNCC: 430.077 ratio: 24342.2 quality: 0
+Rect: [600 x 600 from (450, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667     <- 1st method - highest overl score
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.82388e+06 ZNCC: 271.11 ratio: 36235.8 quality: 0
+Rect: [600 x 600 from (480, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 7.52505e+06 ZNCC: 329.453 ratio: 22841.1 quality: 0
+Rect: [600 x 600 from (380, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 8.81918e+06 ZNCC: 354.663 ratio: 24866.4 quality: 0
+Rect: [600 x 600 from (570, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+--- Over all trees selected --- ../data/Figure 3.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 1.02235e+07 ZNCC: 315.889 ratio: 32364.1 quality: 3
+Rect: [360 x 360 from (36, 0)] Overlapping rectangle: 9 Score overlapping rect: 0.533333 score2: 0.0592593
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 1.00345e+07 ZNCC: 325.006 ratio: 30874.8 quality: 0
+Rect: [360 x 360 from (192, 222)] Overlapping rectangle: 11 Score overlapping rect: 0.666667 score2: 0.0606061
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.18269e+07 ZNCC: 51.7897 ratio: 228364 quality: 0
+Rect: [600 x 600 from (0, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667 <- 1st method - highest overl score
+
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 1.23846e+07 ZNCC: 361.482 ratio: 34260.6 quality: 0 
+Rect: [360 x 360 from (78, 96)] Overlapping rectangle: 11 Score overlapping rect: 0.7 score2: 0.0636364   <- 1st methos - highest score
+
+Tree - ../data/cannyTemplate/t6.jpg scale: 5 score: 8.21164e+06 ZNCC: 354.87 ratio: 23139.8 quality: 0
+Rect: [300 x 300 from (130, 140)] Overlapping rectangle: 11 Score overlapping rect: 0.683333 score2: 0.0621212
+
+Tree - ../data/cannyTemplate/t7.jpg scale: 5 score: 9.17426e+06 ZNCC: 287.78 ratio: 31879.4 quality: 0
+Rect: [300 x 300 from (835, 290)] Overlapping rectangle: 2 Score overlapping rect: 0.15 score2: 0.075
+
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 1.04907e+07 ZNCC: 100.503 ratio: 104382 quality: 0
+Rect: [600 x 600 from (0, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.01975e+07 ZNCC: 95.2302 ratio: 107082 quality: 0
+Rect: [600 x 600 from (10, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.18167e+07 ZNCC: 124.125 ratio: 95200.1 quality: 0
+Rect: [600 x 600 from (40, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.27934e+07 ZNCC: 116.832 ratio: 109503 quality: 0
+Rect: [600 x 600 from (30, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 1.21849e+07 ZNCC: 241.955 ratio: 50360.3 quality: 0
+Rect: [360 x 360 from (84, 234)] Overlapping rectangle: 10 Score overlapping rect: 0.616667 score2: 0.0616667
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.8615e+07 ZNCC: 247.792 ratio: 75123.5 quality: 0
+Rect: [600 x 600 from (590, 0)] Overlapping rectangle: 3 Score overlapping rect: 0.25 score2: 0.0833333
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 9.66131e+06 ZNCC: 264.866 ratio: 36476.2 quality: 0
+Rect: [300 x 300 from (860, 295)] Overlapping rectangle: 2 Score overlapping rect: 0.15 score2: 0.075
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 1.24797e+07 ZNCC: 164.557 ratio: 75838.1 quality: 0
+Rect: [600 x 600 from (10, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.37981e+07 ZNCC: 112.279 ratio: 122891 quality: 0
+Rect: [600 x 600 from (20, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.733333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.21329e+07 ZNCC: 204.854 ratio: 59227 quality: 0
+Rect: [600 x 600 from (360, 0)] Overlapping rectangle: 1 Score overlapping rect: 0.05 score2: 0.05
+
+
+--- Over all trees selected --- ../data/Figure 4.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 9.1647e+06 ZNCC: 390.567 ratio: 23465.1 quality: 3
+Rect: [600 x 600 from (220, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.766667 score2: 0.0589744
+
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 9.13155e+06 ZNCC: 333.93 ratio: 27345.7 quality: 3
+Rect: [600 x 600 from (430, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.2365e+07 ZNCC: 581.807 ratio: 21252.7 quality: 3
+Rect: [600 x 600 from (330, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.23828e+07 ZNCC: 556.29 ratio: 22259.6 quality: 3
+Rect: [600 x 600 from (280, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303    <- 1st method - highest score
+
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 9.48218e+06 ZNCC: 465.509 ratio: 20369.5 quality: 2
+Rect: [600 x 600 from (210, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.766667 score2: 0.0589744    <- 1st method - highest overl score
+
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.08107e+07 ZNCC: 177.694 ratio: 60839.1 quality: 2
+Rect: [600 x 600 from (200, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.85 score2: 0.0607143
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.07648e+07 ZNCC: 344.612 ratio: 31237.5 quality: 2
+Rect: [600 x 600 from (430, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 8.18423e+06 ZNCC: 328.689 ratio: 24899.6 quality: 2
+Rect: [600 x 600 from (480, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 8.81663e+06 ZNCC: 338.637 ratio: 26035.6 quality: 2
+Rect: [600 x 600 from (430, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 8.84085e+06 ZNCC: 263.866 ratio: 33505.1 quality: 2
+Rect: [600 x 600 from (480, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 8.83065e+06 ZNCC: 313.496 ratio: 28168.4 quality: 2
+Rect: [600 x 600 from (430, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+
+Tree - ../data/cannyTemplate/t0.jpg scale: 5 score: 6.8646e+06 ZNCC: 440.188 ratio: 15594.7 quality: 1
+Rect: [300 x 300 from (240, 135)] Overlapping rectangle: 8 Score overlapping rect: 0.5 score2: 0.0625
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 7.05789e+06 ZNCC: 437.84 ratio: 16119.8 quality: 1
+Rect: [360 x 360 from (246, 114)] Overlapping rectangle: 8 Score overlapping rect: 0.516667 score2: 0.0645833
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 6.66162e+06 ZNCC: 351.503 ratio: 18951.8 quality: 1
+Rect: [360 x 360 from (612, 54)] Overlapping rectangle: 11 Score overlapping rect: 0.55 score2: 0.05
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 8.63915e+06 ZNCC: 356.142 ratio: 24257.6 quality: 1
+Rect: [360 x 360 from (198, 96)] Overlapping rectangle: 8 Score overlapping rect: 0.516667 score2: 0.0645833
+Tree - ../data/cannyTemplate/t7.jpg scale: 6 score: 7.42815e+06 ZNCC: 484.669 ratio: 15326.2 quality: 1
+Rect: [360 x 360 from (150, 126)] Overlapping rectangle: 8 Score overlapping rect: 0.516667 score2: 0.0645833
+
+--- Over all trees selected --- ../data/Figure 5.jpg - 1st method -> NO RESULTS
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 1.18078e+07 ZNCC: 248.949 ratio: 47430.4 quality: 3
+Rect: [600 x 600 from (400, 0)] Overlapping rectangle: 15 Score overlapping rect: 0.75 score2: 0.05       <- 2 method
+
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 1.2481e+07 ZNCC: 243.262 ratio: 51306.7 quality: 3
+Rect: [600 x 600 from (400, 0)] Overlapping rectangle: 15 Score overlapping rect: 0.75 score2: 0.05
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.34207e+07 ZNCC: 178.966 ratio: 74989.9 quality: 3
+Rect: [600 x 600 from (230, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.7 score2: 0.05
+
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 1.08617e+07 ZNCC: 202.758 ratio: 53569.8 quality: 3
+Rect: [600 x 600 from (420, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.47199e+07 ZNCC: 319.684 ratio: 46045 quality: 3
+Rect: [600 x 600 from (420, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 1.37139e+07 ZNCC: 247.312 ratio: 55451.9 quality: 3
+Rect: [600 x 600 from (460, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.50629e+07 ZNCC: 251.151 ratio: 59975.3 quality: 3
+Rect: [600 x 600 from (460, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 2.06027e+07 ZNCC: 250.121 ratio: 82371.1 quality: 3
+Rect: [600 x 600 from (450, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.53995e+07 ZNCC: 276.941 ratio: 55605.5 quality: 2
+Rect: [600 x 600 from (460, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 10 score: 1.08056e+07 ZNCC: 190.32 ratio: 56776.1 quality: 2
+Rect: [600 x 600 from (460, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 10 score: 1.6371e+07 ZNCC: 396.438 ratio: 41295.3 quality: 2
+Rect: [600 x 600 from (450, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.65 score2: 0.05
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 1.15056e+07 ZNCC: 198.663 ratio: 57915.1 quality: 1
+Rect: [600 x 600 from (210, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.7 score2: 0.05
+
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.31083e+07 ZNCC: 347.178 ratio: 37756.7 quality: 1
+Rect: [600 x 600 from (170, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.7 score2: 0.05
+
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 1.50144e+07 ZNCC: 420.422 ratio: 35712.7 quality: 1
+Rect: [600 x 600 from (540, 0)] Overlapping rectangle: 10 Score overlapping rect: 0.5 score2: 0.05
+
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 9.8889e+06 ZNCC: 183.107 ratio: 54006 quality: 1
+Rect: [600 x 600 from (110, 0)] Overlapping rectangle: 6 Score overlapping rect: 0.3 score2: 0.05
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.67038e+07 ZNCC: 287.987 ratio: 58001.9 quality: 1
+Rect: [600 x 600 from (110, 0)] Overlapping rectangle: 6 Score overlapping rect: 0.3 score2: 0.05
+
+
+--- Over all trees selected --- ../data/Figure 6.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 7.42356e+06 ZNCC: 695.331 ratio: 10676.3 quality: 3
+Rect: [360 x 360 from (198, 138)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 6.84293e+06 ZNCC: 632.852 ratio: 10812.8 quality: 3
+Rect: [360 x 360 from (198, 132)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 6.26459e+06 ZNCC: 536.282 ratio: 11681.5 quality: 3
+Rect: [360 x 360 from (180, 132)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 5.47434e+06 ZNCC: 441.319 ratio: 12404.5 quality: 3
+Rect: [360 x 360 from (222, 132)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 6.65856e+06 ZNCC: 523.522 ratio: 12718.8 quality: 3
+Rect: [360 x 360 from (204, 120)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 7.03341e+06 ZNCC: 665.407 ratio: 10570.1 quality: 3
+Rect: [360 x 360 from (180, 132)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 6.24699e+06 ZNCC: 450.768 ratio: 13858.5 quality: 3
+Rect: [360 x 360 from (162, 138)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 6.25923e+06 ZNCC: 470.631 ratio: 13299.7 quality: 2
+Rect: [360 x 360 from (210, 114)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 4.70705e+06 ZNCC: 462.454 ratio: 10178.4 quality: 2     <- 2nd method
+Rect: [360 x 360 from (168, 102)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 5.47511e+06 ZNCC: 438.729 ratio: 12479.5 quality: 2
+Rect: [360 x 360 from (222, 132)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 6.83528e+06 ZNCC: 344.582 ratio: 19836.4 quality: 1
+Rect: [600 x 600 from (110, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 5.67936e+06 ZNCC: 491.015 ratio: 11566.6 quality: 1
+Rect: [360 x 360 from (216, 108)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 8.00649e+06 ZNCC: 433.716 ratio: 18460.2 quality: 0
+Rect: [360 x 360 from (204, 30)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667 <-1st method - highest score
+
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 7.4182e+06 ZNCC: 750.009 ratio: 9890.82 quality: 0
+Rect: [360 x 360 from (270, 126)] Overlapping rectangle: 15 Score overlapping rect: 1.15 score2: 0.0766667
+
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 6.54203e+06 ZNCC: 331.223 ratio: 19751.1 quality: 0
+Rect: [600 x 600 from (110, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889
+
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 6.84675e+06 ZNCC: 503.972 ratio: 13585.6 quality: 0
+Rect: [600 x 600 from (60, 0)] Overlapping rectangle: 15 Score overlapping rect: 1.18333 score2: 0.0788889 <- 1st method - highest overl score
+
+--- Over all trees selected --- ../data/Figure 7.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 6.64632e+06 ZNCC: 437.428 ratio: 15194.1 quality: 0
+Rect: [360 x 360 from (840, 96)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048
+
+Tree - ../data/cannyTemplate/t1.jpg scale: 10 score: 9.5064e+06 ZNCC: 291.24 ratio: 32641.1 quality: 0
+Rect: [600 x 600 from (600, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 6.46043e+06 ZNCC: 252.414 ratio: 25594.5 quality: 0
+Rect: [360 x 360 from (840, 30)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048
+
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 7.27209e+06 ZNCC: 328.838 ratio: 22114.5 quality: 0
+Rect: [360 x 360 from (816, 84)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 6.26765e+06 ZNCC: 306.335 ratio: 20460.1 quality: 0
+Rect: [360 x 360 from (756, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048
+
+Tree - ../data/cannyTemplate/t14.jpg scale: 6 score: 9.77976e+06 ZNCC: 509.701 ratio: 19187.2 quality: 0
+Rect: [360 x 360 from (828, 90)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048 <- 1st method - highest score
+
+Tree - ../data/cannyTemplate/t6.jpg scale: 6 score: 4.90212e+06 ZNCC: 406.981 ratio: 12045.1 quality: 0
+Rect: [360 x 360 from (702, 162)] Overlapping rectangle: 14 Score overlapping rect: 0.866667 score2: 0.0619048
+
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 9.76905e+06 ZNCC: 304.825 ratio: 32048.1 quality: 0
+Rect: [600 x 600 from (550, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857 <- 1st method - highest overl score
+
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.18575e+07 ZNCC: 123.077 ratio: 96342.5 quality: 0
+Rect: [600 x 600 from (600, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 8.50935e+06 ZNCC: 204.017 ratio: 41709 quality: 0
+Rect: [600 x 600 from (460, 0)] Overlapping rectangle: 10 Score overlapping rect: 0.566667 score2: 0.0566667
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 7.191e+06 ZNCC: 126.342 ratio: 56917.1 quality: 0
+Rect: [600 x 600 from (590, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 1.14495e+07 ZNCC: 292.126 ratio: 39193.7 quality: 0
+Rect: [600 x 600 from (580, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 9.1749e+06 ZNCC: 164.975 ratio: 55613.7 quality: 0
+Rect: [600 x 600 from (570, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 5.58833e+06 ZNCC: 108.995 ratio: 51271.6 quality: 0
+Rect: [600 x 600 from (580, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 8.8536e+06 ZNCC: 227.673 ratio: 38887.3 quality: 0
+Rect: [600 x 600 from (540, 0)] Overlapping rectangle: 14 Score overlapping rect: 0.9 score2: 0.0642857
+
+Tree - ../data/cannyTemplate/t17.jpg scale: 6 score: 5.66176e+06 ZNCC: 610.948 ratio: 9267.18 quality: 0
+Rect: [360 x 360 from (102, 72)] Overlapping rectangle: 0 Score overlapping rect: 0 score2: -nan(ind)
+
+
+--- Over all trees selected --- ../data/Figure 8.jpg
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t6.jpg scale: 10 score: 1.14431e+07 ZNCC: 478.341 ratio: 23922.5 quality: 0
+Rect: [600 x 600 from (230, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.716667 score2: 0.0551282 <- 1st method - both
+
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 8.42954e+06 ZNCC: 534.677 ratio: 15765.7 quality: 0
+Rect: [360 x 360 from (252, 78)] Overlapping rectangle: 11 Score overlapping rect: 0.616667 score2: 0.0560606
+
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 8.52338e+06 ZNCC: 292.62 ratio: 29127.8 quality: 0
+Rect: [600 x 600 from (70, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.65 score2: 0.0590909
+
+Tree - ../data/cannyTemplate/t12.jpg scale: 6 score: 8.23217e+06 ZNCC: 406.294 ratio: 20261.6 quality: 0
+Rect: [360 x 360 from (222, 144)] Overlapping rectangle: 11 Score overlapping rect: 0.616667 score2: 0.0560606
+
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 8.02409e+06 ZNCC: 450.148 ratio: 17825.4 quality: 0
+Rect: [360 x 360 from (132, 96)] Overlapping rectangle: 10 Score overlapping rect: 0.566667 score2: 0.0566667
+
+Tree - ../data/cannyTemplate/t9.jpg scale: 6 score: 7.63699e+06 ZNCC: 382.937 ratio: 19943.2 quality: 0
+Rect: [360 x 360 from (618, 132)] Overlapping rectangle: 9 Score overlapping rect: 0.45 score2: 0.05
+
+
+Tree - ../data/cannyTemplate/t11.jpg scale: 10 score: 1.0455e+07 ZNCC: 296.215 ratio: 35295.3 quality: 0
+Rect: [600 x 600 from (250, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.716667 score2: 0.0551282
+Tree - ../data/cannyTemplate/t17.jpg scale: 10 score: 8.8434e+06 ZNCC: 250.381 ratio: 35319.8 quality: 0
+Rect: [600 x 600 from (210, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.716667 score2: 0.0551282
+Tree - ../data/cannyTemplate/t18.jpg scale: 10 score: 8.80898e+06 ZNCC: 250.342 ratio: 35187.8 quality: 0
+Rect: [600 x 600 from (190, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.75 score2: 0.0576923
+Tree - ../data/cannyTemplate/t2.jpg scale: 10 score: 1.1795e+07 ZNCC: 288.393 ratio: 40899.1 quality: 0
+Rect: [600 x 600 from (210, 0)] Overlapping rectangle: 13 Score overlapping rect: 0.716667 score2: 0.0551282
+Tree - ../data/cannyTemplate/t10.jpg scale: 10 score: 9.14048e+06 ZNCC: 236.026 ratio: 38726.6 quality: 0
+Rect: [600 x 600 from (200, 0)] Overlapping rectangle: 12 Score overlapping rect: 0.666667 score2: 0.0555556
+Tree - ../data/cannyTemplate/t14.jpg scale: 10 score: 1.04741e+07 ZNCC: 222.517 ratio: 47071.1 quality: 0
+Rect: [600 x 600 from (370, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.583333 score2: 0.0530303
+Tree - ../data/cannyTemplate/t15.jpg scale: 10 score: 1.47301e+07 ZNCC: 252.661 ratio: 58299.7 quality: 0
+Rect: [600 x 600 from (130, 0)] Overlapping rectangle: 11 Score overlapping rect: 0.65 score2: 0.0590909
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 1.11499e+07 ZNCC: 297.831 ratio: 37436.9 quality: 0
+Rect: [600 x 600 from (470, 0)] Overlapping rectangle: 10 Score overlapping rect: 0.533333 score2: 0.0533333
+Tree - ../data/cannyTemplate/t4.jpg scale: 10 score: 9.1647e+06 ZNCC: 218.382 ratio: 41966.4 quality: 0
+Rect: [600 x 600 from (490, 0)] Overlapping rectangle: 9 Score overlapping rect: 0.483333 score2: 0.0537037
+Tree - ../data/cannyTemplate/t0.jpg scale: 10 score: 7.85273e+06 ZNCC: 234.725 ratio: 33454.9 quality: 0
+Rect: [600 x 600 from (510, 0)] Overlapping rectangle: 6 Score overlapping rect: 0.333333 score2: 0.0555556
+
+--- Over all trees selected --- ../data/Figure 9.jpg -> NO ONE SELECTED
+Number of tree detected: 16
+Tree - ../data/cannyTemplate/t0.jpg scale: 6 score: 4.49285e+06 ZNCC: 573.92 ratio: 7828.34 quality: 0
+Rect: [360 x 360 from (678, 204)] Overlapping rectangle: 5 Score overlapping rect: 0.35 score2: 0.07
+Tree - ../data/cannyTemplate/t1.jpg scale: 6 score: 4.49437e+06 ZNCC: 561.358 ratio: 8006.25 quality: 0
+Rect: [360 x 360 from (618, 6)] Overlapping rectangle: 5 Score overlapping rect: 0.375 score2: 0.075
+Tree - ../data/cannyTemplate/t10.jpg scale: 6 score: 4.10805e+06 ZNCC: 476.62 ratio: 8619.13 quality: 0
+Rect: [360 x 360 from (672, 204)] Overlapping rectangle: 5 Score overlapping rect: 0.35 score2: 0.07
+Tree - ../data/cannyTemplate/t11.jpg scale: 6 score: 3.3224e+06 ZNCC: 379.187 ratio: 8761.88 quality: 0
+Rect: [360 x 360 from (246, 204)] Overlapping rectangle: 3 Score overlapping rect: 0.216667 score2: 0.0722222
+Tree - ../data/cannyTemplate/t12.jpg scale: 10 score: 5.2275e+06 ZNCC: 244.424 ratio: 21387 quality: 0
+Rect: [600 x 600 from (540, 0)] Overlapping rectangle: 7 Score overlapping rect: 0.516667 score2: 0.0738095
+Tree - ../data/cannyTemplate/t14.jpg scale: 5 score: 5.0439e+06 ZNCC: 631.666 ratio: 7985.08 quality: 0
+Rect: [300 x 300 from (545, 0)] Overlapping rectangle: 6 Score overlapping rect: 0.441667 score2: 0.0736111
+Tree - ../data/cannyTemplate/t15.jpg scale: 6 score: 4.88606e+06 ZNCC: 329.72 ratio: 14818.8 quality: 0
+Rect: [360 x 360 from (510, 210)] Overlapping rectangle: 7 Score overlapping rect: 0.483333 score2: 0.0690476
+Tree - ../data/cannyTemplate/t17.jpg scale: 5 score: 4.06279e+06 ZNCC: 672.837 ratio: 6038.29 quality: 0
+Rect: [300 x 300 from (385, 15)] Overlapping rectangle: 2 Score overlapping rect: 0.133333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t18.jpg scale: 6 score: 5.46133e+06 ZNCC: 739.986 ratio: 7380.32 quality: 0
+Rect: [360 x 360 from (372, 204)] Overlapping rectangle: 4 Score overlapping rect: 0.266667 score2: 0.0666667
+Tree - ../data/cannyTemplate/t2.jpg scale: 6 score: 3.33004e+06 ZNCC: 300.241 ratio: 11091.3 quality: 0
+Rect: [360 x 360 from (678, 204)] Overlapping rectangle: 5 Score overlapping rect: 0.35 score2: 0.07
+Tree - ../data/cannyTemplate/t3.jpg scale: 6 score: 3.90762e+06 ZNCC: 475.586 ratio: 8216.43 quality: 0
+Rect: [360 x 360 from (348, 24)] Overlapping rectangle: 4 Score overlapping rect: 0.316667 score2: 0.0791667
+Tree - ../data/cannyTemplate/t4.jpg scale: 6 score: 4.29471e+06 ZNCC: 601.434 ratio: 7140.79 quality: 0
+Rect: [360 x 360 from (96, 30)] Overlapping rectangle: 2 Score overlapping rect: 0.133333 score2: 0.0666667
+Tree - ../data/cannyTemplate/t5.jpg scale: 10 score: 3.94358e+06 ZNCC: 155.274 ratio: 25397.6 quality: 0
+Rect: [600 x 600 from (250, 0)] Overlapping rectangle: 6 Score overlapping rect: 0.483333 score2: 0.0805556
+Tree - ../data/cannyTemplate/t6.jpg scale: 5 score: 2.77376e+06 ZNCC: 449.622 ratio: 6169.09 quality: 0
+Rect: [300 x 300 from (895, 165)] Overlapping rectangle: 2 Score overlapping rect: 0.1 score2: 0.05
+Tree - ../data/cannyTemplate/t7.jpg scale: 10 score: 5.22495e+06 ZNCC: 345.735 ratio: 15112.6 quality: 0
+Rect: [600 x 600 from (580, 0)] Overlapping rectangle: 5 Score overlapping rect: 0.383333 score2: 0.0766667
+Tree - ../data/cannyTemplate/t9.jpg scale: 4 score: 4.16364e+06 ZNCC: 853.257 ratio: 4879.7 quality: 0
+Rect: [240 x 240 from (572, 4)] Overlapping rectangle: 6 Score overlapping rect: 0.416667 score2: 0.0694444
