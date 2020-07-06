@@ -1,0 +1,33 @@
+template3 - without background
+--- Fig 1 ---
+ score: 0.0974066
+
+--- Fig 2 ---
+ score: 0.0815981
+
+--- Fig 3 ---
+ score: 0.0494254
+
+--- Fig 4 ---
+ score: 0.0833096
+
+--- Fig 5 ---
+ score: 0.0555879
+
+--- Fig 6 ---
+ score: 0.0977606
+
+--- Fig 7 ---
+ score: 0.109719
+
+--- Fig 8 ---
+ score: 0.144644
+
+--- Fig 9 ---
+-
+
+--- 1.jpg --- falso positivo
+ score: 0.0562917
+
+
+  Threshold > 0.1 -> not a tree
