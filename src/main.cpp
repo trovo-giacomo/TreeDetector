@@ -16,6 +16,7 @@
 #define S_FST_MTD 1
 #define S_SND_MTD 2
 
+#define THRESHOLD_MSSIM 0.194
 
 using namespace std;
 using namespace cv;
@@ -163,9 +164,9 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 		if(tImg.size() != Size(WIN_COLS, WIN_ROWS))	resize(tImg, tImg, Size(WIN_COLS, WIN_ROWS));
 		//Canny(templImg, tImg, 500, 600);
 
-		namedWindow("canny templ", WINDOW_NORMAL);
+		/*namedWindow("canny templ", WINDOW_NORMAL);
 		imshow("canny templ", tImg);
-		waitKey(1);
+		waitKey(1);*/
 		//tImg = templImg;
 		/*cv::Scalar meanT, stddevT;
 		cv::meanStdDev(templImg, meanT, stddevT);*/
@@ -474,22 +475,30 @@ void visualizeResults(vector<treeData> trees, Mat inputImg) {
 		imshow("Final detection", inputImg);
 		waitKey(0);
 	}
+	else {
+		cout << "NO TREES DETECTED!" << endl;
+	}
 
 }
 
 bool isATree(Mat rectangle, string templateImages) {
 	vector<String> files;
 	utils::fs::glob(templateImages, "*.*", files);
-	double avgSSIM = 0.0;
+	double avgMSSIM = 0.0;
+	cvtColor(rectangle, rectangle, COLOR_BGR2GRAY);
 	for (int i = 0; i < files.size(); i++) {
 		Mat templImg = imread(files[i]);
 		resize(templImg, templImg, rectangle.size()); //resize template image to the size of the detected rectangle
+		cvtColor(templImg, templImg, COLOR_BGR2GRAY);
 		Scalar res = getMSSIM(templImg, rectangle);
-		avgSSIM += mean(res)[0];
-		//cout << "template file: " << files[i] << " score: " << mean(res)[0] << endl;
+		//avgSSIM += mean(res)[0]; //bgr image
+		avgMSSIM += res[0]; //for gray scale image
+		//cout << "template file: " << files[i] << " score: " << res << endl;
 	}
-	avgSSIM /= files.size();
-	cout << " score: " << avgSSIM << endl;
+	avgMSSIM /= files.size();
+	//cout << " score: " << avgMSSIM << endl;
+	if (avgMSSIM > THRESHOLD_MSSIM) return false;
+	return true;
 }
 
 vector<treeData> refineWithFeatureMatching(Mat inputImage, string templateFeaturePath, vector<treeData> selecTrees) {
@@ -555,12 +564,15 @@ void printTreeData(treeData data){
 	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score/data.zncc) << /*" quality: " << data.qlt <<*/ endl;
 	cout << "Rect: " << data.rect << " Overlapping rectangle: " << data.numOverlRect << " Score overlapping rect: " << data.scoreOverlRect << " score2: " << (data.scoreOverlRect/ data.numOverlRect) <<  endl;
 }
-
+/*
+https://docs.opencv.org/2.4/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html
+*/
 Scalar getMSSIM(const Mat& i1, const Mat& i2)
 {
 	const double C1 = 6.5025, C2 = 58.5225;
 	/***************************** INITS **********************************/
 	int d = CV_32F;
+	//int d = COLOR_BGR2GRAY;
 
 	Mat I1, I2;
 	i1.convertTo(I1, d);           // cannot calculate on one byte large values

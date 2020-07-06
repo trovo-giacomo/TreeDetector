@@ -18,7 +18,122 @@ template - with background
 --- Fig 9 ---
 -
 
+NOT A TREE
 --- 1.jpg --- falso positivo
  score: 0.0710612
+--- 2.jpg --- falso positivo
+ score: 0.112176
+--- 3.jpg --- 
+ score: 0.0322708
+--- 4.jpg --- falso positivo
+ score: 0.0767048
+--- 5.jpg --- falso positivo
+ score: 0.100496
+
+TREES
+--- Fig 10 ---
+ -
+--- Fig 11 ---
+ score: 0.0504385
+--- Fig 12 ---
+-
+--- Fig 13 ---
+ score: 0.107153
+--- Fig 14 ---
+ score: 0.0909216
+--- Fig 15 ---
+ score: 0.108695
+--- Fig 16 ---
+ score: 0.103704
+--- Fig 17 ---
+-
+--- Fig 25 ---
+ score: 0.0968371
+--- Fig 26 --- vero negativo
+ score: 0.162357
+--- t12 ---
+ score: 0.0859289
+--- t14 ---
+ score: 0.0783539
+--- t18 ---
+ score: 0.122997
+--- t19 ---
+ score: 0.119188
+--- t20 ---
+ score: 0.0484618
+--- t24 ---
+ score: 0.107014
+
 
  Threshold > 0.14 -> not a tree
+
+--------------------------------------------------
+
+ template - with background - GRAY SCALE
+--- Fig 1 ---
+ score: 0.193762
+--- Fig 2 ---
+ score: 0.155135
+--- Fig 3 ---
+ score: 0.086389
+--- Fig 4 ---
+ score: 0.161928
+--- Fig 5 ---
+ score: 0.104644
+--- Fig 6 ---
+ score: 0.181906
+--- Fig 7 ---
+ score: 0.2113
+--- Fig 8 ---
+ score: 0.238712
+--- Fig 9 ---
+-
+
+NOT A TREE
+--- 1.jpg --- falso positivo
+ score: 0.103093
+--- 2.jpg --- 
+ score: 0.209831
+--- 3.jpg --- 
+ score: 0.0547285
+--- 4.jpg --- falso positivo
+ score: 0.13105
+--- 5.jpg ---
+ score: 0.195353
+
+TREES
+--- Fig 10 ---
+ -
+--- Fig 11 ---
+ score: 0.0755741
+--- Fig 12 ---
+-
+--- Fig 13 ---
+ score: 0.154059
+--- Fig 14 ---
+ score: 0.129542
+--- Fig 15 ---
+ score: 0.148323
+--- Fig 16 ---
+ score: 0.14693
+--- Fig 17 ---
+-
+--- Fig 25 ---
+ score: 0.139287
+--- Fig 26 --- vero negativo
+ score: 0.23523
+
+--- t12 ---
+ score: 0.123275
+--- t14 ---
+ score: 0.119825
+--- t18 ---
+ score: 0.181652
+--- t19 ---
+ score: 0.163428
+--- t20 ---
+ score: 0.0703677
+--- t24 ---
+ score: 0.152841
+
+Threshold > 0.194 -> not a tree
