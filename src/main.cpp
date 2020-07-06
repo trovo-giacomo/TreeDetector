@@ -248,7 +248,7 @@ vector<treeData> searchTemplateCanny(Mat inputImg, string pathTemplate){
 
 		//if ((selectTree.score > 7e+6) && (selectTree.zncc < 500)) treesDetected.push_back(selectTree);
 	
-		cout << "ended" << endl << endl;
+		//cout << "ended" << endl << endl;
 		//waitKey(1);
 	}
 	//cout << "--- Over all trees selected --- " <<  inputImageName << endl;
