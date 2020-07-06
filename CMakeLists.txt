@@ -7,7 +7,3 @@ include_directories(include ${OpenCV_INCLUDE_DIRS})
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
-
-add_executable(shape src/shape_context.cpp)
-target_link_libraries(shape ${OpenCV_LIBS})
-
