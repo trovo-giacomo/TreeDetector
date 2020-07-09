@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\src\tree_detection_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\giaco\Desktop\Giacomo\UNIPD\Magistrale\1 Anno\2 semestre\Computer Vision\FinalProject\CMakeLists.txt" />
