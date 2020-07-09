@@ -9,7 +9,7 @@
 #include <iostream>
 
 /*
- * Author: Giacomo Trovò
+ * Author: Giacomo Trovo'
  * Computer Vision course - 9CFU - UNIPD
  * 1st session - 2nd appeal - 9th July 2020
  * tree_detection_util.h - header file of the homonimous .cpp file

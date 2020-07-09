@@ -1,7 +1,7 @@
 #include "tree_detection_util.h"
 #include <iostream>
 /*
- * Author: Giacomo Trovò
+ * Author: Giacomo Trovo'
  * Computer Vision course - 9CFU - UNIPD
  * 1st session - 2nd appeal - 9th July 2020
  * main.cpp - executable program - its goal is to detect with a bounding box trees from the input image passed as an argument
@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 	//take input image from command line
 	if (argc != 2) {
 		cout << "Provide [image_path] as argument in command line" << endl;
-		cout << "The program stop!" << endl;
+		cout << "The program stops!" << endl;
 		return -1;
 	}
 	Mat inputImg;
@@ -51,6 +51,7 @@ int main(int argc, char* argv[]) {
 	inputImg = imread(argv[1]);
 	namedWindow("Input image", WINDOW_NORMAL);
 	imshow("Input image", inputImg);
+	cout << "Press a key to start processing the image..." << endl;
 	waitKey();
 	//time measurement - start
 	sys_time_t t;
@@ -87,14 +88,16 @@ int main(int argc, char* argv[]) {
 	else {
 		cout << "Final detected tree - method: " << TreeUtil::status << endl;
 		cout << "Final tree rect: " <<  final_tree.rect << endl;
+		cout << "Time expired: " << (endTime - startTime) << " ms" << endl;
 		TreeUtil::printTreeData(final_tree);
 
 		rectangle(inputImg, final_tree.rect, Scalar(125), 2);
 		namedWindow("Final detection", WINDOW_NORMAL);
 		imshow("Final detection", inputImg);
+		cout << "Time expired: " << (endTime - startTime) << " ms" << endl;
+		cout << "Press a key to terminate..." << endl;
 		waitKey(0);
 	}
-	cout << "Time expired: " << (endTime - startTime) << " ms" << endl;
 	
 
 	destroyAllWindows();

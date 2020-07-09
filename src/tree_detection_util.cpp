@@ -2,7 +2,7 @@
 #include "tree_detection_util.h"
 
 /*
- * Author: Giacomo Trovò
+ * Author: Giacomo Trovo'
  * Computer Vision course - 9CFU - UNIPD
  * 1st session - 2nd appeal - 9th July 2020
  * tree_detection_util.cpp - class that contains alla the usefull methods to carry on the goal of detecting trees in an image
@@ -18,7 +18,7 @@
 #define S_SND_MTD 2
 
 //Threshold on MSSIM score
-#define THRESHOLD_MSSIM 0.194
+#define THRESHOLD_MSSIM 0.195
 
 using namespace std;
 using namespace cv;
@@ -64,12 +64,18 @@ void TreeUtil::computeCanny(int, void* data) {
 }
 /******* END FUNCTIONS FOR INITIALIZATION ***********/
 
+/*
+ * given an input image find a candidate rectangle for each temlate image stored in data/cannyTemplate folder
+ * @param inputImg, image from which we want to detect a tree
+ * @param pathTemplate, path to the folder in which are contained the template images (edges of trees)
+ * return a list of rectangles, one for each template with reference to the input image that best match the each template
+ */
 vector<TreeUtil::treeData> TreeUtil::searchTemplateWithCanny(Mat inputImg, string pathTemplate) {
 
 	// import all template images (already processed by the initialization step with canny edge detector)
 	vector<String> files;
 	utils::fs::glob(pathTemplate, "*.*", files);
-	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6, 10 };
+	vector<double> scales = { 1.5, 2.0, 2.5, 3, 4, 5, 6, 10 }; //scales at which the template matching is performed
 	int numMatches;
 
 	vector<TreeUtil::treeData> treesDetected; //vector that will contain the result of template matching, all trees among all the template images
@@ -140,7 +146,7 @@ vector<TreeUtil::treeData> TreeUtil::searchTemplateWithCanny(Mat inputImg, strin
 		namedWindow("Final detection", WINDOW_NORMAL);
 		imshow("Final detection", t);
 		int k = waitKey(0);
-		treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
+		//treesDetected[i].qlt = (k - 48); // '0' = 48 number associated with 0 character
 		printTreeData(treesDetected[i]);*/
 
 
@@ -152,6 +158,13 @@ vector<TreeUtil::treeData> TreeUtil::searchTemplateWithCanny(Mat inputImg, strin
 
 }//END - searchTemplateWithCanny
 
+/*
+ * function that perform template matching at a given scale with a given template image and extract some statistics from the best result
+ * @param img, input image from which we want to detect a tree
+ * @param tImg, template image used in a sliding windows approach to find a tree in the orevious image
+ * @param scale, scaling factor at which the template matching approach need to be done
+ * @param data, data structure filled by the funciton with several information and statistics about the best match
+ */
 void TreeUtil::slidingWindow(Mat img, Mat tImg, double scale, TreeUtil::treeData &data) {
 	//cout << "Original size " << img.size() << " - scaling factor " << scale << endl;
 	vector<int> methods = { TM_CCOEFF, TM_CCOEFF_NORMED, TM_CCORR,	TM_CCORR_NORMED, TM_SQDIFF, TM_SQDIFF_NORMED }; //list of different method suitted for template matching
@@ -159,15 +172,15 @@ void TreeUtil::slidingWindow(Mat img, Mat tImg, double scale, TreeUtil::treeData
 	double maxVal, minVal;
 	Point topLeft, bottomRight, minLoc, maxLoc;
 	Mat imgInput, cImg;
-	resize(img, img, Size(img.cols / scale, img.rows / scale));
-	Canny(img, cImg, 500, 600);
+	resize(img, img, Size(img.cols / scale, img.rows / scale)); //resize according to the scale factor
+	Canny(img, cImg, 500, 600); //compute canny image of the input one
 	///visulalize canny image of the target image
 	//namedWindow("canny img", WINDOW_NORMAL);
 	//imshow("canny img", cImg);
+	//waitKey(1);
 
-	//cout << "Scaled size " << img.size() << endl;
 	int win_rows = WIN_ROWS, win_cols = WIN_COLS, stepSize = 30, match;
-	int i = 2; //method -> TM_CCOEFF
+	int i = 2; //method -> TM_CCORR
 
 	//template matching
 	Mat res;
@@ -197,17 +210,22 @@ void TreeUtil::slidingWindow(Mat img, Mat tImg, double scale, TreeUtil::treeData
 
 	/* DEBUG CODE - draw rectangle in the output image + quality evaluation */
 	//cout << " ZNCC: " << data.zncc << endl;
-	//rectangle(imgInput, topLeft, bottomRight, Scalar(255));
+	//rectangle(cImg, topLeft, bottomRight, Scalar(255));
 
-	//namedWindow("Img at method " + methodsNames[i], WINDOW_NORMAL);
-	//imshow("Img at method " + methodsNames[i], cImg);
-	//waitKey(1);
+	//namedWindow("Best match at scale " + to_string(scale), WINDOW_NORMAL);
+	//imshow("Best match at scale " + to_string(scale), cImg);
+	//waitKey(0);
 	/*int k = waitKey();
 	data.qlt = (k - 48); // '0' = 48 number associated with 0 character
 	cout << "Key pressed: " << data.qlt << endl;*/
 
 }
 
+/*
+ * function that computea the Zero Mean Cross Correlation metric given two images of the same size
+ * @param inputRect, binary image from which we want to calculate the ZNCC metric
+ * @param templ, binary image of the template from which we want to calculate the ZNCC metric
+ */
 double TreeUtil::zncc(Mat inputRect, Mat templ) {
 	double zncc;
 	Scalar meanImg, stdDevImg, meanT, stdDevT;
@@ -223,7 +241,13 @@ double TreeUtil::zncc(Mat inputRect, Mat templ) {
 
 }
 
-//takes a vector preselected trees and find the best matching one according to two algorithm
+/*
+ * function that takes a vector of preselected trees and find the best matching one according to two algorithm
+ * @param trees, vector of trees from which we need to extract the best performing one
+ * @param inputImg, original image from which we want to detect a tree
+ * @param selectedTree, dataStructure filled by the function with relevant infomation about the best matching tree
+ * @return treu if a tree is selected as the candidate one, false otherwise. In this last case the selectedTree variable doesn't contains a valid result
+ */
 bool TreeUtil::refineResults(vector<TreeUtil::treeData> trees, Mat inputImg, TreeUtil::treeData &selectedTree) {
 	if (status == S_SND_MTD) { //second algorithm evaluation
 		//select the tree with the lower ratio and a zncc < 500
@@ -254,7 +278,12 @@ bool TreeUtil::refineResults(vector<TreeUtil::treeData> trees, Mat inputImg, Tre
 	return isATree(inputImg(selectedTree.rect), "../data/template");
 
 }
-
+/*
+ * function that perfrom a further refinement by computing the average MSSIM metric in order to say wheter the selected rectangle is actually a tree or not
+ * @param rectangle, selected rectangle from which we want to determine if it is a tree or not
+ * @param templateImages, path to the template image used to calculate the MSSIM metric
+ * return treu if the rectangle passed as argument is actully a tree, false otherwise.
+ */
 bool TreeUtil::isATree(Mat rectangle, string templateImages) {
 	vector<String> files;
 	utils::fs::glob(templateImages, "*.*", files);
@@ -270,18 +299,25 @@ bool TreeUtil::isATree(Mat rectangle, string templateImages) {
 		//cout << "template file: " << files[i] << " score: " << res[0] << endl;
 	}
 	avgMSSIM /= files.size();
-	//cout << " score: " << avgMSSIM << endl;
+	//cout << "score: " << avgMSSIM << endl;
 	if (avgMSSIM > THRESHOLD_MSSIM) return false;
 	return true;
 }
 
+/*
+ * function that print statistics about a tree stored in an appropriate data sturcture
+ * @param data, instance of the data structure that need to be printed
+ */
 void TreeUtil::printTreeData(TreeUtil::treeData data) {
 	cout << "Tree - " << data.fileName << " scale: " << data.scale << " score: " << data.score << " ZNCC: " << data.zncc << " ratio: " << (data.score / data.zncc) << /*" quality: " << data.qlt <<*/ endl;
 	cout << "Rect: " << data.rect << " Overlapping rectangle: " << data.numOverlRect << endl;
 }
 /*
-source: https://docs.opencv.org/2.4/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html
-*/
+ * function that compute the MSSIM given two images of the same size - source: https://docs.opencv.org/2.4/doc/tutorials/gpu/gpu-basics-similarity/gpu-basics-similarity.html
+ * @param i1, first image to be compared
+ * @param i2, second image to becompared
+ * return a scalar containing the MSSIM metric in the first posizion
+ */
 Scalar TreeUtil::getMSSIM(const Mat& i1, const Mat& i2)
 {
 	const double C1 = 6.5025, C2 = 58.5225;
